@@ -20,9 +20,9 @@ namespace DJ
         public Form1()
         {
             InitializeComponent();
-            btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
-            btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
-            btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);
+            //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
+            //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
+            //btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);
         }
 
         private void btnPlayMix1_Click(object sender, EventArgs e)
@@ -43,20 +43,20 @@ namespace DJ
 
         private void ID3Mixer1()
         {
-            if (_mixer1 != null)
-            {
-                txtAlbum1.Text = _mixer1.Tag.Album;
-                txtArtiste1.Text = _mixer1.Tag.Artist;
-                txtDuree1.Text = ((int)(_mixer1.Duration/60)).ToString() + ":" + (_mixer1.Duration % 60).ToString();
-                txtTitre1.Text = _mixer1.Tag.Title;
-            }
-            else
-            {
-                txtAlbum1.Text = "";
-                txtArtiste1.Text = "";
-                txtDuree1.Text = "";
-                txtTitre1.Text = "";
-            }
+            //if (_mixer1 != null)
+            //{
+            //    txtAlbum1.Text = _mixer1.Tag.Album;
+            //    txtArtiste1.Text = _mixer1.Tag.Artist;
+            //    txtDuree1.Text = ((int)(_mixer1.Duration/60)).ToString() + ":" + (_mixer1.Duration % 60).ToString();
+            //    txtTitre1.Text = _mixer1.Tag.Title;
+            //}
+            //else
+            //{
+            //    txtAlbum1.Text = "";
+            //    txtArtiste1.Text = "";
+            //    txtDuree1.Text = "";
+            //    txtTitre1.Text = "";
+            //}
         }
 
 

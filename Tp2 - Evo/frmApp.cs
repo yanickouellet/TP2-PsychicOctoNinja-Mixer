@@ -2,14 +2,15 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using DJ.Core.Controllers;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Observers;
 
 namespace DJ.Winforms
 {
-    public partial class FrmApp : Form, ITrackObserver
+    public partial class FrmApp : Form
     {
-        public ITrackController MainTrackController { get; set; }
+        private IMainController _mainController;
 
         [DllImport("winmm.dll")]
         static extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize,  IntPtr hwndCallback);
@@ -18,6 +19,11 @@ namespace DJ.Winforms
         public FrmApp()
         {
             InitializeComponent();
+
+            _mainController = new MainController();
+            _mainTrack.Controller = _mainController.CreateMainTrackController(_mainTrack);
+            _secondTrack.Controller = _mainController.CreateSecondTrackController(_secondTrack);
+
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
             //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
             //btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);
@@ -73,21 +79,6 @@ namespace DJ.Winforms
                 _mixer1.Open();  
             }
             
-        }
-
-        public void SetSpektrum(uint level)
-        {
-            progressBar1.Value = (int)level;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MainTrackController.Play();
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            MainTrackController.SetVolume((uint)trackBar1.Value * 10);
         }
     }
 }

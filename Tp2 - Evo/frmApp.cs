@@ -1,23 +1,21 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
+using DJ.Core.Controllers.Interfaces;
+using DJ.Core.Observers;
 
-namespace DJ
+namespace DJ.Winforms
 {
-    public partial class Form1 : Form
+    public partial class FrmApp : Form, ITrackObserver
     {
+        public ITrackController MainTrackController { get; set; }
+
         [DllImport("winmm.dll")]
         static extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize,  IntPtr hwndCallback);
         private Mp3 _mixer1;
        
-        public Form1()
+        public FrmApp()
         {
             InitializeComponent();
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
@@ -75,6 +73,21 @@ namespace DJ
                 _mixer1.Open();  
             }
             
+        }
+
+        public void SetSpektrum(uint level)
+        {
+            progressBar1.Value = (int)level;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainTrackController.Play();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            MainTrackController.SetVolume((uint)trackBar1.Value * 10);
         }
     }
 }

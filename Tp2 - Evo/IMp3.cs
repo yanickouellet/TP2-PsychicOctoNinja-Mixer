@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using DJ.Id3;
+﻿using System.Diagnostics;
+using DJ.Winforms.Id3;
 
-namespace DJ
+namespace DJ.Winforms
 {
     public interface IMp3
     {

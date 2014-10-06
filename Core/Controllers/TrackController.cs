@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Observers;
 
 namespace DJ.Core.Controllers
 {
-    public class TrackController : ITrackController
+    public class TrackController : BaseController, ITrackController
     {
         private readonly ITrackObserver _observer;
 
-        public TrackController(ITrackObserver observer)
+        public TrackController(ITrackObserver observer, AppContext context) : base(context) 
         {
             _observer = observer;
         }
@@ -35,7 +32,7 @@ namespace DJ.Core.Controllers
 
         public void SetVolume(uint volume)
         {
-            _observer.SetSpektrum(volume);
+            _observer.SetSpektrum(volume * 10);
         }
 
         public void SetTime(uint time)

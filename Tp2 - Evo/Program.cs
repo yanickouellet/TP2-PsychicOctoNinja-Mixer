@@ -16,7 +16,6 @@ namespace DJ.Winforms
             Application.SetCompatibleTextRenderingDefault(false);
 
             var frm = new FrmApp();
-            frm.MainTrackController = new TrackController(frm);
 
             Application.Run(frm);
         }

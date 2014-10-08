@@ -234,6 +234,7 @@ namespace DJ.Winforms
             this._mainTrack.Name = "_mainTrack";
             this._mainTrack.Size = new System.Drawing.Size(364, 181);
             this._mainTrack.TabIndex = 0;
+            this._mainTrack.Load += new System.EventHandler(this._mainTrack_Load);
             // 
             // panel2
             // 

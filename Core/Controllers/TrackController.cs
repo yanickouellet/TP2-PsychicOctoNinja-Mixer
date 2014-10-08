@@ -1,4 +1,5 @@
 ﻿using System;
+using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Observers;
@@ -16,8 +17,9 @@ namespace DJ.Core.Controllers
 
         public void Play()
         {
-            Console.WriteLine("play");
-            _observer.SetSpektrum(20);
+            if (Context.MainTrack == null)
+                Context.MainTrack = new AudioMaterial(@"C:\Users\Yanick\Music\dragonborn.mp3");
+            Context.MainTrack.Play();
         }
 
         public void Cue()
@@ -27,7 +29,9 @@ namespace DJ.Core.Controllers
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            Context.MainTrack.Stop();
+            Context.MainTrack.Dispose();
+            Context.MainTrack = null;
         }
 
         public void SetVolume(uint volume)

@@ -80,5 +80,10 @@ namespace DJ.Winforms
             }
             
         }
+
+        private void _mainTrack_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

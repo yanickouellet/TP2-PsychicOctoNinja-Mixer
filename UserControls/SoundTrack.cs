@@ -26,5 +26,10 @@ namespace DJ.UserControls
         {
             Controller.Play();
         }
+
+        private void btnStop_Click(object sender, System.EventArgs e)
+        {
+            Controller.Stop();
+        }
     }
 }

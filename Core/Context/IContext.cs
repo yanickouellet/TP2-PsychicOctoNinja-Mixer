@@ -1,6 +1,9 @@
-﻿namespace DJ.Core.Context
+﻿using DJ.Core.Audio;
+
+namespace DJ.Core.Context
 {
     public interface IContext
     {
+        AudioMaterial MainTrack { get; set; }
     }
 }

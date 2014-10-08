@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
-namespace DJ.Id3
+namespace DJ.Winforms.Id3
 {
     public class V2Extractor : BaseExtractor
     {

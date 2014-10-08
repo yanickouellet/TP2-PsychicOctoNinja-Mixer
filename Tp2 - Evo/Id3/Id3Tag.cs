@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DJ.Id3
+namespace DJ.Winforms.Id3
 {
     /// <summary>
     /// Représentation des informations Id3 utiles pour le projet.

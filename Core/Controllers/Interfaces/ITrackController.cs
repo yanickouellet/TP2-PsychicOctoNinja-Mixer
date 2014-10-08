@@ -8,5 +8,6 @@
         void SetVolume(uint volume);
         void SetTime(uint time);
         bool Loop { set; }
+        void LoadTrack(string filename);
     }
 }

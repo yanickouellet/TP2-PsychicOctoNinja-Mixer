@@ -31,5 +31,15 @@ namespace DJ.UserControls
         {
             Controller.Stop();
         }
+
+        private void btnCue_Click(object sender, System.EventArgs e)
+        {
+            Controller.Cue();
+        }
+
+        public void LoadTrack(string filename)
+        {
+            Controller.LoadTrack(filename);
+        }
     }
 }

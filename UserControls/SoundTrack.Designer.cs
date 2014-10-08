@@ -108,6 +108,7 @@
             this.btnCue.TabIndex = 4;
             this.btnCue.Text = "Cue";
             this.btnCue.UseVisualStyleBackColor = true;
+            this.btnCue.Click += new System.EventHandler(this.btnCue_Click);
             // 
             // btnPlay
             // 

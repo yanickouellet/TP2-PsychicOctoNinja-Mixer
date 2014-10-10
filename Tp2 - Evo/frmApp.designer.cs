@@ -40,28 +40,27 @@ namespace DJ.Winforms
             this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this._mainTrack = new DJ.UserControls.SoundTrack();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMaster = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this._mainTrack = new DJ.UserControls.SoundTrack();
             this._secondTrack = new DJ.UserControls.SoundTrack();
+            this.playlist1 = new DJ.UserControls.Playlist();
+            this.fileExplorer1 = new DJ.UserControls.FileExplorer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -146,49 +145,33 @@ namespace DJ.Winforms
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 202);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 233);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.Controls.Add(this.fileExplorer1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(983, 238);
-            this.splitContainer1.SplitterDistance = 262;
+            this.splitContainer1.Panel2.Controls.Add(this.playlist1);
+            this.splitContainer1.Size = new System.Drawing.Size(983, 207);
+            this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.TabIndex = 18;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(262, 238);
-            this.treeView1.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(717, 238);
-            this.dataGridView1.TabIndex = 19;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(989, 443);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
@@ -227,21 +210,13 @@ namespace DJ.Winforms
             this.panel10.Size = new System.Drawing.Size(370, 187);
             this.panel10.TabIndex = 8;
             // 
-            // _mainTrack
-            // 
-            this._mainTrack.Controller = null;
-            this._mainTrack.Location = new System.Drawing.Point(3, 3);
-            this._mainTrack.Name = "_mainTrack";
-            this._mainTrack.Size = new System.Drawing.Size(364, 181);
-            this._mainTrack.TabIndex = 0;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel12);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.trackBar3);
             this.panel2.Controls.Add(this.trackBar4);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblMaster);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(379, 3);
             this.panel2.Name = "panel2";
@@ -282,15 +257,15 @@ namespace DJ.Winforms
             this.trackBar4.Size = new System.Drawing.Size(223, 45);
             this.trackBar4.TabIndex = 0;
             // 
-            // label1
+            // lblMaster
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Master";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMaster.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblMaster.Location = new System.Drawing.Point(0, 0);
+            this.lblMaster.Name = "lblMaster";
+            this.lblMaster.Size = new System.Drawing.Size(223, 15);
+            this.lblMaster.TabIndex = 1;
+            this.lblMaster.Text = "Master";
+            this.lblMaster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -310,6 +285,14 @@ namespace DJ.Winforms
             this.panel11.Size = new System.Drawing.Size(372, 187);
             this.panel11.TabIndex = 12;
             // 
+            // _mainTrack
+            // 
+            this._mainTrack.Controller = null;
+            this._mainTrack.Location = new System.Drawing.Point(3, 3);
+            this._mainTrack.Name = "_mainTrack";
+            this._mainTrack.Size = new System.Drawing.Size(364, 181);
+            this._mainTrack.TabIndex = 0;
+            // 
             // _secondTrack
             // 
             this._secondTrack.Controller = null;
@@ -317,6 +300,22 @@ namespace DJ.Winforms
             this._secondTrack.Name = "_secondTrack";
             this._secondTrack.Size = new System.Drawing.Size(375, 190);
             this._secondTrack.TabIndex = 0;
+            // 
+            // playlist1
+            // 
+            this.playlist1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlist1.Location = new System.Drawing.Point(0, 0);
+            this.playlist1.Name = "playlist1";
+            this.playlist1.Size = new System.Drawing.Size(751, 207);
+            this.playlist1.TabIndex = 0;
+            // 
+            // fileExplorer1
+            // 
+            this.fileExplorer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fileExplorer1.Location = new System.Drawing.Point(0, 0);
+            this.fileExplorer1.Name = "fileExplorer1";
+            this.fileExplorer1.Size = new System.Drawing.Size(228, 207);
+            this.fileExplorer1.TabIndex = 0;
             // 
             // FrmApp
             // 
@@ -335,7 +334,6 @@ namespace DJ.Winforms
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -363,14 +361,12 @@ namespace DJ.Winforms
         private System.Windows.Forms.ToolStripMenuItem àProposToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMaster;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
@@ -379,6 +375,8 @@ namespace DJ.Winforms
         private System.Windows.Forms.TrackBar trackBar3;
         private SoundTrack _mainTrack;
         private SoundTrack _secondTrack;
+        private FileExplorer fileExplorer1;
+        private Playlist playlist1;
     }
 }
 

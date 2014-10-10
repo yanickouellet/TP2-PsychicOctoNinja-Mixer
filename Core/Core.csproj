@@ -43,10 +43,16 @@
     <Compile Include="Context\IContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Interfaces\IMainController.cs" />
+    <Compile Include="Controllers\Interfaces\IPlaylistController.cs" />
+    <Compile Include="Controllers\Interfaces\IExplorerController.cs" />
     <Compile Include="Controllers\Interfaces\ITrackController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\ExplorerController.cs" />
+    <Compile Include="Controllers\PlaylistController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Observers\IMainObserver.cs" />
+    <Compile Include="Observers\IExplorerObserver.cs" />
+    <Compile Include="Observers\IPlaylistObserver.cs" />
     <Compile Include="Observers\ITrackObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

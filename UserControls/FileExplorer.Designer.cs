@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.trvFile = new System.Windows.Forms.TreeView();
+            this.trvExplorer = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
-            // trvFile
+            // trvExplorer
             // 
-            this.trvFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trvFile.Location = new System.Drawing.Point(0, 0);
-            this.trvFile.Name = "trvFile";
-            this.trvFile.Size = new System.Drawing.Size(399, 271);
-            this.trvFile.TabIndex = 1;
+            this.trvExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvExplorer.Location = new System.Drawing.Point(0, 0);
+            this.trvExplorer.Name = "trvExplorer";
+            this.trvExplorer.Size = new System.Drawing.Size(353, 355);
+            this.trvExplorer.TabIndex = 1;
             // 
             // FileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.trvFile);
+            this.Controls.Add(this.trvExplorer);
             this.Name = "FileExplorer";
-            this.Size = new System.Drawing.Size(399, 271);
+            this.Size = new System.Drawing.Size(353, 355);
+            this.Load += new System.EventHandler(this.FileExplorer_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TreeView trvFile;
+        private System.Windows.Forms.TreeView trvExplorer;
     }
 }

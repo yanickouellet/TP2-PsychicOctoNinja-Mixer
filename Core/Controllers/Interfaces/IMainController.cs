@@ -12,5 +12,9 @@ namespace DJ.Core.Controllers.Interfaces
         ITrackController CreateMainTrackController(ITrackObserver observer);
 
         ITrackController CreateSecondTrackController(ITrackObserver observer);
+
+        ITrackController CreatePlaylistController(ITrackObserver observer);
+
+        ITrackController CreateExplorerController(ITrackObserver observer);
     }
 }

@@ -22,5 +22,15 @@ namespace DJ.Core.Controllers
         {
             return new TrackController(observer, _appContext);
         }
+
+        public ITrackController CreatePlaylistController(ITrackObserver observer)
+        {
+            return new TrackController(observer, _appContext);
+        }
+
+        public ITrackController CreateExplorerController(ITrackObserver observer)
+        {
+            return new TrackController(observer, _appContext);
+        }
     }
 }

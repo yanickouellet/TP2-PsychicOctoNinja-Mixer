@@ -1,45 +1,58 @@
 ﻿using System;
+using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
+using DJ.Core.Events;
 
 namespace DJ.Core.Controllers
 {
-    public class TrackController : BaseController, ITrackController
+    public abstract class TrackController : BaseController, ITrackController
     {
-        private readonly ITrackObserver _observer;
-
-        public TrackController(ITrackObserver observer, AppContext context) : base(context) 
+        public TrackController(AppContext context) : base(context) 
         {
-            _observer = observer;
+        }
+
+        public void LoadTrack(string filename)
+        {
+            Track = new AudioMaterial(filename);
+            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
+            OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);
         }
 
         public void Play()
         {
-            Console.WriteLine("play");
-            _observer.SetSpektrum(20);
+            if (Track != null)
+            {
+                Track.Play();
+            }
         }
 
         public void Cue()
         {
-            throw new NotImplementedException();
+            Track.Pause();
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            Track.Stop();
         }
 
-        public void SetVolume(uint volume)
+        public void SetVolume(int volume)
         {
-            _observer.SetSpektrum(volume * 10);
+            Track.Volume = volume;
+            OnRaiseEvent(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);
         }
 
-        public void SetTime(uint time)
+        public void SetTime(int time)
         {
             throw new NotImplementedException();
         }
 
         public bool Loop { set; private get; }
+
+        public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
+
+        protected abstract AudioMaterial Track { get; set; }
     }
 }

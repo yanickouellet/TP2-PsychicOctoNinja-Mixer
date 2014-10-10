@@ -38,6 +38,7 @@
             this.chkStop = new System.Windows.Forms.CheckBox();
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkLoop = new System.Windows.Forms.CheckBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -57,9 +58,17 @@
             // 
             this.trkVolume.Dock = System.Windows.Forms.DockStyle.Left;
             this.trkVolume.Location = new System.Drawing.Point(0, 0);
+
             this.trkVolume.Name = "trkVolume";
             this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trkVolume.Size = new System.Drawing.Size(45, 319);
+
+            this.trkVolume.Maximum = 100;
+            this.trkVolume.Name = "trkVolume";
+            this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trkVolume.Size = new System.Drawing.Size(45, 319);
+            this.trkVolume.SmallChange = 5;
+
             this.trkVolume.TabIndex = 10;
             this.trkVolume.Scroll += new System.EventHandler(this.trkVolume_Scroll);
             // 

@@ -1,13 +1,28 @@
-﻿using System.Windows.Forms;
-using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
+using DJ.Core.Controllers.Interfaces;
+using DJ.Core.Events;
 
 namespace DJ.UserControls
 {
-    public partial class SoundTrack : UserControl, ITrackObserver
+    public partial class SoundTrack : UserControl
     {
-        public ITrackController Controller { get; set; }
+        private ITrackController _controller;
+
+        public ITrackController Controller
+        {
+            get { return _controller; }
+            set
+            {
+                _controller = value;
+                if (_controller == null)
+                    return;
+                Controller.RaiseTrackChangedEvent += Controller_RaiseTrackChangedEvent;
+                Controller.RaiseVolumeChangedEvent += ControllerOnRaiseVolumeChangedEvent;
+            }
+        }
+
         public SoundTrack()
         {
             InitializeComponent();
@@ -20,9 +35,38 @@ namespace DJ.UserControls
 
         private void trkVolume_Scroll(object sender, System.EventArgs e)
         {
-            Controller.SetVolume((uint)trkVolume.Value);
+            Controller.SetVolume(trkVolume.Value);
         }
 
+        private void btnPlay_Click(object sender, System.EventArgs e)
+        {
+            Controller.Play();
+        }
+
+        private void btnStop_Click(object sender, System.EventArgs e)
+        {
+            Controller.Stop();
+        }
+
+        private void btnCue_Click(object sender, System.EventArgs e)
+        {
+            Controller.Cue();
+        }
+
+        public void LoadTrack(string filename)
+        {
+            Controller.LoadTrack(filename);
+        }
+
+        private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
+        {
+        }
+
+        private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
+        {
+            pgbSpektrum.Value = e.Level;
+            trkVolume.Value = e.Level;
+        }
 
         #region Checkboxes checked changed
         private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
@@ -48,7 +92,7 @@ namespace DJ.UserControls
             else
             {
                 chkCue.BackColor = SystemColors.AppWorkspace;
-                chkCue.ForeColor = Color.Black;            
+                chkCue.ForeColor = Color.Black;
             }
         }
 
@@ -108,7 +152,5 @@ namespace DJ.UserControls
             return newBitmap;
         }
         #endregion
-
-        
     }
 }

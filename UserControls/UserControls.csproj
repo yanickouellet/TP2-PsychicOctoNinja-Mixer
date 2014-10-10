@@ -80,6 +80,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SoundTrack.resx">
       <DependentUpon>SoundTrack.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

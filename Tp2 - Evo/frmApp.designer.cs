@@ -75,6 +75,7 @@ namespace DJ.Winforms
             this.panel11.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -365,6 +366,7 @@ namespace DJ.Winforms
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmApp";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApp_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -381,6 +383,7 @@ namespace DJ.Winforms
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);

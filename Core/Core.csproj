@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSCore">
+      <HintPath>..\packages\CSCore.1.0.0.0\lib\net35-client\CSCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\AudioMaterial.cs" />
     <Compile Include="Context\AppContext.cs" />
     <Compile Include="Context\IContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -50,11 +54,14 @@
     <Compile Include="Controllers\ExplorerController.cs" />
     <Compile Include="Controllers\PlaylistController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
-    <Compile Include="Observers\IMainObserver.cs" />
-    <Compile Include="Observers\IExplorerObserver.cs" />
-    <Compile Include="Observers\IPlaylistObserver.cs" />
-    <Compile Include="Observers\ITrackObserver.cs" />
+    <Compile Include="Controllers\MainTrackController.cs" />
+    <Compile Include="Controllers\SecondaryTrackController.cs" />
+    <Compile Include="Events\TrackChangedEventArgs.cs" />
+    <Compile Include="Events\VolumeChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

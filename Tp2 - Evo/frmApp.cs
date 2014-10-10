@@ -4,7 +4,6 @@ using System.Text;
 using System.Windows.Forms;
 using DJ.Core.Controllers;
 using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
 
 namespace DJ.Winforms
 {
@@ -21,8 +20,8 @@ namespace DJ.Winforms
             InitializeComponent();
 
             _mainController = new MainController();
-            _mainTrack.Controller = _mainController.CreateMainTrackController(_mainTrack);
-            _secondTrack.Controller = _mainController.CreateSecondTrackController(_secondTrack);
+            _mainTrack.Controller = _mainController.CreateMainTrackController();
+            _secondTrack.Controller = _mainController.CreateSecondTrackController();
 
             _mainTrack.LoadTrack(@"C:\Users\Yanick\Music\gamesofthrone.mp3");
             _secondTrack.LoadTrack(@"C:\Users\Yanick\Music\dragonborn.mp3");
@@ -83,9 +82,9 @@ namespace DJ.Winforms
             
         }
 
-        private void _mainTrack_Load(object sender, EventArgs e)
+        private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            _mainController.Dispose();
         }
     }
 }

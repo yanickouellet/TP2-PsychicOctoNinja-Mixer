@@ -49,9 +49,10 @@
     <Compile Include="Controllers\Interfaces\IMainController.cs" />
     <Compile Include="Controllers\Interfaces\ITrackController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MainTrackController.cs" />
+    <Compile Include="Controllers\SecondaryTrackController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
-    <Compile Include="Observers\IMainObserver.cs" />
-    <Compile Include="Observers\ITrackObserver.cs" />
+    <Compile Include="Events\TrackChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

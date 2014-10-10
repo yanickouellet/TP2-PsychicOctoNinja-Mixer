@@ -1,6 +1,5 @@
 ﻿using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
 
 namespace DJ.Core.Controllers
 {
@@ -13,14 +12,22 @@ namespace DJ.Core.Controllers
             _appContext = new AppContext();
         }
 
-        public ITrackController CreateMainTrackController(ITrackObserver observer)
+        public ITrackController CreateMainTrackController()
         {
-            return new TrackController(observer, _appContext);
+            return new MainTrackController(_appContext);
         }
 
-        public ITrackController CreateSecondTrackController(ITrackObserver observer)
+        public ITrackController CreateSecondTrackController()
         {
-            return new TrackController(observer, _appContext);
+            return new SecondaryTrackController(_appContext);
+        }
+
+        public void Dispose()
+        {
+            if(_appContext.MainTrack != null)
+                _appContext.MainTrack.Dispose();
+            if(_appContext.SecondaryTrack != null)
+                _appContext.SecondaryTrack.Dispose();
         }
     }
 }

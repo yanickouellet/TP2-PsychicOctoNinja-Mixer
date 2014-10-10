@@ -1,12 +1,25 @@
 ﻿using System.Windows.Forms;
 using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
+using DJ.Core.Events;
 
 namespace DJ.UserControls
 {
-    public partial class SoundTrack : UserControl, ITrackObserver
+    public partial class SoundTrack : UserControl
     {
-        public ITrackController Controller { get; set; }
+        private ITrackController _controller;
+
+        public ITrackController Controller
+        {
+            get { return _controller; }
+            set
+            {
+                _controller = value;
+                if (_controller == null)
+                    return;
+                Controller.RaiseTrackChangedEvent += Controller_RaiseTrackChangedEvent;
+            }
+        }
+
         public SoundTrack()
         {
             InitializeComponent();
@@ -40,6 +53,11 @@ namespace DJ.UserControls
         public void LoadTrack(string filename)
         {
             Controller.LoadTrack(filename);
+        }
+
+        private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
+        {
+            MessageBox.Show(e.TrackName);
         }
     }
 }

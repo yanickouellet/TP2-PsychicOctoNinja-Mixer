@@ -2,22 +2,20 @@
 using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Observers;
+using DJ.Core.Events;
 
 namespace DJ.Core.Controllers
 {
     public abstract class TrackController : BaseController, ITrackController
     {
-        private readonly ITrackObserver _observer;
-
-        public TrackController(ITrackObserver observer, AppContext context) : base(context) 
+        public TrackController(AppContext context) : base(context) 
         {
-            _observer = observer;
         }
 
         public void LoadTrack(string filename)
         {
             Context.MainTrack = new AudioMaterial(filename);
+            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent, x => Console.WriteLine(x.TrackName));
         }
 
         public void Play()
@@ -40,7 +38,6 @@ namespace DJ.Core.Controllers
 
         public void SetVolume(uint volume)
         {
-            _observer.SetSpektrum(volume * 10);
         }
 
         public void SetTime(uint time)
@@ -50,6 +47,8 @@ namespace DJ.Core.Controllers
 
         public bool Loop { set; private get; }
 
-        protected abstract AudioMaterial Track { get; };
+        public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
+
+        protected abstract AudioMaterial Track { get; }
     }
 }

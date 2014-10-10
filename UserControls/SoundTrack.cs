@@ -57,7 +57,6 @@ namespace DJ.UserControls
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
-            MessageBox.Show(e.TrackName);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace DJ.Core.Controllers
 
         protected override AudioMaterial Track
         {
+            set { Context.SecondaryTrack = value; }
             get { return Context.SecondaryTrack; }
         }
     }

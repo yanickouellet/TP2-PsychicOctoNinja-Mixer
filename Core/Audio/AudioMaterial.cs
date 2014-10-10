@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
+using CSCore.Streams;
 
 namespace DJ.Core.Audio
 {
@@ -48,6 +49,7 @@ namespace DJ.Core.Audio
 
         public void Dispose()
         {
+            _sound.Stop();
             _sound.Dispose();
             _source.Dispose();
         }

@@ -14,26 +14,26 @@ namespace DJ.Core.Controllers
 
         public void LoadTrack(string filename)
         {
-            Context.MainTrack = new AudioMaterial(filename);
-            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent, x => Console.WriteLine(x.TrackName));
+            Track = new AudioMaterial(filename);
+            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
         }
 
         public void Play()
         {
-            if (Context.MainTrack != null)
-                Context.MainTrack.Play();
+            if (Track != null)
+                Track.Play();
         }
 
         public void Cue()
         {
-            Context.MainTrack.Pause();
+            Track.Pause();
         }
 
         public void Stop()
         {
-            Context.MainTrack.Stop();
-            Context.MainTrack.Dispose();
-            Context.MainTrack = null;
+            Track.Stop();
+            Track.Dispose();
+            Track = null;
         }
 
         public void SetVolume(uint volume)
@@ -49,6 +49,6 @@ namespace DJ.Core.Controllers
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
 
-        protected abstract AudioMaterial Track { get; }
+        protected abstract AudioMaterial Track { get; set; }
     }
 }

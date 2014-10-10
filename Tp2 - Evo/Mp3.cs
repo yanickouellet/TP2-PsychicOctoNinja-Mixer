@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Diagnostics;
-using DJ.Id3;
+using DJ.Winforms.Id3;
 
-namespace DJ
+namespace DJ.Winforms
 {
     public class Mp3NotOpenedException : Exception
     {

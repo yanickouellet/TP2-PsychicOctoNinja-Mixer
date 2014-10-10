@@ -1,25 +1,28 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
+using DJ.Core.Controllers;
+using DJ.Core.Controllers.Interfaces;
 
-namespace DJ
+namespace DJ.Winforms
 {
-    public partial class Form1 : Form
+    public partial class FrmApp : Form
     {
+        private IMainController _mainController;
+
         [DllImport("winmm.dll")]
         static extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize,  IntPtr hwndCallback);
         private Mp3 _mixer1;
        
-        public Form1()
+        public FrmApp()
         {
             InitializeComponent();
+
+            _mainController = new MainController();
+            _mainTrack.Controller = _mainController.CreateMainTrackController();
+            _secondTrack.Controller = _mainController.CreateSecondTrackController();
+
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
             //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
             //btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);
@@ -75,6 +78,11 @@ namespace DJ
                 _mixer1.Open();  
             }
             
+        }
+
+        private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _mainController.Dispose();
         }
     }
 }

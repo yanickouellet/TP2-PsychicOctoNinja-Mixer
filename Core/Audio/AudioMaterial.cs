@@ -38,6 +38,7 @@ namespace DJ.Core.Audio
         public void Stop()
         {
             _sound.Stop();
+            _sound.WaveSource.Position = 0;
         }
 
         private ISoundOut GetSoundSource()

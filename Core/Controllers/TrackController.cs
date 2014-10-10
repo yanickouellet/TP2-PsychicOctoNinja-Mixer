@@ -32,8 +32,6 @@ namespace DJ.Core.Controllers
         public void Stop()
         {
             Track.Stop();
-            Track.Dispose();
-            Track = null;
         }
 
         public void SetVolume(uint volume)

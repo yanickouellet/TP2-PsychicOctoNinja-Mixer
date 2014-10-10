@@ -14,6 +14,8 @@ namespace DJ.Core.Controllers
 
         public void LoadTrack(string filename)
         {
+            if(Track != null)
+                Track.Dispose();
             Track = new AudioMaterial(filename);
             OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
             OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);

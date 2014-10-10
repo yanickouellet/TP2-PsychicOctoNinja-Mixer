@@ -152,5 +152,14 @@ namespace DJ.UserControls
             return newBitmap;
         }
         #endregion
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog {Filter = "MP3 (*.mp3)|*.mp3"};
+            fileDialog.ShowDialog();
+            var filename = fileDialog.FileName;
+            if (!string.IsNullOrWhiteSpace(filename))
+                Controller.LoadTrack(filename);
+        }
     }
 }

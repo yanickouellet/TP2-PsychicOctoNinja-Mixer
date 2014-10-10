@@ -34,11 +34,11 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.chkPlay = new System.Windows.Forms.CheckBox();
-            this.chkStop = new System.Windows.Forms.CheckBox();
-            this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkLoop = new System.Windows.Forms.CheckBox();
-
+            this.chkCue = new System.Windows.Forms.CheckBox();
+            this.chkStop = new System.Windows.Forms.CheckBox();
+            this.chkPlay = new System.Windows.Forms.CheckBox();
+            this.btnOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -58,17 +58,11 @@
             // 
             this.trkVolume.Dock = System.Windows.Forms.DockStyle.Left;
             this.trkVolume.Location = new System.Drawing.Point(0, 0);
-
-            this.trkVolume.Name = "trkVolume";
-            this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trkVolume.Size = new System.Drawing.Size(45, 319);
-
             this.trkVolume.Maximum = 100;
             this.trkVolume.Name = "trkVolume";
             this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trkVolume.Size = new System.Drawing.Size(45, 319);
             this.trkVolume.SmallChange = 5;
-
             this.trkVolume.TabIndex = 10;
             this.trkVolume.Scroll += new System.EventHandler(this.trkVolume_Scroll);
             // 
@@ -91,6 +85,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.btnOpen);
             this.panel8.Controls.Add(this.chkLoop);
             this.panel8.Controls.Add(this.chkCue);
             this.panel8.Controls.Add(this.chkStop);
@@ -101,35 +96,19 @@
             this.panel8.Size = new System.Drawing.Size(575, 44);
             this.panel8.TabIndex = 9;
             // 
-            // chkPlay
+            // chkLoop
             // 
-            this.chkPlay.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkPlay.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chkPlay.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkPlay.BackgroundImage")));
-            this.chkPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.chkPlay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chkPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPlay.Location = new System.Drawing.Point(99, 6);
-            this.chkPlay.Name = "chkPlay";
-            this.chkPlay.Size = new System.Drawing.Size(45, 32);
-            this.chkPlay.TabIndex = 5;
-            this.chkPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkPlay.UseVisualStyleBackColor = false;
-            this.chkPlay.CheckedChanged += new System.EventHandler(this.chkPlay_CheckedChanged);
-            // 
-            // chkStop
-            // 
-            this.chkStop.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkStop.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chkStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkStop.BackgroundImage")));
-            this.chkStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.chkStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chkStop.Location = new System.Drawing.Point(54, 6);
-            this.chkStop.Name = "chkStop";
-            this.chkStop.Size = new System.Drawing.Size(45, 32);
-            this.chkStop.TabIndex = 6;
-            this.chkStop.UseVisualStyleBackColor = false;
-            this.chkStop.CheckedChanged += new System.EventHandler(this.chkPause_CheckedChanged);
+            this.chkLoop.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkLoop.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chkLoop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkLoop.BackgroundImage")));
+            this.chkLoop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chkLoop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkLoop.Location = new System.Drawing.Point(207, 6);
+            this.chkLoop.Name = "chkLoop";
+            this.chkLoop.Size = new System.Drawing.Size(45, 32);
+            this.chkLoop.TabIndex = 8;
+            this.chkLoop.UseVisualStyleBackColor = false;
+            this.chkLoop.CheckedChanged += new System.EventHandler(this.chkLoop_CheckedChanged);
             // 
             // chkCue
             // 
@@ -147,19 +126,45 @@
             this.chkCue.UseVisualStyleBackColor = false;
             this.chkCue.CheckedChanged += new System.EventHandler(this.chkCue_CheckedChanged);
             // 
-            // chkLoop
+            // chkStop
             // 
-            this.chkLoop.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkLoop.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chkLoop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkLoop.BackgroundImage")));
-            this.chkLoop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.chkLoop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chkLoop.Location = new System.Drawing.Point(207, 6);
-            this.chkLoop.Name = "chkLoop";
-            this.chkLoop.Size = new System.Drawing.Size(45, 32);
-            this.chkLoop.TabIndex = 8;
-            this.chkLoop.UseVisualStyleBackColor = false;
-            this.chkLoop.CheckedChanged += new System.EventHandler(this.chkLoop_CheckedChanged);
+            this.chkStop.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkStop.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chkStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkStop.BackgroundImage")));
+            this.chkStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chkStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkStop.Location = new System.Drawing.Point(54, 6);
+            this.chkStop.Name = "chkStop";
+            this.chkStop.Size = new System.Drawing.Size(45, 32);
+            this.chkStop.TabIndex = 6;
+            this.chkStop.UseVisualStyleBackColor = false;
+            this.chkStop.CheckedChanged += new System.EventHandler(this.chkPause_CheckedChanged);
+            // 
+            // chkPlay
+            // 
+            this.chkPlay.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkPlay.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chkPlay.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkPlay.BackgroundImage")));
+            this.chkPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chkPlay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPlay.Location = new System.Drawing.Point(99, 6);
+            this.chkPlay.Name = "chkPlay";
+            this.chkPlay.Size = new System.Drawing.Size(45, 32);
+            this.chkPlay.TabIndex = 5;
+            this.chkPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkPlay.UseVisualStyleBackColor = false;
+            this.chkPlay.CheckedChanged += new System.EventHandler(this.chkPlay_CheckedChanged);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(314, 7);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(51, 30);
+            this.btnOpen.TabIndex = 12;
+            this.btnOpen.Text = "Ouvrir";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // SoundTrack
             // 
@@ -190,5 +195,6 @@
         private System.Windows.Forms.CheckBox chkCue;
         private System.Windows.Forms.CheckBox chkStop;
         private System.Windows.Forms.CheckBox chkPlay;
+        private System.Windows.Forms.Button btnOpen;
     }
 }

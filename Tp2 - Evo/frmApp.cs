@@ -23,8 +23,6 @@ namespace DJ.Winforms
             _mainTrack.Controller = _mainController.CreateMainTrackController();
             _secondTrack.Controller = _mainController.CreateSecondTrackController();
 
-            _mainTrack.LoadTrack(@"C:\Users\Yanick\Music\gamesofthrone.mp3");
-            _secondTrack.LoadTrack(@"C:\Users\Yanick\Music\dragonborn.mp3");
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
             //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
             //btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);

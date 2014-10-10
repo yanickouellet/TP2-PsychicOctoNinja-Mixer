@@ -56,9 +56,11 @@
             // 
             this.trkVolume.Dock = System.Windows.Forms.DockStyle.Left;
             this.trkVolume.Location = new System.Drawing.Point(0, 0);
+            this.trkVolume.Maximum = 100;
             this.trkVolume.Name = "trkVolume";
             this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trkVolume.Size = new System.Drawing.Size(45, 319);
+            this.trkVolume.SmallChange = 5;
             this.trkVolume.TabIndex = 10;
             this.trkVolume.Scroll += new System.EventHandler(this.trkVolume_Scroll);
             // 

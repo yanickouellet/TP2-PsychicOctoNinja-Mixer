@@ -64,6 +64,7 @@ namespace DJ.UserControls
         private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
         {
             pgbSpektrum.Value = e.Level;
+            trkVolume.Value = e.Level;
         }
     }
 }

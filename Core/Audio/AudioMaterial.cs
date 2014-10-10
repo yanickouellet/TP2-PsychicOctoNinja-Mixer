@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
-using CSCore.Streams;
 
 namespace DJ.Core.Audio
 {
@@ -39,6 +33,12 @@ namespace DJ.Core.Audio
         {
             _sound.Stop();
             _sound.WaveSource.Position = 0;
+        }
+
+        public int Volume
+        {
+            set { _sound.Volume = (float)value/100; }
+            get { return (int)_sound.Volume*100; }
         }
 
         private ISoundOut GetSoundSource()

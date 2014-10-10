@@ -16,12 +16,15 @@ namespace DJ.Core.Controllers
         {
             Track = new AudioMaterial(filename);
             OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
+            OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);
         }
 
         public void Play()
         {
             if (Track != null)
+            {
                 Track.Play();
+            }
         }
 
         public void Cue()
@@ -34,11 +37,13 @@ namespace DJ.Core.Controllers
             Track.Stop();
         }
 
-        public void SetVolume(uint volume)
+        public void SetVolume(int volume)
         {
+            Track.Volume = volume;
+            OnRaiseEvent(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);
         }
 
-        public void SetTime(uint time)
+        public void SetTime(int time)
         {
             throw new NotImplementedException();
         }
@@ -46,6 +51,7 @@ namespace DJ.Core.Controllers
         public bool Loop { set; private get; }
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
 
         protected abstract AudioMaterial Track { get; set; }
     }

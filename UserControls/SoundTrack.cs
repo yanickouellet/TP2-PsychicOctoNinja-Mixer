@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
 
@@ -17,6 +18,7 @@ namespace DJ.UserControls
                 if (_controller == null)
                     return;
                 Controller.RaiseTrackChangedEvent += Controller_RaiseTrackChangedEvent;
+                Controller.RaiseVolumeChangedEvent += ControllerOnRaiseVolumeChangedEvent;
             }
         }
 
@@ -32,7 +34,7 @@ namespace DJ.UserControls
 
         private void trkVolume_Scroll(object sender, System.EventArgs e)
         {
-            Controller.SetVolume((uint)trkVolume.Value);
+            Controller.SetVolume(trkVolume.Value);
         }
 
         private void btnPlay_Click(object sender, System.EventArgs e)
@@ -57,6 +59,11 @@ namespace DJ.UserControls
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
+        }
+
+        private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
+        {
+            pgbSpektrum.Value = e.Level;
         }
     }
 }

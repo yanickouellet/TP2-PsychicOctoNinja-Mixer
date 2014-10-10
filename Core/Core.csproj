@@ -53,6 +53,7 @@
     <Compile Include="Controllers\SecondaryTrackController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Events\TrackChangedEventArgs.cs" />
+    <Compile Include="Events\VolumeChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

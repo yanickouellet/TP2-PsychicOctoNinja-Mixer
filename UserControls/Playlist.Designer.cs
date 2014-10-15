@@ -48,6 +48,8 @@
             this.Controls.Add(this.dgvMusic);
             this.Name = "Playlist";
             this.Size = new System.Drawing.Size(671, 345);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Playlist_DragDrop);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.Playlist_DragOver);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
             this.ResumeLayout(false);
 

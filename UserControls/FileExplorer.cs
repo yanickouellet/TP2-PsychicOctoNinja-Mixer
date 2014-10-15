@@ -77,13 +77,15 @@ namespace DJ.UserControls
         private void trvExplorer_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             if (e.Node.Tag != null)
-            {
                 AddDirectoriesAndMusicFiles(e.Node, (string)e.Node.Tag);
-            }
         }
 
         private void trvExplorer_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            var node = (TreeNode)e.Item;
+            String path;
+            if (node.Tag != null && (path = node.Tag as String) != null) 
+                AddDirectoriesAndMusicFiles(node, (string)node.Tag);
             // Set the drag node and initiate the DragDrop 
             DoDragDrop(e.Item, DragDropEffects.Move);
         }

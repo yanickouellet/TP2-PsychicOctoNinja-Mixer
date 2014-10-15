@@ -84,5 +84,10 @@ namespace DJ.Winforms
         {
             _mainController.Dispose();
         }
+
+        private void FrmApp_Load(object sender, EventArgs e)
+        {
+            this._playlist.AllowDrop = true;
+        }
     }
 }

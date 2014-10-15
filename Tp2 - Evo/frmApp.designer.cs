@@ -40,10 +40,13 @@ namespace DJ.Winforms
             this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._fileExplorer = new DJ.UserControls.FileExplorer();
+            this._playlist = new DJ.UserControls.Playlist();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this._mainTrack = new DJ.UserControls.SoundTrack();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,13 +55,10 @@ namespace DJ.Winforms
             this.lblMaster = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this._secondTrack = new DJ.UserControls.SoundTrack();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this._mainTrack = new DJ.UserControls.SoundTrack();
-            this._secondTrack = new DJ.UserControls.SoundTrack();
-            this.fileExplorer1 = new DJ.UserControls.FileExplorer();
-            this.playlist1 = new DJ.UserControls.Playlist();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -101,14 +101,14 @@ namespace DJ.Winforms
             // ouvrirUnMp3ToolStripMenuItem
             // 
             this.ouvrirUnMp3ToolStripMenuItem.Name = "ouvrirUnMp3ToolStripMenuItem";
-            this.ouvrirUnMp3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirUnMp3ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ouvrirUnMp3ToolStripMenuItem.Text = "&Enregistrer";
             this.ouvrirUnMp3ToolStripMenuItem.Click += new System.EventHandler(this.ouvrirUnMp3ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(130, 22);
             this.toolStripMenuItem3.Text = "&Ouvrir";
             // 
             // thèmeToolStripMenuItem
@@ -155,14 +155,30 @@ namespace DJ.Winforms
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fileExplorer1);
+            this.splitContainer1.Panel1.Controls.Add(this._fileExplorer);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.playlist1);
+            this.splitContainer1.Panel2.Controls.Add(this._playlist);
             this.splitContainer1.Size = new System.Drawing.Size(969, 175);
             this.splitContainer1.SplitterDistance = 252;
             this.splitContainer1.TabIndex = 18;
+            // 
+            // _fileExplorer
+            // 
+            this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._fileExplorer.Location = new System.Drawing.Point(0, 0);
+            this._fileExplorer.Name = "_fileExplorer";
+            this._fileExplorer.Size = new System.Drawing.Size(252, 175);
+            this._fileExplorer.TabIndex = 0;
+            // 
+            // _playlist
+            // 
+            this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._playlist.Location = new System.Drawing.Point(0, 0);
+            this._playlist.Name = "_playlist";
+            this._playlist.Size = new System.Drawing.Size(713, 175);
+            this._playlist.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -214,6 +230,14 @@ namespace DJ.Winforms
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(370, 187);
             this.panel10.TabIndex = 8;
+            // 
+            // _mainTrack
+            // 
+            this._mainTrack.Controller = null;
+            this._mainTrack.Location = new System.Drawing.Point(3, 3);
+            this._mainTrack.Name = "_mainTrack";
+            this._mainTrack.Size = new System.Drawing.Size(364, 181);
+            this._mainTrack.TabIndex = 0;
             // 
             // panel2
             // 
@@ -290,6 +314,14 @@ namespace DJ.Winforms
             this.panel11.Size = new System.Drawing.Size(372, 187);
             this.panel11.TabIndex = 12;
             // 
+            // _secondTrack
+            // 
+            this._secondTrack.Controller = null;
+            this._secondTrack.Location = new System.Drawing.Point(0, -3);
+            this._secondTrack.Name = "_secondTrack";
+            this._secondTrack.Size = new System.Drawing.Size(375, 190);
+            this._secondTrack.TabIndex = 0;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -322,38 +354,6 @@ namespace DJ.Winforms
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // _mainTrack
-            // 
-            this._mainTrack.Controller = null;
-            this._mainTrack.Location = new System.Drawing.Point(3, 3);
-            this._mainTrack.Name = "_mainTrack";
-            this._mainTrack.Size = new System.Drawing.Size(364, 181);
-            this._mainTrack.TabIndex = 0;
-            // 
-            // _secondTrack
-            // 
-            this._secondTrack.Controller = null;
-            this._secondTrack.Location = new System.Drawing.Point(0, -3);
-            this._secondTrack.Name = "_secondTrack";
-            this._secondTrack.Size = new System.Drawing.Size(375, 190);
-            this._secondTrack.TabIndex = 0;
-            // 
-            // fileExplorer1
-            // 
-            this.fileExplorer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileExplorer1.Location = new System.Drawing.Point(0, 0);
-            this.fileExplorer1.Name = "fileExplorer1";
-            this.fileExplorer1.Size = new System.Drawing.Size(252, 175);
-            this.fileExplorer1.TabIndex = 0;
-            // 
-            // playlist1
-            // 
-            this.playlist1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playlist1.Location = new System.Drawing.Point(0, 0);
-            this.playlist1.Name = "playlist1";
-            this.playlist1.Size = new System.Drawing.Size(713, 175);
-            this.playlist1.TabIndex = 0;
-            // 
             // FrmApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,6 +366,7 @@ namespace DJ.Winforms
             this.Name = "FrmApp";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApp_FormClosing);
+            this.Load += new System.EventHandler(this.FrmApp_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -415,8 +416,8 @@ namespace DJ.Winforms
         private System.Windows.Forms.TrackBar trackBar3;
         private SoundTrack _mainTrack;
         private SoundTrack _secondTrack;
-        private FileExplorer fileExplorer1;
-        private Playlist playlist1;
+        private FileExplorer _fileExplorer;
+        private Playlist _playlist;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

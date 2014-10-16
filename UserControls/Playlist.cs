@@ -15,16 +15,20 @@ namespace DJ.UserControls
 {
     public partial class Playlist : UserControl
     {
-        private List<MusiquePlaylist> playlist;
-        private BindingSource bgsPlaylist;
+        private List<MusiquePlaylist> _playlist;
+        private BindingSource _bgsPlaylist;
+        private int _indexPlaylist;
+        private Rectangle dragBoxFromMouseDown;
+        private int rowIndexFromMouseDown;
+        private int rowIndexOfItemUnderMouseToDrop;
 
         public Playlist()
         {
             InitializeComponent();
-            playlist = new List<MusiquePlaylist>();
-            bgsPlaylist = new BindingSource();
-            bgsPlaylist.DataSource = playlist;
-            this.dgvMusic.DataSource = bgsPlaylist;
+            _playlist = new List<MusiquePlaylist>();
+            _bgsPlaylist = new BindingSource();
+            _bgsPlaylist.DataSource = _playlist;
+            this.dgvMusic.DataSource = _bgsPlaylist;
         }
 
         private void Playlist_DragOver(object sender, DragEventArgs e)
@@ -34,37 +38,90 @@ namespace DJ.UserControls
 
         private void Playlist_DragDrop(object sender, DragEventArgs e)
         {
-            System.IO.FileInfo fileInfo;
-            if (!e.Data.GetDataPresent("System.Windows.Forms.TreeNode", true)) return;          
-            var dropNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
-            var targetRow = this.dgvMusic.SelectedRows.Count != 0 ? this.dgvMusic.SelectedRows[0] : null;
-            
-            if ((fileInfo = dropNode.Tag as System.IO.FileInfo) != null)
-                AjouterMusique(fileInfo);
-            else
-                AjouterDossierMusique(dropNode);
+            // The mouse locations are relative to the screen, so they must be converted to client coordinates.
+            var clientPoint = this.dgvMusic.PointToClient(new Point(e.X, e.Y));
+            // Get the row index of the item the mouse is below. 
+            rowIndexOfItemUnderMouseToDrop = this.dgvMusic.HitTest(clientPoint.X, clientPoint.Y).RowIndex;  
 
-            this.bgsPlaylist.ResetBindings(false);
+            if (e.Data.GetDataPresent("System.Windows.Forms.TreeNode", true))
+            {
+                 System.IO.FileInfo fileInfo;
+                var dropNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");          
+            
+                if ((fileInfo = dropNode.Tag as System.IO.FileInfo) != null)
+                    AjouterMusique(fileInfo, rowIndexOfItemUnderMouseToDrop);
+                else
+                    AjouterDossierMusique(dropNode, rowIndexOfItemUnderMouseToDrop);   
+            }
+            else if (e.Data.GetDataPresent("System.Windows.Forms.DataGridViewRow", true))
+            {
+                DataGridViewRow rowToMove;
+                MusiquePlaylist musique;
+                if ((rowToMove = e.Data.GetData(typeof (DataGridViewRow)) as DataGridViewRow) != null &&
+                    ((musique = (MusiquePlaylist) rowToMove.DataBoundItem) != null))
+                {
+                    this._playlist.Remove(musique);
+                    this._playlist.Insert(rowIndexOfItemUnderMouseToDrop, musique);
+                }
+            }
+            this._bgsPlaylist.ResetBindings(false);
+            if (rowIndexOfItemUnderMouseToDrop != -1)
+                this.dgvMusic.Rows[rowIndexOfItemUnderMouseToDrop].Selected = true;
         }
 
-        private void AjouterDossierMusique(TreeNode dossier)
+        private void AjouterDossierMusique(TreeNode dossier, int position)
         {
             System.IO.FileInfo fileInfo;
-            foreach (TreeNode node in dossier.Nodes)
-                if ((fileInfo = node.Tag as System.IO.FileInfo) != null)
-                    AjouterMusique(fileInfo);
+            for (var i = 0; i < dossier.Nodes.Count; i++)
+                if ((fileInfo = dossier.Nodes[i].Tag as System.IO.FileInfo) != null)
+                    AjouterMusique(fileInfo, position + i);
         }
 
-        private void AjouterMusique(FileInfo file)
+        private void AjouterMusique(FileInfo file, int position)
         {
             var f = TagLib.File.Create(String.Concat(file.DirectoryName, '\\', file.Name));
             var tag = f.GetTag(TagLib.TagTypes.Id3v2, true);
             var duree = String.Concat(f.Properties.Duration.Minutes, ":", f.Properties.Duration.Seconds, f.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : "");
-            playlist.Add(new MusiquePlaylist(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f));
+            var musique = new MusiquePlaylist(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f);
+            if (position == -1)
+                _playlist.Add(musique);
+            else
+                _playlist.Insert(position, musique);
         }
 
+        private void dgvMusic_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return;
+            
+            // If the mouse moves outside the rectangle, start the drag.
+            if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
+            {
+                // Proceed with the drag and drop, passing in the list item.                    
+                var dropEffect = this.dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown],DragDropEffects.Move);
+            }
+        }
 
+        private void dgvMusic_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown = this.dgvMusic.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown != -1)
+            {
+                // Remember the point where the mouse down occurred. 
+                // The DragSize indicates the size that the mouse can move 
+                // before a drag event should be started.                
+                var dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
     }
+        
 
     public class MusiquePlaylist
     {

@@ -41,40 +41,54 @@ namespace DJ.UserControls
             // The mouse locations are relative to the screen, so they must be converted to client coordinates.
             var clientPoint = this.dgvMusic.PointToClient(new Point(e.X, e.Y));
             // Get the row index of the item the mouse is below. 
-            rowIndexOfItemUnderMouseToDrop = this.dgvMusic.HitTest(clientPoint.X, clientPoint.Y).RowIndex;  
+            rowIndexOfItemUnderMouseToDrop = this.dgvMusic.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            var playlistCount = this._playlist.Count;
+            int? selectedRowsIndex = rowIndexOfItemUnderMouseToDrop;
 
             if (e.Data.GetDataPresent("System.Windows.Forms.TreeNode", true))
             {
-                 System.IO.FileInfo fileInfo;
-                var dropNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");          
-            
+                System.IO.FileInfo fileInfo;
+                var dropNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+
                 if ((fileInfo = dropNode.Tag as System.IO.FileInfo) != null)
                     AjouterMusique(fileInfo, rowIndexOfItemUnderMouseToDrop);
                 else
-                    AjouterDossierMusique(dropNode, rowIndexOfItemUnderMouseToDrop);   
+                    if (!AjouterDossierMusique(dropNode, rowIndexOfItemUnderMouseToDrop))
+                        selectedRowsIndex = null;        
             }
             else if (e.Data.GetDataPresent("System.Windows.Forms.DataGridViewRow", true))
             {
                 DataGridViewRow rowToMove;
                 MusiquePlaylist musique;
-                if ((rowToMove = e.Data.GetData(typeof (DataGridViewRow)) as DataGridViewRow) != null &&
-                    ((musique = (MusiquePlaylist) rowToMove.DataBoundItem) != null))
+                if ((rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow) != null &&
+                    ((musique = (MusiquePlaylist)rowToMove.DataBoundItem) != null))
                 {
                     this._playlist.Remove(musique);
-                    this._playlist.Insert(rowIndexOfItemUnderMouseToDrop, musique);
+                    this._playlist.Insert(rowIndexOfItemUnderMouseToDrop != -1 ? rowIndexOfItemUnderMouseToDrop : this._playlist.Count, musique);
                 }
+                if (selectedRowsIndex == -1) selectedRowsIndex = this._playlist.Count - 1;
             }
             this._bgsPlaylist.ResetBindings(false);
-            if (rowIndexOfItemUnderMouseToDrop != -1)
-                this.dgvMusic.Rows[rowIndexOfItemUnderMouseToDrop].Selected = true;
+
+            if (selectedRowsIndex == null) return;
+            if (selectedRowsIndex == -1) selectedRowsIndex = (playlistCount == 0 ? 0 : playlistCount);
+            this.dgvMusic.Rows[(int)selectedRowsIndex].Selected = true;
+            this.dgvMusic.CurrentCell = this.dgvMusic.Rows[(int)selectedRowsIndex].Cells[0];
+            this.dgvMusic.Focus();
         }
 
-        private void AjouterDossierMusique(TreeNode dossier, int position)
+        private bool AjouterDossierMusique(TreeNode dossier, int position)
         {
             System.IO.FileInfo fileInfo;
+            var ajout = false;
             for (var i = 0; i < dossier.Nodes.Count; i++)
                 if ((fileInfo = dossier.Nodes[i].Tag as System.IO.FileInfo) != null)
-                    AjouterMusique(fileInfo, position + i);
+                {
+                    AjouterMusique(fileInfo, position + (position == -1 ? 0 : i));
+                    ajout = true;
+                }
+            return ajout;
         }
 
         private void AjouterMusique(FileInfo file, int position)
@@ -92,12 +106,12 @@ namespace DJ.UserControls
         private void dgvMusic_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return;
-            
+
             // If the mouse moves outside the rectangle, start the drag.
             if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
             {
                 // Proceed with the drag and drop, passing in the list item.                    
-                var dropEffect = this.dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown],DragDropEffects.Move);
+                var dropEffect = this.dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
             }
         }
 
@@ -121,7 +135,7 @@ namespace DJ.UserControls
                 dragBoxFromMouseDown = Rectangle.Empty;
         }
     }
-        
+
 
     public class MusiquePlaylist
     {

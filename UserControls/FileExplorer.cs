@@ -22,9 +22,9 @@ namespace DJ.UserControls
         {
             this.AllowDrop = true;
 
-            foreach (DriveInfo d in DriveInfo.GetDrives())
+            foreach (var d in DriveInfo.GetDrives())
             {
-                TreeNode root = new TreeNode(d.Name);
+                var root = new TreeNode(d.Name);
                 root.Tag = d.Name; // for later reference
                 // TODO: Use Drive image for node
 
@@ -42,9 +42,9 @@ namespace DJ.UserControls
                 DirectoryInfo currentDir = new DirectoryInfo(path);
                 DirectoryInfo[] subdirs = currentDir.GetDirectories();
 
-                foreach (DirectoryInfo subdir in subdirs)
+                foreach (var subdir in subdirs)
                 {
-                    TreeNode child = new TreeNode(subdir.Name);
+                    var child = new TreeNode(subdir.Name);
                     child.Tag = subdir.FullName; // save full path in tag
                     // TODO: Use some image for the node to show its a music file
 
@@ -76,15 +76,13 @@ namespace DJ.UserControls
 
         private void trvExplorer_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (e.Node.Tag != null)
-                AddDirectoriesAndMusicFiles(e.Node, (string)e.Node.Tag);
+            if (e.Node.Tag != null) AddDirectoriesAndMusicFiles(e.Node, (string)e.Node.Tag);
         }
 
         private void trvExplorer_ItemDrag(object sender, ItemDragEventArgs e)
         {
             var node = (TreeNode)e.Item;
-            String path;
-            if (node.Tag != null && (path = node.Tag as String) != null) 
+            if (node.Tag != null) 
                 AddDirectoriesAndMusicFiles(node, (string)node.Tag);
             // Set the drag node and initiate the DragDrop 
             DoDragDrop(e.Item, DragDropEffects.Move);

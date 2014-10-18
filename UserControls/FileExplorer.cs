@@ -54,6 +54,7 @@ namespace DJ.UserControls
 
                 List<FileInfo> files = new List<FileInfo>();
                 files.AddRange(currentDir.GetFiles("*.mp3"));
+                files.AddRange(currentDir.GetFiles("*.m4a"));
 
                 foreach (FileInfo file in files)
                 {

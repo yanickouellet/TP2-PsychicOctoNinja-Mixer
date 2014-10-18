@@ -46,7 +46,9 @@ namespace DJ.UserControls
         private void AddMusic(FileInfo file, int position)
         {
             var f = TagLib.File.Create(String.Concat(file.DirectoryName, '\\', file.Name));
-            var tag = f.GetTag(TagLib.TagTypes.Id3v2, true);
+            var tag = f.GetTag(TagLib.TagTypes.Id3v2, true) ?? f.GetTag(TagLib.TagTypes.Apple, true);
+
+            if (tag == null) return;
             var duree = String.Concat(f.Properties.Duration.Minutes, ":", f.Properties.Duration.Seconds, f.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : "");
             var musique = new MusicPlaylist(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f);
             if (position == -1)

@@ -82,7 +82,7 @@ namespace DJ.UserControls
         private void trvExplorer_ItemDrag(object sender, ItemDragEventArgs e)
         {
             var node = (TreeNode)e.Item;
-            if (node.Tag != null) 
+            if (node.Tag != null && node.Tag as String != null) 
                 AddDirectoriesAndMusicFiles(node, (string)node.Tag);
             // Set the drag node and initiate the DragDrop 
             DoDragDrop(e.Item, DragDropEffects.Move);

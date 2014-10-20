@@ -38,6 +38,8 @@
             this.trvExplorer.Name = "trvExplorer";
             this.trvExplorer.Size = new System.Drawing.Size(353, 355);
             this.trvExplorer.TabIndex = 1;
+            this.trvExplorer.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvExplorer_BeforeExpand);
+            this.trvExplorer.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvExplorer_ItemDrag);
             // 
             // FileExplorer
             // 

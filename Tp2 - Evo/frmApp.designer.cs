@@ -40,8 +40,8 @@ namespace DJ.Winforms
             this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fileExplorer1 = new DJ.UserControls.FileExplorer();
-            this.playlist1 = new DJ.UserControls.Playlist();
+            this._fileExplorer = new DJ.UserControls.FileExplorer();
+            this._playlist = new DJ.UserControls.Playlist();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -157,30 +157,30 @@ namespace DJ.Winforms
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fileExplorer1);
+            this.splitContainer1.Panel1.Controls.Add(this._fileExplorer);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.playlist1);
-            this.splitContainer1.Size = new System.Drawing.Size(969, 172);
+            this.splitContainer1.Panel2.Controls.Add(this._playlist);
+            this.splitContainer1.Size = new System.Drawing.Size(969, 175);
             this.splitContainer1.SplitterDistance = 252;
             this.splitContainer1.TabIndex = 18;
             // 
-            // fileExplorer1
+            // _fileExplorer
             // 
-            this.fileExplorer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileExplorer1.Location = new System.Drawing.Point(0, 0);
-            this.fileExplorer1.Name = "fileExplorer1";
-            this.fileExplorer1.Size = new System.Drawing.Size(252, 172);
-            this.fileExplorer1.TabIndex = 0;
+            this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._fileExplorer.Location = new System.Drawing.Point(0, 0);
+            this._fileExplorer.Name = "_fileExplorer";
+            this._fileExplorer.Size = new System.Drawing.Size(252, 175);
+            this._fileExplorer.TabIndex = 0;
             // 
-            // playlist1
+            // _playlist
             // 
-            this.playlist1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playlist1.Location = new System.Drawing.Point(0, 0);
-            this.playlist1.Name = "playlist1";
-            this.playlist1.Size = new System.Drawing.Size(713, 172);
-            this.playlist1.TabIndex = 0;
+            this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._playlist.Location = new System.Drawing.Point(0, 0);
+            this._playlist.Name = "_playlist";
+            this._playlist.Size = new System.Drawing.Size(713, 175);
+            this._playlist.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -379,6 +379,7 @@ namespace DJ.Winforms
             this.Name = "FrmApp";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApp_FormClosing);
+            this.Load += new System.EventHandler(this.FrmApp_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -429,8 +430,8 @@ namespace DJ.Winforms
         private System.Windows.Forms.TrackBar trackBar3;
         private SoundTrack _mainTrack;
         private SoundTrack _secondTrack;
-        private FileExplorer fileExplorer1;
-        private Playlist playlist1;
+        private FileExplorer _fileExplorer;
+        private Playlist _playlist;
         private System.Windows.Forms.TabControl tabFileExplorerEqualizer;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabEqualizer;

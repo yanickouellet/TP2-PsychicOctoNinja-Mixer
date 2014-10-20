@@ -34,12 +34,19 @@
             // 
             // dgvMusic
             // 
+            this.dgvMusic.AllowUserToAddRows = false;
+            this.dgvMusic.AllowUserToOrderColumns = true;
             this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMusic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMusic.Location = new System.Drawing.Point(0, 0);
+            this.dgvMusic.MultiSelect = false;
             this.dgvMusic.Name = "dgvMusic";
+            this.dgvMusic.ReadOnly = true;
+            this.dgvMusic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMusic.Size = new System.Drawing.Size(671, 345);
             this.dgvMusic.TabIndex = 20;
+            this.dgvMusic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMusic_MouseDown);
+            this.dgvMusic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMusic_MouseMove);
             // 
             // Playlist
             // 
@@ -48,6 +55,8 @@
             this.Controls.Add(this.dgvMusic);
             this.Name = "Playlist";
             this.Size = new System.Drawing.Size(671, 345);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Playlist_DragDrop);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.Playlist_DragOver);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
             this.ResumeLayout(false);
 

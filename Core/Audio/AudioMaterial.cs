@@ -15,11 +15,11 @@ namespace DJ.Core.Audio
 
         public AudioMaterial(string filename)
         {
-            _filename = filename;
-            _source = CodecFactory.Instance.GetCodec(filename);
-
             Equalizer equalizer;
-            _source.AppendSource(Equalizer.Create10BandEqualizer, out equalizer);
+            _filename = filename;
+            _source = CodecFactory.Instance.GetCodec(filename)
+                   .AppendSource(Equalizer.Create10BandEqualizer, out equalizer)
+                   .ToWaveSource(32);
             Equalizer = equalizer;
             
             _sound = GetSoundSource();

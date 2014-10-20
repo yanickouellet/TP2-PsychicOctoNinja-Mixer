@@ -34,11 +34,11 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btnStop = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.chkLoop = new System.Windows.Forms.CheckBox();
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkPlay = new System.Windows.Forms.CheckBox();
-            this.btnStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -96,6 +96,21 @@
             this.panel8.Size = new System.Drawing.Size(575, 44);
             this.panel8.TabIndex = 9;
             // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStop.BackgroundImage")));
+            this.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStop.Location = new System.Drawing.Point(54, 6);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(45, 32);
+            this.btnStop.TabIndex = 13;
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseDown);
+            this.btnStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseUp);
+            // 
             // btnOpen
             // 
             this.btnOpen.Location = new System.Drawing.Point(314, 7);
@@ -151,21 +166,6 @@
             this.chkPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkPlay.UseVisualStyleBackColor = false;
             this.chkPlay.CheckedChanged += new System.EventHandler(this.chkPlay_CheckedChanged);
-            // 
-            // btnStop
-            // 
-            this.btnStop.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStop.BackgroundImage")));
-            this.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStop.Location = new System.Drawing.Point(54, 6);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(45, 32);
-            this.btnStop.TabIndex = 13;
-            this.btnStop.UseVisualStyleBackColor = false;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click_1);
-            this.btnStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseDown);
-            this.btnStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseUp);
             // 
             // SoundTrack
             // 

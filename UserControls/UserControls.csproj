@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equalizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Equalizer.Designer.cs">
+      <DependentUpon>Equalizer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileExplorer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Equalizer.resx">
+      <DependentUpon>Equalizer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FileExplorer.resx">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </EmbeddedResource>

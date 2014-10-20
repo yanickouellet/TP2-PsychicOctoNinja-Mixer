@@ -3,6 +3,7 @@ using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
+using CSCore.Streams;
 
 namespace DJ.Core.Controllers
 {
@@ -50,10 +51,16 @@ namespace DJ.Core.Controllers
             throw new NotImplementedException();
         }
 
+        public void SetFilter(int filterIndex, float value)
+        {
+            EqFilterEntry filter = Track.Equalizer.SampleFilters[filterIndex];
+            filter.SetGain(value);
+        }
+
         public bool Loop { set; private get; }
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
 
         protected abstract AudioMaterial Track { get; set; }
     }

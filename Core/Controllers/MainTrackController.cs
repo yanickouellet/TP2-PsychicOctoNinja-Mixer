@@ -14,5 +14,6 @@ namespace DJ.Core.Controllers
             set { Context.MainTrack = value; }
             get { return Context.MainTrack; }
         }
+
     }
 }

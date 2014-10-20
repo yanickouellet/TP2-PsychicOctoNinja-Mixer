@@ -20,7 +20,9 @@ namespace DJ.Winforms
             InitializeComponent();
 
             _mainController = new MainController();
-            _mainTrack.Controller = _mainController.CreateMainTrackController();
+            var mainTrackController = _mainController.CreateMainTrackController();
+            _mainTrack.Controller = mainTrackController;
+            _equalizer.Controller = mainTrackController;
             _secondTrack.Controller = _mainController.CreateSecondTrackController();
             _playlist.Controller = _mainController.CreatePlaylistController();
 

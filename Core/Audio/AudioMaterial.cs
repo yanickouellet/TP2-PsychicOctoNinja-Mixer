@@ -2,6 +2,7 @@
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
+using CSCore.Streams;
 
 namespace DJ.Core.Audio
 {
@@ -10,11 +11,17 @@ namespace DJ.Core.Audio
         private IWaveSource _source;
         private ISoundOut _sound;
         private string _filename;
+        public Equalizer Equalizer { get; set; }
 
         public AudioMaterial(string filename)
         {
             _filename = filename;
             _source = CodecFactory.Instance.GetCodec(filename);
+
+            Equalizer equalizer;
+            _source.AppendSource(Equalizer.Create10BandEqualizer, out equalizer);
+            Equalizer = equalizer;
+            
             _sound = GetSoundSource();
             _sound.Initialize(_source);
         }

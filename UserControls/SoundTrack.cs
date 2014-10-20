@@ -69,16 +69,34 @@ namespace DJ.UserControls
         }
 
         #region Checkboxes checked changed
+
+        private void btnStop_Click_1(object sender, EventArgs e)
+        {
+            Controller.Stop();
+
+            chkPlay.BackColor = SystemColors.AppWorkspace;
+
+            chkPlay.BackgroundImage = ChangeColor((Bitmap)chkPlay.BackgroundImage, "unclick");
+
+            chkPlay.Checked = false;
+        }
+
+        private void btnStop_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "click");
+            button.BackColor = Color.MediumBlue;
+        }
+        private void btnStop_MouseUp(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "unclick");
+            button.BackColor = SystemColors.AppWorkspace;
+        }
         private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
         {
             Controller.Play();
             ChangeCheckboxStyle(this.chkPlay);
-        }
-
-        private void chkPause_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Stop();
-            ChangeCheckboxStyle(this.chkStop);
         }
 
         private void chkCue_CheckedChanged(object sender, System.EventArgs e)
@@ -161,5 +179,11 @@ namespace DJ.UserControls
             if (!string.IsNullOrWhiteSpace(filename))
                 Controller.LoadTrack(filename);
         }
+
+        
+
+        
+
+        
     }
 }

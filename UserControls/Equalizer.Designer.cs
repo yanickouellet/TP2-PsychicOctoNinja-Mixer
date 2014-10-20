@@ -53,102 +53,132 @@
             // eq1
             // 
             this.eq1.Location = new System.Drawing.Point(33, 28);
+            this.eq1.Maximum = 1000;
+            this.eq1.Minimum = -1000;
             this.eq1.Name = "eq1";
             this.eq1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq1.Size = new System.Drawing.Size(45, 177);
             this.eq1.TabIndex = 0;
-            this.eq1.Tag = "1";
-            this.eq1.Value = 5;
+            this.eq1.Tag = "0";
+            this.eq1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq1.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq5
             // 
             this.eq5.Location = new System.Drawing.Point(237, 28);
+            this.eq5.Maximum = 1000;
+            this.eq5.Minimum = -1000;
             this.eq5.Name = "eq5";
             this.eq5.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq5.Size = new System.Drawing.Size(45, 177);
             this.eq5.TabIndex = 1;
-            this.eq5.Tag = "5";
-            this.eq5.Value = 5;
+            this.eq5.Tag = "4";
+            this.eq5.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq5.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq6
             // 
             this.eq6.Location = new System.Drawing.Point(288, 28);
+            this.eq6.Maximum = 1000;
+            this.eq6.Minimum = -1000;
             this.eq6.Name = "eq6";
             this.eq6.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq6.Size = new System.Drawing.Size(45, 177);
             this.eq6.TabIndex = 2;
-            this.eq6.Tag = "6";
-            this.eq6.Value = 5;
+            this.eq6.Tag = "5";
+            this.eq6.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq6.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq7
             // 
             this.eq7.Location = new System.Drawing.Point(339, 28);
+            this.eq7.Maximum = 1000;
+            this.eq7.Minimum = -1000;
             this.eq7.Name = "eq7";
             this.eq7.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq7.Size = new System.Drawing.Size(45, 177);
             this.eq7.TabIndex = 3;
-            this.eq7.Tag = "7";
-            this.eq7.Value = 5;
+            this.eq7.Tag = "6";
+            this.eq7.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq7.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq4
             // 
             this.eq4.Location = new System.Drawing.Point(186, 28);
+            this.eq4.Maximum = 1000;
+            this.eq4.Minimum = -1000;
             this.eq4.Name = "eq4";
             this.eq4.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq4.Size = new System.Drawing.Size(45, 177);
             this.eq4.TabIndex = 4;
-            this.eq4.Tag = "4";
-            this.eq4.Value = 5;
+            this.eq4.Tag = "3";
+            this.eq4.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq4.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq3
             // 
             this.eq3.Location = new System.Drawing.Point(135, 28);
+            this.eq3.Maximum = 1000;
+            this.eq3.Minimum = -1000;
             this.eq3.Name = "eq3";
             this.eq3.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq3.Size = new System.Drawing.Size(45, 177);
             this.eq3.TabIndex = 5;
-            this.eq3.Tag = "3";
-            this.eq3.Value = 5;
+            this.eq3.Tag = "2";
+            this.eq3.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq3.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq2
             // 
             this.eq2.Location = new System.Drawing.Point(84, 28);
+            this.eq2.Maximum = 1000;
+            this.eq2.Minimum = -1000;
             this.eq2.Name = "eq2";
             this.eq2.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq2.Size = new System.Drawing.Size(45, 177);
             this.eq2.TabIndex = 6;
-            this.eq2.Tag = "2";
-            this.eq2.Value = 5;
+            this.eq2.Tag = "1";
+            this.eq2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq2.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq8
             // 
             this.eq8.Location = new System.Drawing.Point(390, 28);
+            this.eq8.Maximum = 1000;
+            this.eq8.Minimum = -1000;
             this.eq8.Name = "eq8";
             this.eq8.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq8.Size = new System.Drawing.Size(45, 177);
             this.eq8.TabIndex = 7;
-            this.eq8.Tag = "8";
-            this.eq8.Value = 5;
+            this.eq8.Tag = "7";
+            this.eq8.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq8.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq9
             // 
             this.eq9.Location = new System.Drawing.Point(441, 28);
+            this.eq9.Maximum = 1000;
+            this.eq9.Minimum = -1000;
             this.eq9.Name = "eq9";
             this.eq9.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq9.Size = new System.Drawing.Size(45, 177);
             this.eq9.TabIndex = 8;
-            this.eq9.Tag = "9";
-            this.eq9.Value = 5;
+            this.eq9.Tag = "8";
+            this.eq9.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq9.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // eq10
             // 
             this.eq10.Location = new System.Drawing.Point(492, 28);
+            this.eq10.Maximum = 1000;
+            this.eq10.Minimum = -1000;
             this.eq10.Name = "eq10";
             this.eq10.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.eq10.Size = new System.Drawing.Size(45, 177);
             this.eq10.TabIndex = 9;
-            this.eq10.Tag = "10";
-            this.eq10.Value = 5;
+            this.eq10.Tag = "9";
+            this.eq10.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.eq10.ValueChanged += new System.EventHandler(this.filter_ValueChanged);
             // 
             // Equalizer
             // 

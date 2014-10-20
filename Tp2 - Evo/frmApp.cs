@@ -22,6 +22,7 @@ namespace DJ.Winforms
             _mainController = new MainController();
             _mainTrack.Controller = _mainController.CreateMainTrackController();
             _secondTrack.Controller = _mainController.CreateSecondTrackController();
+            _playlist.Controller = _mainController.CreatePlaylistController();
 
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
             //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);

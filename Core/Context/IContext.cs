@@ -5,7 +5,7 @@ namespace DJ.Core.Context
     public interface IContext
     {
         AudioMaterial MainTrack { get; set; }
-
         AudioMaterial SecondaryTrack { get; set; }
+        Playlist Playlist { get; set; }
     }
 }

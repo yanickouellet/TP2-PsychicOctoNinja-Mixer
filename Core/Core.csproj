@@ -56,6 +56,7 @@
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\MainTrackController.cs" />
     <Compile Include="Controllers\SecondaryTrackController.cs" />
+    <Compile Include="Events\EqualizerChangedEventArgs.cs" />
     <Compile Include="Events\TrackChangedEventArgs.cs" />
     <Compile Include="Events\VolumeChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

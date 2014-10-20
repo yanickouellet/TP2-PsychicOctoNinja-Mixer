@@ -59,7 +59,7 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabEqualizer = new System.Windows.Forms.TabPage();
-            this.equalizer1 = new DJ.UserControls.Equalizer();
+            this._equalizer = new DJ.UserControls.Equalizer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -162,7 +162,7 @@ namespace DJ.Winforms
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this._playlist);
-            this.splitContainer1.Size = new System.Drawing.Size(969, 175);
+            this.splitContainer1.Size = new System.Drawing.Size(969, 172);
             this.splitContainer1.SplitterDistance = 252;
             this.splitContainer1.TabIndex = 18;
             // 
@@ -171,7 +171,7 @@ namespace DJ.Winforms
             this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
             this._fileExplorer.Location = new System.Drawing.Point(0, 0);
             this._fileExplorer.Name = "_fileExplorer";
-            this._fileExplorer.Size = new System.Drawing.Size(252, 175);
+            this._fileExplorer.Size = new System.Drawing.Size(252, 172);
             this._fileExplorer.TabIndex = 0;
             // 
             // _playlist
@@ -179,7 +179,7 @@ namespace DJ.Winforms
             this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this._playlist.Location = new System.Drawing.Point(0, 0);
             this._playlist.Name = "_playlist";
-            this._playlist.Size = new System.Drawing.Size(713, 175);
+            this._playlist.Size = new System.Drawing.Size(713, 172);
             this._playlist.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -350,7 +350,7 @@ namespace DJ.Winforms
             // tabEqualizer
             // 
             this.tabEqualizer.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tabEqualizer.Controls.Add(this.equalizer1);
+            this.tabEqualizer.Controls.Add(this._equalizer);
             this.tabEqualizer.Location = new System.Drawing.Point(4, 25);
             this.tabEqualizer.Name = "tabEqualizer";
             this.tabEqualizer.Padding = new System.Windows.Forms.Padding(3);
@@ -358,13 +358,14 @@ namespace DJ.Winforms
             this.tabEqualizer.TabIndex = 1;
             this.tabEqualizer.Text = "Equalizer";
             // 
-            // equalizer1
+            // _equalizer
             // 
-            this.equalizer1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.equalizer1.Location = new System.Drawing.Point(196, -25);
-            this.equalizer1.Name = "equalizer1";
-            this.equalizer1.Size = new System.Drawing.Size(537, 197);
-            this.equalizer1.TabIndex = 0;
+            this._equalizer.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this._equalizer.Controller = null;
+            this._equalizer.Location = new System.Drawing.Point(196, -25);
+            this._equalizer.Name = "_equalizer";
+            this._equalizer.Size = new System.Drawing.Size(537, 197);
+            this._equalizer.TabIndex = 0;
             // 
             // FrmApp
             // 
@@ -435,7 +436,7 @@ namespace DJ.Winforms
         private System.Windows.Forms.TabControl tabFileExplorerEqualizer;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabEqualizer;
-        private Equalizer equalizer1;
+        private Equalizer _equalizer;
     }
 }
 

@@ -21,14 +21,9 @@ namespace DJ.UserControls
         private void FileExplorer_Load(object sender, EventArgs e)
         {
             this.AllowDrop = true;
-
-            foreach (var d in DriveInfo.GetDrives())
+            foreach (var root in DriveInfo.GetDrives().Select(d => new TreeNode(d.Name) {Tag = d.Name}))
             {
-                var root = new TreeNode(d.Name);
-                root.Tag = d.Name; // for later reference
-                // TODO: Use Drive image for node
-
-                root.Nodes.Add(new TreeNode()); // add dummy node to allow expansion
+                root.Nodes.Add(new TreeNode());
                 this.trvExplorer.Nodes.Add(root);
             }
         }
@@ -39,39 +34,28 @@ namespace DJ.UserControls
 
             try
             {
-                DirectoryInfo currentDir = new DirectoryInfo(path);
+                var currentDir = new DirectoryInfo(path);
                 DirectoryInfo[] subdirs = currentDir.GetDirectories();
 
-                foreach (var subdir in subdirs)
+                foreach (var child in subdirs.Select(subdir => new TreeNode(subdir.Name) {Tag = subdir.FullName}))
                 {
-                    var child = new TreeNode(subdir.Name);
-                    child.Tag = subdir.FullName; // save full path in tag
-                    // TODO: Use some image for the node to show its a music file
-
-                    child.Nodes.Add(new TreeNode()); // add dummy node to allow expansion
+                    child.Nodes.Add(new TreeNode()); // add node to allow expansion
                     node.Nodes.Add(child);
                 }
 
-                List<FileInfo> files = new List<FileInfo>();
+                var files = new List<FileInfo>();
                 files.AddRange(currentDir.GetFiles("*.mp3"));
                 files.AddRange(currentDir.GetFiles("*.m4a"));
 
-                foreach (FileInfo file in files)
-                {
-                    TreeNode child = new TreeNode(file.Name);
-                    // TODO: Use some image for the node to show its a music file
-
-                    child.Tag = file; // save full path for later use
+                foreach (var child in files.Select(file => new TreeNode(file.Name) {Tag = file}))
                     node.Nodes.Add(child);
-                }
-
             }
-            catch
-            { // try to handle use each exception separately
+            catch (UnauthorizedAccessException ue)
+            {
             }
             finally
             {
-                node.Tag = null; // clear tag
+                node.Tag = null;
             }
         }
 

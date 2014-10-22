@@ -161,5 +161,10 @@ namespace DJ.UserControls
             if (!string.IsNullOrWhiteSpace(filename))
                 Controller.LoadTrack(filename);
         }
+
+		private void SoundTrack_Load(object sender, EventArgs e)
+		{
+			trkVolume.Value = trkVolume.Maximum / 2;
+		}
     }
 }

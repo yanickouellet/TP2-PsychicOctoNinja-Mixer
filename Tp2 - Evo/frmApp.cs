@@ -11,8 +11,6 @@ namespace DJ.Winforms
     {
         private IMainController _mainController;
 
-        [DllImport("winmm.dll")]
-        static extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize,  IntPtr hwndCallback);
         private Mp3 _mixer1;
        
         public FrmApp()
@@ -23,10 +21,17 @@ namespace DJ.Winforms
             _mainTrack.Controller = _mainController.CreateMainTrackController();
             _secondTrack.Controller = _mainController.CreateSecondTrackController();
 
+			_mainController.RaiseVolumeChangedEvent += _mainController_RaiseVolumeChangedEvent;
+
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);
             //btnPauseMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Pause, btnPauseMix1.Width - 4, btnPauseMix1.Height - 4);
             //btnStopMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Stop, btnStopMix1.Width - 4, btnStopMix1.Height - 4);
         }
+
+		void _mainController_RaiseVolumeChangedEvent(object sender, Core.Events.VolumeChangedEventArgs e)
+		{
+			trkMasterVol.Value = e.Level;
+		}
 
         private void btnPlayMix1_Click(object sender, EventArgs e)
         {
@@ -88,6 +93,22 @@ namespace DJ.Winforms
         private void FrmApp_Load(object sender, EventArgs e)
         {
             this._playlist.AllowDrop = true;
+			trkMasterVol.Value = trkMasterVol.Maximum / 2;
         }
+
+		private void trkMasterVol_ValueChanged(object sender, EventArgs e)
+		{
+			_mainController.ChangeMasterVolume((sender as TrackBar).Value);
+		}
+
+		private void mnuVolumeAugmenter_Click(object sender, EventArgs e)
+		{
+			trkMasterVol.Value++;
+		}
+
+		private void mnuVolumeDiminuer_Click(object sender, EventArgs e)
+		{
+			trkMasterVol.Value--;
+		}
     }
 }

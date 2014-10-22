@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DJ.Core.Events;
 
 namespace DJ.Core.Controllers.Interfaces
 {
@@ -13,5 +14,8 @@ namespace DJ.Core.Controllers.Interfaces
         ITrackController CreateSecondTrackController();
 
         void Dispose();
+
+		void ChangeMasterVolume(int volume);
+		event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
     }
 }

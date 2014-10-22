@@ -11,5 +11,26 @@ namespace DJ.Core.Context
     {
         public AudioMaterial MainTrack { get; set; }
         public AudioMaterial SecondaryTrack { get; set; }
+		
+		private int _masterVolume;
+
+		public int MasterVolume 
+		{ 
+			get 
+			{
+				return _masterVolume;
+			}
+
+			set
+			{
+				_masterVolume = value;
+
+				if (MainTrack != null)
+					MainTrack.MasterVolume = _masterVolume;
+
+				if (SecondaryTrack != null)
+					SecondaryTrack.MasterVolume = _masterVolume;
+			} 
+		}
     }
 }

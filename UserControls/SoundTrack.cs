@@ -38,19 +38,15 @@ namespace DJ.UserControls
             Controller.SetVolume(trkVolume.Value);
         }
 
-        private void btnPlay_Click(object sender, System.EventArgs e)
-        {
-            Controller.Play();
-        }
-
         private void btnStop_Click(object sender, System.EventArgs e)
         {
             Controller.Stop();
-        }
 
-        private void btnCue_Click(object sender, System.EventArgs e)
-        {
-            Controller.Cue();
+            chkPlay.BackColor = SystemColors.AppWorkspace;
+
+            chkPlay.BackgroundImage = ChangeColor((Bitmap)chkPlay.BackgroundImage, "unclick");
+
+            chkPlay.Checked = false;
         }
 
         public void LoadTrack(string filename)
@@ -69,16 +65,25 @@ namespace DJ.UserControls
         }
 
         #region Checkboxes checked changed
+        private void btnStop_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "click");
+            button.BackColor = Color.MediumBlue;
+        }
+        private void btnStop_MouseUp(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "unclick");
+            button.BackColor = SystemColors.AppWorkspace;
+        }
         private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
         {
-            Controller.Play();
-            ChangeCheckboxStyle(this.chkPlay);
-        }
-
-        private void chkPause_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Stop();
-            ChangeCheckboxStyle(this.chkStop);
+            if (this.chkPlay.Checked)
+            {
+                Controller.Play();
+                ChangeCheckboxStyle(this.chkPlay);
+            }                
         }
 
         private void chkCue_CheckedChanged(object sender, System.EventArgs e)
@@ -161,5 +166,11 @@ namespace DJ.UserControls
             if (!string.IsNullOrWhiteSpace(filename))
                 Controller.LoadTrack(filename);
         }
+
+        
+
+        
+
+        
     }
 }

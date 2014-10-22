@@ -20,7 +20,9 @@ namespace DJ.Winforms
             InitializeComponent();
 
             _mainController = new MainController();
-            _mainTrack.Controller = _mainController.CreateMainTrackController();
+            var mainTrackController = _mainController.CreateMainTrackController();
+            _mainTrack.Controller = mainTrackController;
+            _equalizer.Controller = mainTrackController;
             _secondTrack.Controller = _mainController.CreateSecondTrackController();
 
             //btnPlayMix1.Image = new System.Drawing.Bitmap(Properties.Resources.Play,btnPlayMix1.Width -4, btnPlayMix1.Height-4);

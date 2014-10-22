@@ -9,25 +9,38 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DJ.Core.Audio;
+using DJ.Core.Controllers.Interfaces;
 using TagLib;
 
 namespace DJ.UserControls
 {
     public partial class Playlist : UserControl
     {
-        private List<MusicPlaylist> _playlist;
+        private Core.Audio.Playlist _playlist;
+
+        public IPlaylistController Controller
+        {
+            get { return _controller; }
+            set
+            {
+                _controller = value;
+                _playlist = _controller.Playlist;
+                this._bgsPlaylist = new BindingSource { DataSource = this._playlist };
+                this.dgvMusic.DataSource = this._bgsPlaylist;
+            }
+        }
+
+
         private BindingSource _bgsPlaylist;
         private Rectangle dragBoxFromMouseDown;
         private int rowIndexFromMouseDown;
         private int rowIndexOfItemUnderMouseToDrop;
+        private IPlaylistController _controller;
 
         public Playlist()
         {
             InitializeComponent();
-            this._playlist = new List<MusicPlaylist>();
-            this._bgsPlaylist = new BindingSource();
-            this._bgsPlaylist.DataSource = this._playlist;
-            this.dgvMusic.DataSource = this._bgsPlaylist;
         }
 
         private bool AddMusicFolder(TreeNode folder, int position)
@@ -50,7 +63,7 @@ namespace DJ.UserControls
 
             if (tag == null) return;
             var duree = String.Concat(f.Properties.Duration.Minutes, ":", f.Properties.Duration.Seconds, f.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : "");
-            var musique = new MusicPlaylist(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f);
+            var musique = new MusicItem(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f);
             if (position == -1)
                 this._playlist.Add(musique);
             else
@@ -60,7 +73,7 @@ namespace DJ.UserControls
 
         private void ChangeSelectedRow(int index)
         {
-            if (!(index >= 0 && index < this.dgvMusic.Rows.Count)) 
+            if (index < 0 && index >= this.dgvMusic.Rows.Count) 
                 throw new IndexOutOfRangeException();
             this.dgvMusic.Rows[index].Selected = true;
             this.dgvMusic.CurrentCell = this.dgvMusic.Rows[index].Cells[0];
@@ -88,9 +101,9 @@ namespace DJ.UserControls
         private void DragDropRow(DragEventArgs e)
         {
             DataGridViewRow rowToMove;
-            MusicPlaylist music;
+            MusicItem music;
             if ((rowToMove = e.Data.GetData(typeof (DataGridViewRow)) as DataGridViewRow) == null ||
-                ((music = (MusicPlaylist) rowToMove.DataBoundItem) == null)) return;
+                ((music = (MusicItem)rowToMove.DataBoundItem) == null)) return;
 
             var selectedRowIndex = (rowIndexOfItemUnderMouseToDrop == -1 ? this._playlist.Count - 1 : rowIndexOfItemUnderMouseToDrop);
             this._playlist.Remove(music);
@@ -149,26 +162,5 @@ namespace DJ.UserControls
                 // Reset the rectangle if the mouse is not over an item in the ListBox.
                 dragBoxFromMouseDown = Rectangle.Empty;
         }
-    }
-
-
-    public class MusicPlaylist
-    {
-        public MusicPlaylist(String name, String time, String artist, String album, String genre, TagLib.File audioFile)
-        {
-            this.Name = name;
-            this.Time = time;
-            this.Artist = artist;
-            this.Album = album;
-            this.Genre = genre;
-            this.AudioFile = audioFile;
-        }
-
-        public String Name { get; set; }
-        public String Time { get; set; }
-        public String Artist { get; set; }
-        public String Album { get; set; }
-        public String Genre { get; set; }
-        public TagLib.File AudioFile { get; set; }
     }
 }

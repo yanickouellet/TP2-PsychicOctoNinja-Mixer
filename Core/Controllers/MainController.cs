@@ -22,6 +22,11 @@ namespace DJ.Core.Controllers
             return new SecondaryTrackController(_appContext);
         }
 
+        public IPlaylistController CreatePlaylistController()
+        {
+            return new PlaylistController(_appContext);
+        }
+
         public void Dispose()
         {
             if(_appContext.MainTrack != null)

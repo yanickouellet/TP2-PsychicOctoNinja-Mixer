@@ -11,5 +11,11 @@ namespace DJ.Core.Context
     {
         public AudioMaterial MainTrack { get; set; }
         public AudioMaterial SecondaryTrack { get; set; }
+        public Playlist Playlist { get; set; }
+
+        public AppContext()
+        {
+            Playlist = new Playlist();
+        }
     }
 }

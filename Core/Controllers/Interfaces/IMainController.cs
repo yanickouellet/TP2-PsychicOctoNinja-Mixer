@@ -12,6 +12,7 @@ namespace DJ.Core.Controllers.Interfaces
 
         ITrackController CreateSecondTrackController();
 
+        IPlaylistController CreatePlaylistController();
         void Dispose();
     }
 }

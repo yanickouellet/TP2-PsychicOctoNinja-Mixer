@@ -177,6 +177,7 @@
             this.Controls.Add(this.panel8);
             this.Name = "SoundTrack";
             this.Size = new System.Drawing.Size(575, 388);
+			this.Load += new System.EventHandler(this.SoundTrack_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);

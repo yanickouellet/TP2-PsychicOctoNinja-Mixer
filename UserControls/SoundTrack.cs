@@ -81,9 +81,9 @@ namespace DJ.UserControls
         {
             if (this.chkPlay.Checked)
             {
-                Controller.Play();
-                ChangeCheckboxStyle(this.chkPlay);
-            }                
+            Controller.Play();
+            ChangeCheckboxStyle(this.chkPlay);
+        }
         }
 
         private void chkCue_CheckedChanged(object sender, System.EventArgs e)
@@ -167,10 +167,9 @@ namespace DJ.UserControls
                 Controller.LoadTrack(filename);
         }
 
-        
-
-        
-
-        
+		private void SoundTrack_Load(object sender, EventArgs e)
+		{
+			trkVolume.Value = trkVolume.Maximum / 2;
+		}
     }
 }

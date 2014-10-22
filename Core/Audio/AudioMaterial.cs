@@ -2,6 +2,7 @@
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
+using System.Diagnostics;
 using CSCore.Streams;
 
 namespace DJ.Core.Audio
@@ -11,7 +12,23 @@ namespace DJ.Core.Audio
         private IWaveSource _source;
         private ISoundOut _sound;
         private string _filename;
+		private int _masterVolume;
+		private int _volume;
         public Equalizer Equalizer { get; set; }
+
+		public int MasterVolume
+		{
+			get
+			{
+				return _masterVolume;
+			}
+
+			set
+			{
+				_masterVolume = value;
+				ComputeVolume();
+			}
+		}
 
         public AudioMaterial(string filename)
         {
@@ -24,6 +41,7 @@ namespace DJ.Core.Audio
             
             _sound = GetSoundSource();
             _sound.Initialize(_source);
+			ComputeVolume();
         }
 
         public void Play()
@@ -44,8 +62,20 @@ namespace DJ.Core.Audio
 
         public int Volume
         {
-            set { _sound.Volume = (float)value/100; }
-            get { return (int)_sound.Volume*100; }
+			set 
+			{ 
+				_volume = value;
+				ComputeVolume();
+			}
+
+			get { return _volume; }
+		}
+
+		private void ComputeVolume()
+		{
+			float resultat = ((float)_volume / 100) * ((float)_masterVolume / 100);
+			Debug.WriteLine("Volume: " + resultat.ToString());
+			_sound.Volume = resultat;
         }
 
         private ISoundOut GetSoundSource()

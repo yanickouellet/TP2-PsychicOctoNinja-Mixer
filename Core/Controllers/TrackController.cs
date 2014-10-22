@@ -60,7 +60,7 @@ namespace DJ.Core.Controllers
         public bool Loop { set; private get; }
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
 
         protected abstract AudioMaterial Track { get; set; }
     }

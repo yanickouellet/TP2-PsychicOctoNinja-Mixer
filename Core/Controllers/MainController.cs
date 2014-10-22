@@ -1,15 +1,17 @@
 ﻿using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
+using DJ.Core.Events;
+using System;
 
 namespace DJ.Core.Controllers
 {
-    public class MainController : IMainController
+    public class MainController : BaseController, IMainController
     {
         private readonly AppContext _appContext;
 
-        public MainController()
+        public MainController(): base(new AppContext())
         {
-            _appContext = new AppContext();
+			_appContext = Context as AppContext;
         }
 
         public ITrackController CreateMainTrackController()
@@ -34,5 +36,13 @@ namespace DJ.Core.Controllers
             if(_appContext.SecondaryTrack != null)
                 _appContext.SecondaryTrack.Dispose();
         }
+
+		public void ChangeMasterVolume(int volume)
+		{
+			_appContext.MasterVolume = volume;
+			OnRaiseEvent<VolumeChangedEventArgs>(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);
+		}
+
+		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }
 }

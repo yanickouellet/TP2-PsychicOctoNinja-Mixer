@@ -6,6 +6,8 @@ namespace DJ.Core.Context
     {
         AudioMaterial MainTrack { get; set; }
         AudioMaterial SecondaryTrack { get; set; }
+
+		int MasterVolume { get; set; }
         Playlist Playlist { get; set; }
     }
 }

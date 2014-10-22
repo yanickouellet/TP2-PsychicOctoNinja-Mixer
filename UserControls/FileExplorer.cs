@@ -21,6 +21,18 @@ namespace DJ.UserControls
         private void FileExplorer_Load(object sender, EventArgs e)
         {
             this.AllowDrop = true;
+            var favoritesNode = new TreeNode("Favoris");
+
+            var favorites = new[] {Environment.SpecialFolder.UserProfile, Environment.SpecialFolder.MyMusic};
+            foreach(var favorite in favorites)
+            {
+                var fullPath = Environment.GetFolderPath(favorite);
+                var node = new TreeNode(fullPath.Substring(fullPath.LastIndexOf('\\') + 1));
+                AddDirectoriesAndMusicFiles(node, fullPath);
+                favoritesNode.Nodes.Add(node);
+            }
+
+            trvExplorer.Nodes.Add(favoritesNode);
             foreach (var root in DriveInfo.GetDrives().Select(d => new TreeNode(d.Name) {Tag = d.Name}))
             {
                 root.Nodes.Add(new TreeNode());

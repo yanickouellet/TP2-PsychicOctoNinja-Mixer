@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-﻿using DJ.Core.Audio;
+using System.Timers;
+using DJ.Core.Audio;
 
 namespace DJ.Core.Context
 {
@@ -14,6 +15,7 @@ namespace DJ.Core.Context
         public Playlist Playlist { get; set; }
 		
 		private int _masterVolume;
+        private Timer _timer;
 
 		public int MasterVolume 
 		{ 
@@ -37,6 +39,14 @@ namespace DJ.Core.Context
         public AppContext()
         {
             Playlist = new Playlist();
+            _timer = new Timer();
+            _timer.Interval = 1;
+            _timer.Start();
+        }
+
+        public void AddEventOnTick(ElapsedEventHandler handler)
+        {
+            _timer.Elapsed += handler;
         }
     }
 }

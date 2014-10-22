@@ -1,3 +1,4 @@
+using System.Timers;
 using DJ.Core.Audio;
 
 namespace DJ.Core.Context
@@ -9,5 +10,6 @@ namespace DJ.Core.Context
 
 		int MasterVolume { get; set; }
         Playlist Playlist { get; set; }
+        void AddEventOnTick(ElapsedEventHandler handler);
     }
 }

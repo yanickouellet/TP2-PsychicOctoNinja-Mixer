@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Timers;
 using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
 using CSCore.Streams;
+using Timer = System.Timers.Timer;
 
 namespace DJ.Core.Controllers
 {
@@ -11,6 +14,7 @@ namespace DJ.Core.Controllers
     {
         public TrackController(AppContext context) : base(context) 
         {
+            Context.AddEventOnTick(TimerOnElapsed);
         }
 
         public void LoadTrack(string filename)
@@ -20,6 +24,7 @@ namespace DJ.Core.Controllers
             Track = new AudioMaterial(filename);
             OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
             OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);
+            Track.MasterVolume = Context.MasterVolume;
         }
 
         public void Play()
@@ -60,8 +65,23 @@ namespace DJ.Core.Controllers
         public bool Loop { set; private get; }
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
 
         protected abstract AudioMaterial Track { get; set; }
+
+        protected virtual void TrackFinshed()
+        {
+            Debug.WriteLine("Track finished.");
+        }
+
+        private void CheckIfTrackFinshed()
+        {
+            if (Track.Finshed) TrackFinshed();
+        }
+
+        private void TimerOnElapsed(object sender, ElapsedEventArgs e)
+        {
+            if(Track != null) CheckIfTrackFinshed();
+        }
     }
 }

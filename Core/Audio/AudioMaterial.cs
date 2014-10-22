@@ -71,6 +71,21 @@ namespace DJ.Core.Audio
 			get { return _volume; }
 		}
 
+        public TimeSpan Position
+        {
+            get { return _sound.WaveSource.GetPosition(); }
+        }
+
+        public TimeSpan Lenght
+        {
+            get { return _sound.WaveSource.GetLength(); }
+        }
+
+        public bool Finshed
+        {
+            get { return Position == Lenght; }
+        }
+
 		private void ComputeVolume()
 		{
 			float resultat = ((float)_volume / 100) * ((float)_masterVolume / 100);

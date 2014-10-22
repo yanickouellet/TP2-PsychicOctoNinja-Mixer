@@ -22,7 +22,7 @@ namespace DJ.Core.Controllers
             var next = Context.Playlist.NextItem;
             if (next != null)
             {
-                LoadTrack(next.AudioFile.Name);
+                LoadTrack(next);
                 Track.Play();
             }
             else

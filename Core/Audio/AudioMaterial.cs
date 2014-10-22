@@ -11,7 +11,7 @@ namespace DJ.Core.Audio
     {
         private IWaveSource _source;
         private ISoundOut _sound;
-        private string _filename;
+        private MusicItem _item;
 		private int _masterVolume;
 		private int _volume;
         public Equalizer Equalizer { get; set; }
@@ -27,11 +27,11 @@ namespace DJ.Core.Audio
 			}
 		}
 
-        public AudioMaterial(string filename)
+        public AudioMaterial(MusicItem item)
         {
             Equalizer equalizer;
-            _filename = filename;
-            _source = CodecFactory.Instance.GetCodec(filename)
+            _item = item;
+            _source = CodecFactory.Instance.GetCodec(_item.AudioFile.Name)
                    .AppendSource(Equalizer.Create10BandEqualizer, out equalizer)
                    .ToWaveSource(32);
             Equalizer = equalizer;

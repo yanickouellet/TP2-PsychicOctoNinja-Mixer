@@ -17,7 +17,7 @@ namespace DJ.Core.Controllers
             Context.AddEventOnTick(TimerOnElapsed);
         }
 
-        public void LoadTrack(string filename)
+        public void LoadTrack(MusicItem item)
         {
             var currentVolume = 100;
             if (Track != null)
@@ -25,8 +25,8 @@ namespace DJ.Core.Controllers
                 currentVolume = Track.Volume;
                 Track.Dispose();
             }
-            Track = new AudioMaterial(filename);
-            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
+            Track = new AudioMaterial(item);
+            OnRaiseEvent(new TrackChangedEventArgs(item), RaiseTrackChangedEvent);
             Track.MasterVolume = Context.MasterVolume;
             SetVolume(currentVolume);
         }

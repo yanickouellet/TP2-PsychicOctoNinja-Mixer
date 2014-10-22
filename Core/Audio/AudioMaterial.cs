@@ -18,10 +18,7 @@ namespace DJ.Core.Audio
 
 		public int MasterVolume
 		{
-			get
-			{
-				return _masterVolume;
-			}
+			get {return _masterVolume;}
 
 			set
 			{

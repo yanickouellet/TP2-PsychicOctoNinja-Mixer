@@ -19,12 +19,16 @@ namespace DJ.Core.Controllers
 
         public void LoadTrack(string filename)
         {
-            if(Track != null)
+            var currentVolume = 100;
+            if (Track != null)
+            {
+                currentVolume = Track.Volume;
                 Track.Dispose();
+            }
             Track = new AudioMaterial(filename);
             OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
-            OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);
             Track.MasterVolume = Context.MasterVolume;
+            SetVolume(currentVolume);
         }
 
         public void Play()

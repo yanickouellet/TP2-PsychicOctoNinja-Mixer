@@ -8,13 +8,24 @@ namespace DJ.Core.Audio
 {
     public class Playlist : List<MusicItem>
     {
-        public MusicItem Pop()
+        private int _cursor;
+
+        public Playlist()
         {
-            if (Count == 0)
-                return null;
-            var item = this.Last();
-            Remove(item);
-            return item;
+            _cursor = 0;
         }
+
+        public MusicItem NextItem
+        {
+            get
+            {
+                if (Count == 0)
+                    return null;
+                if (_cursor >= Count)
+                    _cursor = 0;
+                return this[_cursor++];
+            }
+        }
+
     }
 }

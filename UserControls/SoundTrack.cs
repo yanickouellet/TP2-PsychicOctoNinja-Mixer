@@ -49,6 +49,7 @@ namespace DJ.UserControls
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
+            lblTrackName.Text = e.Track.Name;
         }
 
         private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)

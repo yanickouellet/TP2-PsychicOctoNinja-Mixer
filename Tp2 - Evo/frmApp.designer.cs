@@ -109,7 +109,6 @@ namespace DJ.Winforms
             this.ouvrirUnMp3ToolStripMenuItem.Name = "ouvrirUnMp3ToolStripMenuItem";
             this.ouvrirUnMp3ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ouvrirUnMp3ToolStripMenuItem.Text = "&Enregistrer";
-            this.ouvrirUnMp3ToolStripMenuItem.Click += new System.EventHandler(this.ouvrirUnMp3ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 

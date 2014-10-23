@@ -85,9 +85,9 @@ namespace DJ.Core.Audio
 
 		private void ComputeVolume()
 		{
-			float resultat = ((float)_volume / 100) * ((float)_masterVolume / 100);
-			Debug.WriteLine("Volume: " + resultat);
-			_sound.Volume = resultat;
+		    float volume = ((float) _volume/100)*((float) _masterVolume/100);
+			_sound.Volume = volume;
+            Debug.WriteLine("Volume: " + volume);
         }
 
         private ISoundOut GetSoundSource()
@@ -102,6 +102,7 @@ namespace DJ.Core.Audio
             _sound.Stop();
             _sound.Dispose();
             _source.Dispose();
+            Equalizer.Dispose();
         }
     }
 }

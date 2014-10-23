@@ -15,8 +15,7 @@ namespace DJ.Core.Context
         public AppContext()
         {
             Playlist = new Playlist();
-            _timer = new Timer();
-            _timer.Interval = 1;
+            _timer = new Timer(500);
             _timer.Start();
         }
 

@@ -115,7 +115,14 @@ namespace DJ.UserControls
 
         private void dgvMusic_MouseMove(object sender, MouseEventArgs e)
         {
-            if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return;
+			var hti = dgvMusic.HitTest(e.X, e.Y);
+			if (hti.RowIndex > -1 && dgvMusic.SelectedRows[0].Index != hti.RowIndex)
+			{
+				dgvMusic.ClearSelection();
+				dgvMusic.Rows[hti.RowIndex].Selected = true;
+			}
+
+			if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return ;
 
             // If the mouse moves outside the rectangle, start the drag.
             if (_dragBoxFromMouseDown != Rectangle.Empty && !_dragBoxFromMouseDown.Contains(e.X, e.Y))

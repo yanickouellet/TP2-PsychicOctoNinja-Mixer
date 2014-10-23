@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Timers;
 using DJ.Core.Audio;
 using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
 using CSCore.Streams;
+using Timer = System.Timers.Timer;
 
 namespace DJ.Core.Controllers
 {
@@ -11,15 +14,21 @@ namespace DJ.Core.Controllers
     {
         public TrackController(AppContext context) : base(context) 
         {
+            Context.AddEventOnTick(TimerOnElapsed);
         }
 
-        public void LoadTrack(string filename)
+        public void LoadTrack(MusicItem item)
         {
-            if(Track != null)
+            var currentVolume = 100;
+            if (Track != null)
+            {
+                currentVolume = Track.Volume;
                 Track.Dispose();
-            Track = new AudioMaterial(filename);
-            OnRaiseEvent(new TrackChangedEventArgs(filename), RaiseTrackChangedEvent);
-            OnRaiseEvent(new VolumeChangedEventArgs(Track.Volume), RaiseVolumeChangedEvent);
+            }
+            Track = new AudioMaterial(item);
+            OnRaiseEvent(new TrackChangedEventArgs(item), RaiseTrackChangedEvent);
+            Track.MasterVolume = Context.MasterVolume;
+            SetVolume(currentVolume);
         }
 
         public void Play()
@@ -60,8 +69,23 @@ namespace DJ.Core.Controllers
         public bool Loop { set; private get; }
 
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
+        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
 
         protected abstract AudioMaterial Track { get; set; }
+
+        protected virtual void TrackFinshed()
+        {
+            Debug.WriteLine("Track finished.");
+        }
+
+        private void CheckIfTrackFinshed()
+        {
+            if (Track.Finshed) TrackFinshed();
+        }
+
+        private void TimerOnElapsed(object sender, ElapsedEventArgs e)
+        {
+            if(Track != null) CheckIfTrackFinshed();
+        }
     }
 }

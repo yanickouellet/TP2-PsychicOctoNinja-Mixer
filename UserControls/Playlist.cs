@@ -139,7 +139,8 @@ namespace DJ.UserControls
             if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
             {
                 // Proceed with the drag and drop, passing in the list item.
-                var dropEffect = this.dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
+                dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
+                dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Copy);
             }
         }
 

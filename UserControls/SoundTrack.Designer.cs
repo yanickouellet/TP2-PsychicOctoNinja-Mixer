@@ -29,30 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoundTrack));
-            this.pgbSpektrum = new System.Windows.Forms.ProgressBar();
             this.trkVolume = new System.Windows.Forms.TrackBar();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnStop = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
             this.chkLoop = new System.Windows.Forms.CheckBox();
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkPlay = new System.Windows.Forms.CheckBox();
+            this.lblTrackName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pgbSpektrum
-            // 
-            this.pgbSpektrum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pgbSpektrum.ForeColor = System.Drawing.Color.DarkRed;
-            this.pgbSpektrum.Location = new System.Drawing.Point(45, 0);
-            this.pgbSpektrum.Name = "pgbSpektrum";
-            this.pgbSpektrum.Size = new System.Drawing.Size(530, 319);
-            this.pgbSpektrum.TabIndex = 11;
-            this.pgbSpektrum.Value = 50;
             // 
             // trkVolume
             // 
@@ -86,7 +75,6 @@
             // panel8
             // 
             this.panel8.Controls.Add(this.btnStop);
-            this.panel8.Controls.Add(this.btnOpen);
             this.panel8.Controls.Add(this.chkLoop);
             this.panel8.Controls.Add(this.chkCue);
             this.panel8.Controls.Add(this.chkPlay);
@@ -110,16 +98,6 @@
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             this.btnStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseDown);
             this.btnStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseUp);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(314, 7);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(51, 30);
-            this.btnOpen.TabIndex = 12;
-            this.btnOpen.Text = "Ouvrir";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // chkLoop
             // 
@@ -167,17 +145,29 @@
             this.chkPlay.UseVisualStyleBackColor = false;
             this.chkPlay.CheckedChanged += new System.EventHandler(this.chkPlay_CheckedChanged);
             // 
+            // lblTrackName
+            // 
+            this.lblTrackName.AutoSize = true;
+            this.lblTrackName.Location = new System.Drawing.Point(71, 45);
+            this.lblTrackName.Name = "lblTrackName";
+            this.lblTrackName.Size = new System.Drawing.Size(35, 13);
+            this.lblTrackName.TabIndex = 11;
+            this.lblTrackName.Text = "label1";
+            // 
             // SoundTrack
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pgbSpektrum);
+            this.Controls.Add(this.lblTrackName);
             this.Controls.Add(this.trkVolume);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel8);
             this.Name = "SoundTrack";
             this.Size = new System.Drawing.Size(575, 388);
-			this.Load += new System.EventHandler(this.SoundTrack_Load);
+            this.Load += new System.EventHandler(this.SoundTrack_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.SoundTrack_DragDrop);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.SoundTrack_DragOver);
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -188,7 +178,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar pgbSpektrum;
         private System.Windows.Forms.TrackBar trkVolume;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel4;
@@ -196,7 +185,7 @@
         private System.Windows.Forms.CheckBox chkLoop;
         private System.Windows.Forms.CheckBox chkCue;
         private System.Windows.Forms.CheckBox chkPlay;
-        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label lblTrackName;
     }
 }

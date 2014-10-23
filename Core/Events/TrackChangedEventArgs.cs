@@ -1,19 +1,20 @@
 ﻿using System;
+using DJ.Core.Audio;
 
 namespace DJ.Core.Events
 {
     public class TrackChangedEventArgs : EventArgs
     {
-        private readonly string _trackName;
+        private readonly MusicItem _track;
 
-        public TrackChangedEventArgs(string trackName)
+        public TrackChangedEventArgs(MusicItem track)
         {
-            _trackName = trackName;
+            _track = track;
         }
 
-        public string TrackName
+        public MusicItem Track
         {
-            get { return _trackName; }
+            get { return _track; }
         }
     }
 }

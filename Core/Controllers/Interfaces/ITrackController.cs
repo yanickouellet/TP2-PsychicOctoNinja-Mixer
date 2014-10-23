@@ -1,4 +1,5 @@
 ﻿using System;
+using DJ.Core.Audio;
 using DJ.Core.Events;
 using CSCore.Streams;
 
@@ -14,7 +15,7 @@ namespace DJ.Core.Controllers.Interfaces
         void SetTime(int time);
         void SetFilter(int filterIndex, float value);
         bool Loop { set; }
-        void LoadTrack(string filename);
+        void LoadTrack(MusicItem filename);
 
         event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
         event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;

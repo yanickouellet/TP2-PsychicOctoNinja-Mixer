@@ -11,17 +11,14 @@ namespace DJ.Core.Audio
     {
         private IWaveSource _source;
         private ISoundOut _sound;
-        private string _filename;
+        private MusicItem _item;
 		private int _masterVolume;
 		private int _volume;
         public Equalizer Equalizer { get; set; }
 
 		public int MasterVolume
 		{
-			get
-			{
-				return _masterVolume;
-			}
+			get {return _masterVolume;}
 
 			set
 			{
@@ -30,11 +27,11 @@ namespace DJ.Core.Audio
 			}
 		}
 
-        public AudioMaterial(string filename)
+        public AudioMaterial(MusicItem item)
         {
             Equalizer equalizer;
-            _filename = filename;
-            _source = CodecFactory.Instance.GetCodec(filename)
+            _item = item;
+            _source = CodecFactory.Instance.GetCodec(_item.AudioFile.Name)
                    .AppendSource(Equalizer.Create10BandEqualizer, out equalizer)
                    .ToWaveSource(32);
             Equalizer = equalizer;
@@ -70,6 +67,21 @@ namespace DJ.Core.Audio
 
 			get { return _volume; }
 		}
+
+        public TimeSpan Position
+        {
+            get { return _sound.WaveSource.GetPosition(); }
+        }
+
+        public TimeSpan Lenght
+        {
+            get { return _sound.WaveSource.GetLength(); }
+        }
+
+        public bool Finshed
+        {
+            get { return Position == Lenght; }
+        }
 
 		private void ComputeVolume()
 		{

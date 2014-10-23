@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using DJ.Core.Audio;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
 
@@ -28,10 +30,6 @@ namespace DJ.UserControls
             InitializeComponent();
         }
 
-        public void SetSpektrum(uint level)
-        {
-            pgbSpektrum.Value = (int)level;
-        }
 
         private void trkVolume_Scroll(object sender, System.EventArgs e)
         {
@@ -49,18 +47,13 @@ namespace DJ.UserControls
             chkPlay.Checked = false;
         }
 
-        public void LoadTrack(string filename)
-        {
-            Controller.LoadTrack(filename);
-        }
-
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
+            lblTrackName.Text = e.Track.Name;
         }
 
         private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
         {
-            pgbSpektrum.Value = e.Level;
             trkVolume.Value = e.Level;
         }
 
@@ -158,18 +151,25 @@ namespace DJ.UserControls
         }
         #endregion
 
-        private void btnOpen_Click(object sender, EventArgs e)
-        {
-            var fileDialog = new OpenFileDialog {Filter = "MP3 (*.mp3)|*.mp3"};
-            fileDialog.ShowDialog();
-            var filename = fileDialog.FileName;
-            if (!string.IsNullOrWhiteSpace(filename))
-                Controller.LoadTrack(filename);
-        }
-
 		private void SoundTrack_Load(object sender, EventArgs e)
 		{
 			trkVolume.Value = trkVolume.Maximum / 2;
 		}
+
+        private void SoundTrack_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void SoundTrack_DragDrop(object sender, DragEventArgs e)
+        {
+            DataGridViewRow rowToMove;
+            MusicItem music;
+            if ((rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow) == null ||
+                ((music = (MusicItem)rowToMove.DataBoundItem) == null)) return;
+
+            Controller.LoadTrack(music);
+            Controller.Play();
+        }
     }
 }

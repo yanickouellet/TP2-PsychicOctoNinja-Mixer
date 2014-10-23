@@ -15,5 +15,20 @@ namespace DJ.Core.Controllers
             get { return Context.MainTrack; }
         }
 
+        protected override void TrackFinshed()
+        {
+            base.TrackFinshed();
+
+            var next = Context.Playlist.NextItem;
+            if (next != null)
+            {
+                LoadTrack(next);
+                Track.Play();
+            }
+            else
+            {
+                Track = null;
+            }
+        }
     }
 }

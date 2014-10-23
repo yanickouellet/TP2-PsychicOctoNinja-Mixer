@@ -49,6 +49,11 @@ namespace DJ.UserControls
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
+            if (lblTrackName.InvokeRequired)
+            {
+                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(Controller_RaiseTrackChangedEvent), sender, e);
+                return;
+            }
             lblTrackName.Text = e.Track.Name;
         }
 

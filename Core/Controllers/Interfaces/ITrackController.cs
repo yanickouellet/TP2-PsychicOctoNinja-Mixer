@@ -1,7 +1,6 @@
 ﻿using System;
 using DJ.Core.Audio;
 using DJ.Core.Events;
-using CSCore.Streams;
 
 
 namespace DJ.Core.Controllers.Interfaces

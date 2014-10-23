@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DJ.Core.Audio
 {
@@ -10,12 +6,12 @@ namespace DJ.Core.Audio
     {
         public MusicItem(String name, String time, String artist, String album, String genre, TagLib.File audioFile)
         {
-            this.Name = name;
-            this.Time = time;
-            this.Artist = artist;
-            this.Album = album;
-            this.Genre = genre;
-            this.AudioFile = audioFile;
+            Name = name;
+            Time = time;
+            Artist = artist;
+            Album = album;
+            Genre = genre;
+            AudioFile = audioFile;
         }
 
         public String Name { get; set; }

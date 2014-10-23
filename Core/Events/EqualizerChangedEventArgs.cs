@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DJ.Core.Audio;
-using DJ.Core.Context;
-using DJ.Core.Controllers.Interfaces;
-using DJ.Core.Events;
 using CSCore.Streams;
 
 namespace DJ.Core.Events

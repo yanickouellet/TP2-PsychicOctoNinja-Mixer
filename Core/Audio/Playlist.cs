@@ -1,18 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.IO;
 
 namespace DJ.Core.Audio
 {
-    public class Playlist : List<MusicItem>
+    public class Playlist : BindingList<MusicItem>
     {
         private int _cursor;
 
         public Playlist()
         {
             _cursor = 0;
+        }
+
+        public void AddItem(FileInfo file, int position)
+        {
+            var audioFile = TagLib.File.Create(file.FullName);
+            var tag = audioFile.GetTag(TagLib.TagTypes.Id3v2, true) ?? audioFile.GetTag(TagLib.TagTypes.Apple, true);
+
+            if (tag == null) return;
+            var length = String.Concat(
+                audioFile.Properties.Duration.Minutes, ":",
+                audioFile.Properties.Duration.Seconds,
+                audioFile.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : ""
+                );
+
+            var musicItem = new MusicItem(tag.Title.Trim(), length, tag.FirstPerformer, tag.Album, tag.FirstGenre, audioFile);
+            if (position == -1)
+                Add(musicItem);
+            else
+                Insert(position, musicItem);
         }
 
         public MusicItem NextItem

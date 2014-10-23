@@ -62,11 +62,6 @@
     <Compile Include="frmApp.designer.cs">
       <DependentUpon>frmApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Id3\BaseExtractor.cs" />
-    <Compile Include="Id3\Id3Tag.cs" />
-    <Compile Include="Id3\V2Extractor.cs" />
-    <Compile Include="IMp3.cs" />
-    <Compile Include="Mp3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmApp.resx">

@@ -49,6 +49,11 @@ namespace DJ.UserControls
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
+            if (lblTrackName.InvokeRequired)
+            {
+                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(Controller_RaiseTrackChangedEvent), sender, e);
+                return;
+            }
             lblTrackName.Text = e.Track.Name;
         }
 
@@ -72,10 +77,10 @@ namespace DJ.UserControls
         }
         private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
         {
-            if (this.chkPlay.Checked)
+            if (chkPlay.Checked)
             {
             Controller.Play();
-            ChangeCheckboxStyle(this.chkPlay);
+            ChangeCheckboxStyle(chkPlay);
         }
         }
 
@@ -97,7 +102,7 @@ namespace DJ.UserControls
         private void chkLoop_CheckedChanged(object sender, System.EventArgs e)
         {
             Controller.Loop = chkLoop.Checked;
-            ChangeCheckboxStyle(this.chkLoop);
+            ChangeCheckboxStyle(chkLoop);
         }
         #endregion
 

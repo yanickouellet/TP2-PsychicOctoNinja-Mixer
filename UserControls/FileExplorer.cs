@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DJ.UserControls
@@ -20,7 +15,7 @@ namespace DJ.UserControls
 
         private void FileExplorer_Load(object sender, EventArgs e)
         {
-            this.AllowDrop = true;
+            AllowDrop = true;
             var favoritesNode = new TreeNode("Favoris");
 
             var favorites = new[] {Environment.SpecialFolder.UserProfile, Environment.SpecialFolder.MyMusic};
@@ -36,7 +31,7 @@ namespace DJ.UserControls
             foreach (var root in DriveInfo.GetDrives().Select(d => new TreeNode(d.Name) {Tag = d.Name}))
             {
                 root.Nodes.Add(new TreeNode());
-                this.trvExplorer.Nodes.Add(root);
+                trvExplorer.Nodes.Add(root);
             }
         }
 

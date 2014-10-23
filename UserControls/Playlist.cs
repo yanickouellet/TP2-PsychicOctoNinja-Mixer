@@ -50,22 +50,7 @@ namespace DJ.UserControls
 
         private void AddMusic(FileInfo file, int position)
         {
-            var audioFile = TagLib.File.Create(String.Concat(file.DirectoryName, '\\', file.Name));
-            var tag = audioFile.GetTag(TagLib.TagTypes.Id3v2, true) ?? audioFile.GetTag(TagLib.TagTypes.Apple, true);
-
-            if (tag == null) return;
-            var length = String.Concat(
-                audioFile.Properties.Duration.Minutes, ":", 
-                audioFile.Properties.Duration.Seconds, 
-                audioFile.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : ""
-                );
-
-            var musicItem = new MusicItem(tag.Title.Trim(), length, tag.FirstPerformer, tag.Album, tag.FirstGenre, audioFile);
-            if (position == -1)
-                _playlist.Add(musicItem);
-            else
-                _playlist.Insert(position, musicItem);
-            _bgsPlaylist.ResetBindings(false);
+            _playlist.AddItem(file, position);
         }
 
         private void ChangeSelectedRow(int index)

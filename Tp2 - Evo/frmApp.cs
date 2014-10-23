@@ -95,7 +95,7 @@ namespace DJ.Winforms
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
-            this._playlist.AllowDrop = true;
+            _playlist.AllowDrop = true;
 			trkMasterVol.Value = trkMasterVol.Maximum / 2;
         }
 

@@ -26,8 +26,8 @@ namespace DJ.UserControls
             {
                 _controller = value;
                 _playlist = _controller.Playlist;
-                this._bgsPlaylist = new BindingSource { DataSource = this._playlist };
-                this.dgvMusic.DataSource = this._bgsPlaylist;
+                _bgsPlaylist = new BindingSource { DataSource = _playlist };
+                dgvMusic.DataSource = _bgsPlaylist;
             }
         }
 
@@ -65,18 +65,18 @@ namespace DJ.UserControls
             var duree = String.Concat(f.Properties.Duration.Minutes, ":", f.Properties.Duration.Seconds, f.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : "");
             var musique = new MusicItem(tag.Title.Trim(), duree, tag.FirstPerformer, tag.Album, tag.FirstGenre, f);
             if (position == -1)
-                this._playlist.Add(musique);
+                _playlist.Add(musique);
             else
-                this._playlist.Insert(position, musique);
-            this._bgsPlaylist.ResetBindings(false);
+                _playlist.Insert(position, musique);
+            _bgsPlaylist.ResetBindings(false);
         }
 
         private void ChangeSelectedRow(int index)
         {
-            if (index < 0 && index >= this.dgvMusic.Rows.Count) 
+            if (index < 0 && index >= dgvMusic.Rows.Count) 
                 throw new IndexOutOfRangeException();
-            this.dgvMusic.Rows[index].Selected = true;
-            this.dgvMusic.CurrentCell = this.dgvMusic.Rows[index].Cells[0];
+            dgvMusic.Rows[index].Selected = true;
+            dgvMusic.CurrentCell = dgvMusic.Rows[index].Cells[0];
         }
 
         private void DragDropTreeNode(DragEventArgs e)
@@ -86,7 +86,7 @@ namespace DJ.UserControls
             
             System.IO.FileInfo fileInfo;
             var changeSelectedRow = true;
-            var selectedRowIndex = (rowIndexOfItemUnderMouseToDrop == -1 ? this._playlist.Count : rowIndexOfItemUnderMouseToDrop);
+            var selectedRowIndex = (rowIndexOfItemUnderMouseToDrop == -1 ? _playlist.Count : rowIndexOfItemUnderMouseToDrop);
 
             if ((fileInfo = dropNode.Tag as System.IO.FileInfo) != null)
                 AddMusic(fileInfo, rowIndexOfItemUnderMouseToDrop);
@@ -95,7 +95,7 @@ namespace DJ.UserControls
 
             if (!changeSelectedRow) return;
             ChangeSelectedRow(selectedRowIndex);
-            this.dgvMusic.Focus();
+            dgvMusic.Focus();
         }
 
         private void DragDropRow(DragEventArgs e)
@@ -105,12 +105,12 @@ namespace DJ.UserControls
             if ((rowToMove = e.Data.GetData(typeof (DataGridViewRow)) as DataGridViewRow) == null ||
                 ((music = (MusicItem)rowToMove.DataBoundItem) == null)) return;
 
-            var selectedRowIndex = (rowIndexOfItemUnderMouseToDrop == -1 ? this._playlist.Count - 1 : rowIndexOfItemUnderMouseToDrop);
-            this._playlist.Remove(music);
-            this._playlist.Insert(rowIndexOfItemUnderMouseToDrop != -1 ? rowIndexOfItemUnderMouseToDrop : this._playlist.Count, music);
-            this._bgsPlaylist.ResetBindings(false);
-            this.ChangeSelectedRow(selectedRowIndex);
-            this.dgvMusic.Focus();
+            var selectedRowIndex = (rowIndexOfItemUnderMouseToDrop == -1 ? _playlist.Count - 1 : rowIndexOfItemUnderMouseToDrop);
+            _playlist.Remove(music);
+            _playlist.Insert(rowIndexOfItemUnderMouseToDrop != -1 ? rowIndexOfItemUnderMouseToDrop : _playlist.Count, music);
+            _bgsPlaylist.ResetBindings(false);
+            ChangeSelectedRow(selectedRowIndex);
+            dgvMusic.Focus();
         }
 
         private void Playlist_DragOver(object sender, DragEventArgs e)
@@ -121,9 +121,9 @@ namespace DJ.UserControls
         private void Playlist_DragDrop(object sender, DragEventArgs e)
         {
             // The mouse locations are relative to the screen, so they must be converted to client coordinates.
-            var clientPoint = this.dgvMusic.PointToClient(new Point(e.X, e.Y));
+            var clientPoint = dgvMusic.PointToClient(new Point(e.X, e.Y));
             // Get the row index of the item the mouse is below. 
-            rowIndexOfItemUnderMouseToDrop = this.dgvMusic.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+            rowIndexOfItemUnderMouseToDrop = dgvMusic.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
 
             if (e.Data.GetDataPresent("System.Windows.Forms.TreeNode", true))
                 DragDropTreeNode(e);
@@ -139,15 +139,15 @@ namespace DJ.UserControls
             if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
             {
                 // Proceed with the drag and drop, passing in the list item.
-                dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
-                dgvMusic.DoDragDrop(this.dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Copy);
+                dgvMusic.DoDragDrop(dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Move);
+                dgvMusic.DoDragDrop(dgvMusic.Rows[rowIndexFromMouseDown], DragDropEffects.Copy);
             }
         }
 
         private void dgvMusic_MouseDown(object sender, MouseEventArgs e)
         {
             // Get the index of the item the mouse is below.
-            rowIndexFromMouseDown = this.dgvMusic.HitTest(e.X, e.Y).RowIndex;
+            rowIndexFromMouseDown = dgvMusic.HitTest(e.X, e.Y).RowIndex;
             if (rowIndexFromMouseDown != -1)
             {
                 // Remember the point where the mouse down occurred. 

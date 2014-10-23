@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using DJ.Core.Controllers;
 using DJ.Core.Controllers.Interfaces;

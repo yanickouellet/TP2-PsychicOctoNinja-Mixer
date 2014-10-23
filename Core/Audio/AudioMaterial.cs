@@ -16,17 +16,6 @@ namespace DJ.Core.Audio
 		private int _volume;
         public Equalizer Equalizer { get; set; }
 
-		public int MasterVolume
-		{
-			get {return _masterVolume;}
-
-			set
-			{
-				_masterVolume = value;
-				ComputeVolume();
-			}
-		}
-
         public AudioMaterial(MusicItem item)
         {
             Equalizer equalizer;
@@ -39,6 +28,17 @@ namespace DJ.Core.Audio
             _sound = GetSoundSource();
             _sound.Initialize(_source);
 			ComputeVolume();
+        }
+
+        public int MasterVolume
+        {
+            get { return _masterVolume; }
+
+            set
+            {
+                _masterVolume = value;
+                ComputeVolume();
+            }
         }
 
         public void Play()
@@ -86,7 +86,7 @@ namespace DJ.Core.Audio
 		private void ComputeVolume()
 		{
 			float resultat = ((float)_volume / 100) * ((float)_masterVolume / 100);
-			Debug.WriteLine("Volume: " + resultat.ToString());
+			Debug.WriteLine("Volume: " + resultat);
 			_sound.Volume = resultat;
         }
 

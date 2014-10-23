@@ -6,7 +6,6 @@ using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
 using DJ.Core.Events;
 using CSCore.Streams;
-using Timer = System.Timers.Timer;
 
 namespace DJ.Core.Controllers
 {

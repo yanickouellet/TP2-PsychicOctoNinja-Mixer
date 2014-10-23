@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using DJ.Core.Audio;
 
@@ -15,26 +10,7 @@ namespace DJ.Core.Context
         public Playlist Playlist { get; set; }
 		
 		private int _masterVolume;
-        private Timer _timer;
-
-		public int MasterVolume 
-		{ 
-			get 
-			{
-				return _masterVolume;
-			}
-
-			set
-			{
-				_masterVolume = value;
-
-				if (MainTrack != null)
-					MainTrack.MasterVolume = _masterVolume;
-
-				if (SecondaryTrack != null)
-					SecondaryTrack.MasterVolume = _masterVolume;
-			} 
-		}
+        private readonly Timer _timer;
 
         public AppContext()
         {
@@ -42,6 +18,22 @@ namespace DJ.Core.Context
             _timer = new Timer();
             _timer.Interval = 1;
             _timer.Start();
+        }
+
+        public int MasterVolume
+        {
+            get { return _masterVolume; }
+
+            set
+            {
+                _masterVolume = value;
+
+                if (MainTrack != null)
+                    MainTrack.MasterVolume = _masterVolume;
+
+                if (SecondaryTrack != null)
+                    SecondaryTrack.MasterVolume = _masterVolume;
+            }
         }
 
         public void AddEventOnTick(ElapsedEventHandler handler)

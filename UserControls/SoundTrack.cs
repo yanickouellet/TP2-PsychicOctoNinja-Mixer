@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using DJ.Core.Audio;
 using DJ.Core.Controllers.Interfaces;
@@ -71,6 +72,10 @@ namespace DJ.UserControls
             }
             lblTrackName.Text = e.Track.Name;
             lblLength.Text = Controller.Length.ToString(TimeFormat);
+            lblArtist.Text = e.Track.Artist;
+            if (e.Track.AudioFile.Tag.Pictures.Length == 0) return;
+            var ms = new MemoryStream(e.Track.AudioFile.Tag.Pictures[0].Data.Data);
+            picPicture.Image = Image.FromStream(ms);
         }
 
         private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
@@ -189,6 +194,7 @@ namespace DJ.UserControls
             if ((rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow) == null ||
                 ((music = (MusicItem)rowToMove.DataBoundItem) == null)) return;
 
+            picPicture.Image = null;
             Controller.LoadTrack(music);
             Controller.Play();
         }

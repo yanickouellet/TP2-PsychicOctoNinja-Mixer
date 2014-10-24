@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using DJ.Core.Audio;
@@ -33,94 +32,6 @@ namespace DJ.UserControls
             InitializeComponent();
             _trkPositionDragging = false;
         }
-
-
-        private void trkVolume_Scroll(object sender, System.EventArgs e)
-        {
-            Controller.SetVolume(trkVolume.Value);
-        }
-
-        private void btnStop_Click(object sender, System.EventArgs e)
-        {
-            Controller.Stop();
-
-            chkPlay.BackColor = SystemColors.AppWorkspace;
-
-            chkPlay.BackgroundImage = ChangeColor((Bitmap)chkPlay.BackgroundImage, "unclick");
-
-            chkPlay.Checked = false;
-        }
-        private void ControllerOnRaisePositionChangedEvent(object sender, PositionChangedEventArgs e)
-        {
-            if (trkPosition.InvokeRequired)
-            {
-                trkPosition.Invoke(new Action<object, PositionChangedEventArgs>(ControllerOnRaisePositionChangedEvent), sender, e);
-                return;
-            }
-            if(!_trkPositionDragging)
-                trkPosition.Value = e.Percentage;
-            lblPosition.Text = e.Time.ToString(TimeFormat);
-        }
-
-        private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
-        {
-            if (lblTrackName.InvokeRequired)
-            {
-                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(Controller_RaiseTrackChangedEvent), sender, e);
-                return;
-            }
-            lblTrackName.Text = e.Track.Name;
-            lblLength.Text = Controller.Length.ToString(TimeFormat);
-        }
-
-        private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
-        {
-            trkVolume.Value = e.Level;
-        }
-
-        #region Checkboxes checked changed
-        private void btnStop_MouseDown(object sender, MouseEventArgs e)
-        {
-            Button button = (Button)sender;
-            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "click");
-            button.BackColor = Color.MediumBlue;
-        }
-        private void btnStop_MouseUp(object sender, MouseEventArgs e)
-        {
-            Button button = (Button)sender;
-            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "unclick");
-            button.BackColor = SystemColors.AppWorkspace;
-        }
-        private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (chkPlay.Checked)
-            {
-            Controller.Play();
-            ChangeCheckboxStyle(chkPlay);
-        }
-        }
-
-        private void chkCue_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Cue();
-            if (chkCue.Checked)
-            {
-                chkCue.BackColor = Color.MediumBlue;
-                chkCue.ForeColor = Color.White;
-            }
-            else
-            {
-                chkCue.BackColor = SystemColors.AppWorkspace;
-                chkCue.ForeColor = Color.Black;
-            }
-        }
-
-        private void chkLoop_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Loop = chkLoop.Checked;
-            ChangeCheckboxStyle(chkLoop);
-        }
-        #endregion
 
         #region Style change for checkboxes
         public void ChangeCheckboxStyle(CheckBox control)
@@ -172,10 +83,12 @@ namespace DJ.UserControls
         }
         #endregion
 
-		private void SoundTrack_Load(object sender, EventArgs e)
-		{
-			trkVolume.Value = trkVolume.Maximum / 2;
-		}
+        #region EVENTS
+
+        private void SoundTrack_Load(object sender, EventArgs e)
+        {
+            trkVolume.Value = trkVolume.Maximum / 2;
+        }
 
         private void SoundTrack_DragOver(object sender, DragEventArgs e)
         {
@@ -193,6 +106,12 @@ namespace DJ.UserControls
             Controller.Play();
         }
 
+        #region Trackbar
+        private void trkVolume_Scroll(object sender, System.EventArgs e)
+        {
+            Controller.SetVolume(trkVolume.Value);
+        }
+
         private void trkPosition_MouseDown(object sender, MouseEventArgs e)
         {
             _trkPositionDragging = true;
@@ -205,9 +124,98 @@ namespace DJ.UserControls
 
         private void trkPosition_Scroll(object sender, EventArgs e)
         {
-
             if (trkPosition.Value >= 0)
                 Controller.SetTime(trkPosition.Value);
         }
+        #endregion
+
+        #region Buttons and checkboxes
+        private void btnStop_Click(object sender, System.EventArgs e)
+        {
+            Controller.Stop();
+
+            chkPlay.BackColor = SystemColors.AppWorkspace;
+
+            chkPlay.BackgroundImage = ChangeColor((Bitmap)chkPlay.BackgroundImage, "unclick");
+
+            chkPlay.Checked = false;
+        }
+
+        private void btnStop_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "click");
+            button.BackColor = Color.MediumBlue;
+        }
+        private void btnStop_MouseUp(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackgroundImage = ChangeColor((Bitmap)button.BackgroundImage, "unclick");
+            button.BackColor = SystemColors.AppWorkspace;
+        }
+        private void chkPlay_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (chkPlay.Checked)
+            {
+                Controller.Play();
+                ChangeCheckboxStyle(chkPlay);
+            }
+        }
+
+        private void chkCue_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Controller.Cue();
+            if (chkCue.Checked)
+            {
+                chkCue.BackColor = Color.MediumBlue;
+                chkCue.ForeColor = Color.White;
+            }
+            else
+            {
+                chkCue.BackColor = SystemColors.AppWorkspace;
+                chkCue.ForeColor = Color.Black;
+            }
+        }
+
+        private void chkLoop_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Controller.Loop = chkLoop.Checked;
+            ChangeCheckboxStyle(chkLoop);
+        }
+        #endregion
+
+        #region ControllerEvents
+
+        private void ControllerOnRaisePositionChangedEvent(object sender, PositionChangedEventArgs e)
+        {
+            if (trkPosition.InvokeRequired)
+            {
+                trkPosition.Invoke(new Action<object, PositionChangedEventArgs>(ControllerOnRaisePositionChangedEvent), sender, e);
+                return;
+            }
+            if (!_trkPositionDragging)
+                trkPosition.Value = e.Percentage;
+            lblPosition.Text = e.Time.ToString(TimeFormat);
+        }
+
+        private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
+        {
+            if (lblTrackName.InvokeRequired)
+            {
+                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(Controller_RaiseTrackChangedEvent), sender, e);
+                return;
+            }
+            lblTrackName.Text = e.Track.Name;
+            lblLength.Text = Controller.Length.ToString(TimeFormat);
+        }
+
+        private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
+        {
+            trkVolume.Value = e.Level;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

@@ -53,5 +53,10 @@ namespace DJ.Winforms
 		{
 			trkMasterVol.Value--;
 		}
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

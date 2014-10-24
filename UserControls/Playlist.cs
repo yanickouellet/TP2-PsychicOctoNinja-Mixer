@@ -22,6 +22,8 @@ namespace DJ.UserControls
             set
             {
                 _controller = value;
+                if (_controller == null) return;
+
                 _playlist = _controller.Playlist;
                 _bgsPlaylist = new BindingSource { DataSource = _playlist };
                 dgvMusic.DataSource = _bgsPlaylist;

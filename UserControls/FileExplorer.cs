@@ -57,8 +57,11 @@ namespace DJ.UserControls
                 foreach (var child in files.Select(file => new TreeNode(file.Name) {Tag = file}))
                     node.Nodes.Add(child);
             }
-            catch (UnauthorizedAccessException ue)
-            {
+            catch (UnauthorizedAccessException)
+            { // Exception throw when unauthorized folder is open
+            }
+            catch (IOException)
+            { // Exception throw when we try to open the CD-ROM node
             }
             finally
             {

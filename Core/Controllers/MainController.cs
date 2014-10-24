@@ -43,6 +43,11 @@ namespace DJ.Core.Controllers
 			OnRaiseEvent<VolumeChangedEventArgs>(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);
 		}
 
+        public void PlayNext()
+        {
+            Context.MainTrackController.Next();
+        }
+
 		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }
 }

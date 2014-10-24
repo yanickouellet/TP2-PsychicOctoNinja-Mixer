@@ -56,7 +56,7 @@ namespace DJ.Winforms
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            
+            _mainController.PlayNext();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace DJ.Core.Controllers.Interfaces
         void Dispose();
 
 		void ChangeMasterVolume(int volume);
+        void PlayNext();
 		event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
     }
 }

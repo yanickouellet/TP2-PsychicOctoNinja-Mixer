@@ -1,5 +1,6 @@
 using System.Timers;
 using DJ.Core.Audio;
+using DJ.Core.Controllers;
 
 namespace DJ.Core.Context
 {
@@ -8,6 +9,7 @@ namespace DJ.Core.Context
         public AudioMaterial MainTrack { get; set; }
         public AudioMaterial SecondaryTrack { get; set; }
         public Playlist Playlist { get; set; }
+        public MainTrackController MainTrackController { get; set; }
 		
 		private int _masterVolume;
         private readonly Timer _timer;

@@ -36,20 +36,18 @@
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkPlay = new System.Windows.Forms.CheckBox();
             this.lblTrackName = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblArtist = new System.Windows.Forms.Label();
             this.trkPosition = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblLength = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblArtist = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel8.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkPosition)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // trkVolume
@@ -142,29 +140,29 @@
             // 
             this.lblTrackName.AutoSize = true;
             this.lblTrackName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrackName.Location = new System.Drawing.Point(3, 0);
+            this.lblTrackName.Location = new System.Drawing.Point(3, 42);
             this.lblTrackName.Name = "lblTrackName";
             this.lblTrackName.Size = new System.Drawing.Size(108, 24);
             this.lblTrackName.TabIndex = 11;
             this.lblTrackName.Text = "TrackName";
             // 
-            // flowLayoutPanel1
+            // lblArtist
             // 
-            this.flowLayoutPanel1.Controls.Add(this.lblTrackName);
-            this.flowLayoutPanel1.Controls.Add(this.lblArtist);
-            this.flowLayoutPanel1.Controls.Add(this.trkPosition);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(269, 127);
-            this.flowLayoutPanel1.TabIndex = 16;
+            this.lblArtist.AutoSize = true;
+            this.lblArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArtist.Location = new System.Drawing.Point(3, 106);
+            this.lblArtist.Name = "lblArtist";
+            this.lblArtist.Size = new System.Drawing.Size(46, 20);
+            this.lblArtist.TabIndex = 21;
+            this.lblArtist.Text = "Artist";
             // 
             // trkPosition
             // 
-            this.trkPosition.Location = new System.Drawing.Point(3, 27);
+            this.trkPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.trkPosition.Location = new System.Drawing.Point(3, 179);
             this.trkPosition.Maximum = 1000;
             this.trkPosition.Name = "trkPosition";
-            this.trkPosition.Size = new System.Drawing.Size(257, 45);
+            this.trkPosition.Size = new System.Drawing.Size(522, 45);
             this.trkPosition.TabIndex = 16;
             this.trkPosition.Scroll += new System.EventHandler(this.trkPosition_Scroll);
             this.trkPosition.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trkPosition_MouseDown);
@@ -172,19 +170,19 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.lblLength);
-            this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Controls.Add(this.lblPosition);
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 78);
+            this.flowLayoutPanel2.Controls.Add(this.label2);
+            this.flowLayoutPanel2.Controls.Add(this.lblLength);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 237);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(255, 31);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(522, 58);
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // lblLength
             // 
             this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(224, 0);
+            this.lblLength.Location = new System.Drawing.Point(55, 0);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(28, 13);
             this.lblLength.TabIndex = 17;
@@ -193,7 +191,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 0);
+            this.label2.Location = new System.Drawing.Point(37, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(12, 13);
             this.label2.TabIndex = 19;
@@ -202,29 +200,32 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(172, 0);
+            this.lblPosition.Location = new System.Drawing.Point(3, 0);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(28, 13);
             this.lblPosition.TabIndex = 18;
             this.lblPosition.Text = "0:00";
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(52, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(477, 128);
-            this.panel1.TabIndex = 17;
-            // 
-            // lblArtist
-            // 
-            this.lblArtist.AutoSize = true;
-            this.lblArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArtist.Location = new System.Drawing.Point(117, 0);
-            this.lblArtist.Name = "lblArtist";
-            this.lblArtist.Size = new System.Drawing.Size(46, 20);
-            this.lblArtist.TabIndex = 21;
-            this.lblArtist.Text = "Artist";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.trkPosition, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblArtist, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblTrackName, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(45, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.40465F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.79767F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.79767F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.79767F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.79767F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.40465F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(528, 342);
+            this.tableLayoutPanel1.TabIndex = 18;
             // 
             // SoundTrack
             // 
@@ -233,7 +234,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.trkVolume);
             this.Controls.Add(this.panel8);
             this.Name = "SoundTrack";
@@ -243,12 +244,11 @@
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.SoundTrack_DragOver);
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkPosition)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,13 +263,12 @@
         private System.Windows.Forms.CheckBox chkPlay;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label lblTrackName;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label lblLength;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TrackBar trkPosition;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblArtist;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

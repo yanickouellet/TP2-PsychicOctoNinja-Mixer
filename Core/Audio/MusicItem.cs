@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DJ.Core.Audio
 {
@@ -14,11 +15,17 @@ namespace DJ.Core.Audio
             AudioFile = audioFile;
         }
 
+        [DisplayName("Titre")]
         public String Name { get; set; }
+        [DisplayName("Durée")]
         public String Time { get; set; }
+        [DisplayName("Artiste")]
         public String Artist { get; set; }
+        [DisplayName("Album")]
         public String Album { get; set; }
+        [DisplayName("Genre")]
         public String Genre { get; set; }
+        [Browsable(false)]	
         public TagLib.File AudioFile { get; set; }
     }
 }

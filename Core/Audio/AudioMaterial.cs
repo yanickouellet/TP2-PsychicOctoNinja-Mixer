@@ -4,16 +4,20 @@ using CSCore.Codecs;
 using CSCore.SoundOut;
 using System.Diagnostics;
 using CSCore.Streams;
+using TagLib.Matroska;
 
 namespace DJ.Core.Audio
 {
     public class AudioMaterial : IDisposable
     {
+        private const int PercentageConst = 1000;
         private IWaveSource _source;
         private ISoundOut _sound;
         private MusicItem _item;
 		private int _masterVolume;
 		private int _volume;
+
+
         public Equalizer Equalizer { get; set; }
 
         public AudioMaterial(MusicItem item)
@@ -70,7 +74,22 @@ namespace DJ.Core.Audio
 
         public TimeSpan Position
         {
-            get { return _sound.WaveSource.GetPosition(); }
+            get
+            {
+                return _sound.WaveSource.GetPosition() > _sound.WaveSource.GetLength() ? 
+                    _sound.WaveSource.GetLength() : 
+                    _sound.WaveSource.GetPosition();
+            }
+        }
+
+        public int PositionPercentage
+        {
+            get { return Math.Min((int)Math.Round(Position.TotalSeconds/Lenght.TotalSeconds*PercentageConst), PercentageConst);  }
+            set
+            {
+                var valueInSecond = (int)((float) value/ PercentageConst * Lenght.TotalSeconds);
+                _sound.WaveSource.SetPosition(new TimeSpan(0, 0, valueInSecond));
+            }
         }
 
         public TimeSpan Lenght

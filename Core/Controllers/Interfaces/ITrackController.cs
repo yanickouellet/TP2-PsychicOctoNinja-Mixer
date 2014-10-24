@@ -16,6 +16,9 @@ namespace DJ.Core.Controllers.Interfaces
         bool Loop { set; }
         void LoadTrack(MusicItem filename);
 
+        TimeSpan Length { get; }
+        
+        event EventHandler<PositionChangedEventArgs> RaisePositionChangedEvent;
         event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
         event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }

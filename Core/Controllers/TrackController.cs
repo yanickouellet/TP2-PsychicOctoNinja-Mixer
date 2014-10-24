@@ -12,6 +12,7 @@ namespace DJ.Core.Controllers
     public abstract class TrackController : BaseController, ITrackController
     {
         private bool _finished;
+        private TimeSpan _lastPosition;
         protected abstract AudioMaterial Track { get; set; }
         public bool Loop { set; private get; }
 
@@ -30,7 +31,10 @@ namespace DJ.Core.Controllers
                 Track.Dispose();
             }
             Track = new AudioMaterial(item);
+
             OnRaiseEvent(new TrackChangedEventArgs(item), RaiseTrackChangedEvent);
+            GeneratePositionChange();
+
             Track.MasterVolume = Context.MasterVolume;
             SetVolume(currentVolume);
             _finished = false;
@@ -52,6 +56,7 @@ namespace DJ.Core.Controllers
         public void Stop()
         {
             Track.Stop();
+            GeneratePositionChange();
         }
 
         public void SetVolume(int volume)
@@ -65,7 +70,7 @@ namespace DJ.Core.Controllers
 
         public void SetTime(int time)
         {
-            throw new NotImplementedException();
+            Track.PositionPercentage = time;
         }
 
         public void SetFilter(int filterIndex, float value)
@@ -74,6 +79,17 @@ namespace DJ.Core.Controllers
             filter.SetGain(value);
         }
 
+        public TimeSpan Length
+        {
+            get
+            {
+                if (Track == null)
+                    return TimeSpan.Zero;
+                return Track.Lenght;
+            }
+        }
+
+        public event EventHandler<PositionChangedEventArgs> RaisePositionChangedEvent;
         public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
         public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
 
@@ -91,9 +107,25 @@ namespace DJ.Core.Controllers
             }
         }
 
+        private void CheckIfTimeUpdateNeeded()
+        {
+            if (Track != null && Track.Position != _lastPosition)
+            {
+                GeneratePositionChange();
+            }
+        }
+
         private void TimerOnElapsed(object sender, ElapsedEventArgs e)
         {
             CheckIfTrackFinshed();
+            CheckIfTimeUpdateNeeded();
         }
+
+        private void GeneratePositionChange()
+        {
+            OnRaiseEvent(new PositionChangedEventArgs(Track.Position, Track.PositionPercentage), RaisePositionChangedEvent);
+            _lastPosition = Track.Position;
+        }
+
     }
 }

@@ -10,7 +10,9 @@ namespace DJ.UserControls
 {
     public partial class SoundTrack : UserControl
     {
+        private const string TimeFormat = @"mm\:ss";
         private ITrackController _controller;
+        private bool _trkPositionDragging;
 
         public ITrackController Controller
         {
@@ -22,12 +24,14 @@ namespace DJ.UserControls
                     return;
                 Controller.RaiseTrackChangedEvent += Controller_RaiseTrackChangedEvent;
                 Controller.RaiseVolumeChangedEvent += ControllerOnRaiseVolumeChangedEvent;
+                Controller.RaisePositionChangedEvent += ControllerOnRaisePositionChangedEvent;
             }
         }
 
         public SoundTrack()
         {
             InitializeComponent();
+            _trkPositionDragging = false;
         }
 
 
@@ -46,6 +50,17 @@ namespace DJ.UserControls
 
             chkPlay.Checked = false;
         }
+        private void ControllerOnRaisePositionChangedEvent(object sender, PositionChangedEventArgs e)
+        {
+            if (trkPosition.InvokeRequired)
+            {
+                trkPosition.Invoke(new Action<object, PositionChangedEventArgs>(ControllerOnRaisePositionChangedEvent), sender, e);
+                return;
+            }
+            if(!_trkPositionDragging)
+                trkPosition.Value = e.Percentage;
+            lblPosition.Text = e.Time.ToString(TimeFormat);
+        }
 
         private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
@@ -55,6 +70,7 @@ namespace DJ.UserControls
                 return;
             }
             lblTrackName.Text = e.Track.Name;
+            lblLength.Text = Controller.Length.ToString(TimeFormat);
         }
 
         private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
@@ -175,6 +191,23 @@ namespace DJ.UserControls
 
             Controller.LoadTrack(music);
             Controller.Play();
+        }
+
+        private void trkPosition_MouseDown(object sender, MouseEventArgs e)
+        {
+            _trkPositionDragging = true;
+        }
+
+        private void trkPosition_MouseUp(object sender, MouseEventArgs e)
+        {
+            _trkPositionDragging = false;
+        }
+
+        private void trkPosition_Scroll(object sender, EventArgs e)
+        {
+
+            if (trkPosition.Value >= 0)
+                Controller.SetTime(trkPosition.Value);
         }
     }
 }

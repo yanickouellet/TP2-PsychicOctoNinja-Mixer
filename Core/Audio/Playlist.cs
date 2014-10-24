@@ -8,6 +8,7 @@ namespace DJ.Core.Audio
     public class Playlist : BindingList<MusicItem>
     {
         private int _cursor;
+        public bool Repeat { get; set; }
 
         public Playlist()
         {
@@ -40,10 +41,24 @@ namespace DJ.Core.Audio
                 if (Count == 0)
                     return null;
                 if (_cursor >= Count)
-                    _cursor = 0;
+                {
+                    if (Repeat)
+                        Reset();
+                    else
+                        return null;
+                }
                 return this[_cursor++];
             }
         }
 
+        public void Reset()
+        {
+            _cursor = 0;
+        }
+
+        public bool Ended
+        {
+            get { return !Repeat && _cursor >= Count; }
+        }
     }
 }

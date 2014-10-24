@@ -45,7 +45,15 @@ namespace DJ.Core.Controllers
 
         public void PlayNext()
         {
+            if(Context.Playlist.Ended)
+                Context.Playlist.Reset();
             Context.MainTrackController.Next();
+        }
+
+        public bool RepeatPlaylist
+        {
+            get { return Context.Playlist.Repeat; }
+            set { Context.Playlist.Repeat = value; }
         }
 
 		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;

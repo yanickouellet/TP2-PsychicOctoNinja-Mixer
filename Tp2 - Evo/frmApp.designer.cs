@@ -44,13 +44,10 @@ namespace DJ.Winforms
             this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this._fileExplorer = new DJ.UserControls.FileExplorer();
-            this._playlist = new DJ.UserControls.Playlist();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this._mainTrack = new DJ.UserControls.SoundTrack();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
@@ -65,10 +62,14 @@ namespace DJ.Winforms
             this.lblMaster = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this._secondTrack = new DJ.UserControls.SoundTrack();
             this.tabFileExplorerEqualizer = new System.Windows.Forms.TabControl();
             this.Explorer = new System.Windows.Forms.TabPage();
             this.tabEqualizer = new System.Windows.Forms.TabPage();
+            this.chkLoop = new System.Windows.Forms.CheckBox();
+            this._mainTrack = new DJ.UserControls.SoundTrack();
+            this._secondTrack = new DJ.UserControls.SoundTrack();
+            this._fileExplorer = new DJ.UserControls.FileExplorer();
+            this._playlist = new DJ.UserControls.Playlist();
             this._equalizer = new DJ.UserControls.Equalizer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -202,23 +203,6 @@ namespace DJ.Winforms
             this.splitContainer1.SplitterDistance = 252;
             this.splitContainer1.TabIndex = 18;
             // 
-            // _fileExplorer
-            // 
-            this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._fileExplorer.Location = new System.Drawing.Point(0, 0);
-            this._fileExplorer.Name = "_fileExplorer";
-            this._fileExplorer.Size = new System.Drawing.Size(252, 197);
-            this._fileExplorer.TabIndex = 0;
-            // 
-            // _playlist
-            // 
-            this._playlist.Controller = null;
-            this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._playlist.Location = new System.Drawing.Point(0, 0);
-            this._playlist.Name = "_playlist";
-            this._playlist.Size = new System.Drawing.Size(713, 197);
-            this._playlist.TabIndex = 0;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -270,17 +254,6 @@ namespace DJ.Winforms
             this.panel10.Size = new System.Drawing.Size(371, 196);
             this.panel10.TabIndex = 8;
             // 
-            // _mainTrack
-            // 
-            this._mainTrack.AllowDrop = true;
-            this._mainTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this._mainTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._mainTrack.Controller = null;
-            this._mainTrack.Location = new System.Drawing.Point(3, 3);
-            this._mainTrack.Name = "_mainTrack";
-            this._mainTrack.Size = new System.Drawing.Size(364, 175);
-            this._mainTrack.TabIndex = 0;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel12);
@@ -294,6 +267,7 @@ namespace DJ.Winforms
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.chkLoop);
             this.panel12.Controls.Add(this.lblTime);
             this.panel12.Controls.Add(this.lblType);
             this.panel12.Controls.Add(this.lblTransitions);
@@ -371,7 +345,7 @@ namespace DJ.Winforms
             this.btnShuffle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShuffle.BackgroundImage")));
             this.btnShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShuffle.Location = new System.Drawing.Point(117, 100);
+            this.btnShuffle.Location = new System.Drawing.Point(89, 100);
             this.btnShuffle.Name = "btnShuffle";
             this.btnShuffle.Size = new System.Drawing.Size(52, 33);
             this.btnShuffle.TabIndex = 0;
@@ -383,7 +357,7 @@ namespace DJ.Winforms
             this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
             this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNext.Location = new System.Drawing.Point(59, 100);
+            this.btnNext.Location = new System.Drawing.Point(31, 100);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(52, 33);
             this.btnNext.TabIndex = 1;
@@ -429,17 +403,6 @@ namespace DJ.Winforms
             this.panel11.Size = new System.Drawing.Size(372, 196);
             this.panel11.TabIndex = 12;
             // 
-            // _secondTrack
-            // 
-            this._secondTrack.AllowDrop = true;
-            this._secondTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this._secondTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._secondTrack.Controller = null;
-            this._secondTrack.Location = new System.Drawing.Point(0, -3);
-            this._secondTrack.Name = "_secondTrack";
-            this._secondTrack.Size = new System.Drawing.Size(371, 181);
-            this._secondTrack.TabIndex = 0;
-            // 
             // tabFileExplorerEqualizer
             // 
             this.tabFileExplorerEqualizer.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -473,6 +436,59 @@ namespace DJ.Winforms
             this.tabEqualizer.Size = new System.Drawing.Size(975, 203);
             this.tabEqualizer.TabIndex = 1;
             this.tabEqualizer.Text = "Equalizer";
+            // 
+            // chkLoop
+            // 
+            this.chkLoop.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkLoop.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chkLoop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkLoop.BackgroundImage")));
+            this.chkLoop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chkLoop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkLoop.Location = new System.Drawing.Point(147, 100);
+            this.chkLoop.Name = "chkLoop";
+            this.chkLoop.Size = new System.Drawing.Size(45, 32);
+            this.chkLoop.TabIndex = 9;
+            this.chkLoop.UseVisualStyleBackColor = false;
+            this.chkLoop.CheckedChanged += new System.EventHandler(this.chkLoop_CheckedChanged);
+            // 
+            // _mainTrack
+            // 
+            this._mainTrack.AllowDrop = true;
+            this._mainTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._mainTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._mainTrack.Controller = null;
+            this._mainTrack.Location = new System.Drawing.Point(3, 3);
+            this._mainTrack.Name = "_mainTrack";
+            this._mainTrack.Size = new System.Drawing.Size(364, 175);
+            this._mainTrack.TabIndex = 0;
+            // 
+            // _secondTrack
+            // 
+            this._secondTrack.AllowDrop = true;
+            this._secondTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._secondTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._secondTrack.Controller = null;
+            this._secondTrack.Location = new System.Drawing.Point(0, -3);
+            this._secondTrack.Name = "_secondTrack";
+            this._secondTrack.Size = new System.Drawing.Size(371, 181);
+            this._secondTrack.TabIndex = 0;
+            // 
+            // _fileExplorer
+            // 
+            this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._fileExplorer.Location = new System.Drawing.Point(0, 0);
+            this._fileExplorer.Name = "_fileExplorer";
+            this._fileExplorer.Size = new System.Drawing.Size(252, 197);
+            this._fileExplorer.TabIndex = 0;
+            // 
+            // _playlist
+            // 
+            this._playlist.Controller = null;
+            this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._playlist.Location = new System.Drawing.Point(0, 0);
+            this._playlist.Name = "_playlist";
+            this._playlist.Size = new System.Drawing.Size(713, 197);
+            this._playlist.TabIndex = 0;
             // 
             // _equalizer
             // 
@@ -565,6 +581,7 @@ namespace DJ.Winforms
         private System.Windows.Forms.ComboBox cboTransitions;
         private System.Windows.Forms.Label lblPlaylist;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.CheckBox chkLoop;
     }
 }
 

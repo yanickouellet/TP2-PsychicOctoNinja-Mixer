@@ -58,5 +58,10 @@ namespace DJ.Winforms
         {
             _mainController.PlayNext();
         }
+
+        private void chkLoop_CheckedChanged(object sender, EventArgs e)
+        {
+            _mainController.RepeatPlaylist = chkLoop.Checked;
+        }
     }
 }

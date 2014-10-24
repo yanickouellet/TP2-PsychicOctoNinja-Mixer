@@ -38,6 +38,7 @@ namespace DJ.CoreTests.Audio
             Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
             Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("gamesofthrone.mp3"));
             Assert.AreSame(null, _playlist.NextItem);
+            Assert.IsTrue(_playlist.Ended);
         }
 
         [TestMethod]
@@ -46,14 +47,38 @@ namespace DJ.CoreTests.Audio
             _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
             _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
             _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
-
+            _playlist.Repeat = true;
 
             for (int i = 0; i < 3; i++)
             {
                 Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("short.mp3"));
                 Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
                 Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("gamesofthrone.mp3"));   
+                Assert.IsFalse(_playlist.Ended);
             }
+        }
+
+        [TestMethod]
+        public void Reset_ShoulResetPlaylistToBegenning()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("short.mp3"));
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
+
+            _playlist.Reset();
+
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("short.mp3"));
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("gamesofthrone.mp3"));
+
+            _playlist.Reset();
+
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("short.mp3"));
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
+            Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("gamesofthrone.mp3"));
         }
         
         [TestMethod]

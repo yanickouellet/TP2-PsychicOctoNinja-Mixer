@@ -20,6 +20,8 @@ namespace DJ.Core.Controllers
             }
             else
             {
+                if(Track != null)
+                    Track.Dispose();
                 Track = null;
             }
         }

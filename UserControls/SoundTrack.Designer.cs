@@ -61,7 +61,7 @@
             this.trkVolume.Maximum = 100;
             this.trkVolume.Name = "trkVolume";
             this.trkVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trkVolume.Size = new System.Drawing.Size(45, 319);
+            this.trkVolume.Size = new System.Drawing.Size(45, 317);
             this.trkVolume.SmallChange = 5;
             this.trkVolume.TabIndex = 10;
             this.trkVolume.Scroll += new System.EventHandler(this.trkVolume_Scroll);
@@ -78,9 +78,9 @@
             // 
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 319);
+            this.panel4.Location = new System.Drawing.Point(0, 317);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(575, 25);
+            this.panel4.Size = new System.Drawing.Size(573, 25);
             this.panel4.TabIndex = 8;
             // 
             // panel8
@@ -90,9 +90,9 @@
             this.panel8.Controls.Add(this.chkCue);
             this.panel8.Controls.Add(this.chkPlay);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 344);
+            this.panel8.Location = new System.Drawing.Point(0, 342);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(575, 44);
+            this.panel8.Size = new System.Drawing.Size(573, 44);
             this.panel8.TabIndex = 9;
             // 
             // btnStop
@@ -159,9 +159,10 @@
             // lblTrackName
             // 
             this.lblTrackName.AutoSize = true;
+            this.lblTrackName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrackName.Location = new System.Drawing.Point(3, 0);
             this.lblTrackName.Name = "lblTrackName";
-            this.lblTrackName.Size = new System.Drawing.Size(35, 13);
+            this.lblTrackName.Size = new System.Drawing.Size(60, 24);
             this.lblTrackName.TabIndex = 11;
             this.lblTrackName.Text = "label1";
             // 
@@ -177,7 +178,7 @@
             // 
             // trkPosition
             // 
-            this.trkPosition.Location = new System.Drawing.Point(3, 16);
+            this.trkPosition.Location = new System.Drawing.Point(3, 27);
             this.trkPosition.Maximum = 1000;
             this.trkPosition.Name = "trkPosition";
             this.trkPosition.Size = new System.Drawing.Size(257, 45);
@@ -192,7 +193,7 @@
             this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Controls.Add(this.lblPosition);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 67);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 78);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(255, 31);
             this.flowLayoutPanel2.TabIndex = 20;
@@ -237,12 +238,14 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.trkVolume);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel8);
             this.Name = "SoundTrack";
-            this.Size = new System.Drawing.Size(575, 388);
+            this.Size = new System.Drawing.Size(573, 386);
             this.Load += new System.EventHandler(this.SoundTrack_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.SoundTrack_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.SoundTrack_DragOver);

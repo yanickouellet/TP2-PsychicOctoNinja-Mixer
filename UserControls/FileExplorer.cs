@@ -58,10 +58,18 @@ namespace DJ.UserControls
                     node.Nodes.Add(child);
             }
             catch (UnauthorizedAccessException)
-            { // Exception throw when unauthorized folder is open
+            { 
+                // Exception thrown when unauthorized folder is open. It is ok to catch it and do nothing
+                // because the access of certain directories is not allowed in non-admin mode and we do not
+                // want to notify the user about it or do something else, it's perfectly normal. Avoid to 
+                // do something in this catch will just cause theses forbidden file to not be added to the
+                // tree node, wich is exactly the behaviour we want.
             }
             catch (IOException)
-            { // Exception throw when we try to open the CD-ROM node
+            { 
+                // Exception thrown when we try to open the CD-ROM node. We do nothing in this catch for 
+                // a similar reason than the previous catch. In this case, this exception is thrown when 
+                // we try to serach in the CD-ROM drive but no CD-ROM is present.
             }
             finally
             {

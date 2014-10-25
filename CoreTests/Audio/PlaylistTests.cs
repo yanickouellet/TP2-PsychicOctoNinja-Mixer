@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using DJ.Core.Audio;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -59,6 +62,138 @@ namespace DJ.CoreTests.Audio
         }
 
         [TestMethod]
+        public void Playlist_ShouldPlayInRandomOrder()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.Random = true;
+
+            Play(3);
+
+            Assert.IsTrue(_playlist.Ended);
+
+            _playlist.Reset();
+        }
+
+        [TestMethod]
+        public void Playlist_ShouldAddItemToRandomListAfterStarted()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+
+            Play(2);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            Play(1);
+            Assert.IsFalse(_playlist.Ended);
+            Play(1);
+            Assert.IsTrue(_playlist.Ended);
+        }
+
+        [TestMethod]
+        public void Playlist_ShouldRestartToPlayRandomIfRepeatIsOn()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.Random = true;
+            _playlist.Repeat = true;
+
+            Play(10);
+            Assert.AreNotSame(null, _playlist.NextItem);
+        }
+
+        [TestMethod]
+        public void Playlist_ShouldNotPlayRemovedTrackInNormalMode()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            
+            Play(2);
+            _playlist.RemoveAt(2);
+
+            Assert.IsTrue(_playlist.Ended);
+
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.RemoveAt(1);
+
+            Play(2);
+            Assert.IsTrue(_playlist.Ended);
+        }
+
+        [TestMethod]
+        public void Playlist_ShouldNotPlayRemovedTrackInRandomMode()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.Random = true;
+
+            var items = _playlist.ToList();
+            items.Remove(_playlist.NextItem);
+            items.Remove(_playlist.NextItem);
+            _playlist.Remove(items[0]);
+
+            Assert.IsTrue(_playlist.Ended);
+
+            _playlist.Clear();
+
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+
+            items = _playlist.ToList();
+            items.Remove(_playlist.NextItem);
+            _playlist.Remove(items[0]);
+            items.Remove(_playlist.NextItem);
+
+            Play(2);
+            Assert.IsTrue(_playlist.Ended);
+        }
+
+        [TestMethod]
+        public void Ended_ShouldHaveCorrectValuesInNormalMode()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            
+            Play(2);
+            Assert.IsFalse(_playlist.Ended);
+            Play(1);
+            Assert.IsTrue(_playlist.Ended);
+
+            _playlist.Repeat = true;
+            Assert.IsFalse(_playlist.Ended);
+        }
+
+        [TestMethod]
+        public void Ended_ShouldhaveCorrectValeusInRandomMode()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.Random = true;
+
+            Play(2);
+            Assert.IsFalse(_playlist.Ended);
+            _playlist.Reset();
+
+            Play(2);
+            Assert.IsFalse(_playlist.Ended);
+
+            Play(1);
+            Assert.IsTrue(_playlist.Ended);
+
+            _playlist.Repeat = true;
+            Assert.IsFalse(_playlist.Ended);
+        }
+
+        [TestMethod]
         public void Reset_ShoulResetPlaylistToBegenning()
         {
             _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
@@ -79,6 +214,21 @@ namespace DJ.CoreTests.Audio
             Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("short.mp3"));
             Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("dragonborn.mp3"));
             Assert.IsTrue(_playlist.NextItem.AudioFile.Name.Contains("gamesofthrone.mp3"));
+        }
+
+        [TestMethod]
+        public void Reset_ShouldResetRandom()
+        {
+            _playlist.AddItem(new FileInfo(GetFilePath("short")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("dragonborn")), -1);
+            _playlist.AddItem(new FileInfo(GetFilePath("gamesofthrone")), -1);
+            _playlist.Random = true;
+
+            Play(2);
+            _playlist.Reset();
+
+            Play(3);
+            Assert.IsTrue(_playlist.Ended);
         }
         
         [TestMethod]
@@ -118,6 +268,14 @@ namespace DJ.CoreTests.Audio
         private string GetFilePath(string name)
         {
             return string.Format("../../Resources/{0}.mp3", name);
+        }
+
+        private void Play(int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                var item = _playlist.NextItem;
+            }
         }
     }
 }

@@ -56,6 +56,12 @@ namespace DJ.Core.Controllers
             set { Context.Playlist.Repeat = value; }
         }
 
+        public bool Random
+        {
+            get { return Context.Playlist.Random; }
+            set { Context.Playlist.Random = value; }
+        }
+
 		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }
 }

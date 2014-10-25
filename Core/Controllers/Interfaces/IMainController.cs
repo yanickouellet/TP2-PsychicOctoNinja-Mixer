@@ -16,6 +16,7 @@ namespace DJ.Core.Controllers.Interfaces
         void PlayNext();
 
         bool RepeatPlaylist { get; set; }
+        bool Random { get; set; }
 		event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
     }
 }

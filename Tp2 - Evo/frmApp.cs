@@ -63,5 +63,10 @@ namespace DJ.Winforms
         {
             _mainController.RepeatPlaylist = chkLoop.Checked;
         }
+
+        private void chkShuffle_CheckedChanged(object sender, EventArgs e)
+        {
+            _mainController.Random = chkShuffle.Checked;
+        }
     }
 }

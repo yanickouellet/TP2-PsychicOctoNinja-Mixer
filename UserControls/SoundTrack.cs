@@ -101,12 +101,10 @@ namespace DJ.UserControls
         private void btnStop_Click(object sender, System.EventArgs e)
         {
             Controller.Stop();
-
             chkPlay.BackColor = SystemColors.AppWorkspace;
-
             chkPlay.BackgroundImage = FormHelper.ChangeColor((Bitmap)chkPlay.BackgroundImage, "unclick");
-
             chkPlay.Checked = false;
+            chkCue.Checked = false;
         }
 
         private void btnStop_MouseDown(object sender, MouseEventArgs e)
@@ -127,28 +125,24 @@ namespace DJ.UserControls
             {
                 Controller.Play();
                 ChangeCheckboxStyle(chkPlay);
+                chkCue.Checked = false;
             }
         }
 
         private void chkCue_CheckedChanged(object sender, System.EventArgs e)
         {
-            Controller.Cue();
             if (chkCue.Checked)
             {
+                Controller.Cue();
                 chkCue.BackColor = Color.MediumBlue;
                 chkCue.ForeColor = Color.White;
             }
             else
             {
+                Controller.Play();
                 chkCue.BackColor = SystemColors.AppWorkspace;
                 chkCue.ForeColor = Color.Black;
             }
-        }
-
-        private void chkLoop_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Loop = chkLoop.Checked;
-            ChangeCheckboxStyle(chkLoop);
         }
         #endregion
 
@@ -173,13 +167,17 @@ namespace DJ.UserControls
                 lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(ControllerTrackChangedEvent), sender, e);
                 return;
             }
+
+            chkPlay.Checked = true;
             picPicture.Image = null;
             lblTrackName.Text = e.Track.Name;
             lblLength.Text = Controller.Length.ToString(TimeFormat);
             lblArtist.Text = e.Track.Artist;
-            if (e.Track.AudioFile.Tag.Pictures.Length == 0) return;
-            var ms = new MemoryStream(e.Track.AudioFile.Tag.Pictures[0].Data.Data);
-            picPicture.Image = Image.FromStream(ms);
+            if (e.Track.AudioFile.Tag.Pictures.Length > 0)
+            {
+                var ms = new MemoryStream(e.Track.AudioFile.Tag.Pictures[0].Data.Data);
+                picPicture.Image = Image.FromStream(ms);  
+            }
         }
         private void ControllerOnVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
         {

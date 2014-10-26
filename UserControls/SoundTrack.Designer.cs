@@ -32,7 +32,6 @@
             this.trkVolume = new System.Windows.Forms.TrackBar();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnStop = new System.Windows.Forms.Button();
-            this.chkLoop = new System.Windows.Forms.CheckBox();
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.chkPlay = new System.Windows.Forms.CheckBox();
             this.lblArtist = new System.Windows.Forms.Label();
@@ -42,16 +41,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblLength = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.picPicture = new System.Windows.Forms.PictureBox();
             this.lblTrackName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkPosition)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPicture)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // trkVolume
@@ -70,7 +69,6 @@
             // panel8
             // 
             this.panel8.Controls.Add(this.btnStop);
-            this.panel8.Controls.Add(this.chkLoop);
             this.panel8.Controls.Add(this.chkCue);
             this.panel8.Controls.Add(this.chkPlay);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -93,20 +91,6 @@
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             this.btnStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseDown);
             this.btnStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseUp);
-            // 
-            // chkLoop
-            // 
-            this.chkLoop.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkLoop.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chkLoop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkLoop.BackgroundImage")));
-            this.chkLoop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.chkLoop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chkLoop.Location = new System.Drawing.Point(207, 6);
-            this.chkLoop.Name = "chkLoop";
-            this.chkLoop.Size = new System.Drawing.Size(45, 32);
-            this.chkLoop.TabIndex = 8;
-            this.chkLoop.UseVisualStyleBackColor = false;
-            this.chkLoop.CheckedChanged += new System.EventHandler(this.chkLoop_CheckedChanged);
             // 
             // chkCue
             // 
@@ -220,6 +204,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(528, 342);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.Controls.Add(this.lblArtist, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblTrackName, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.picPicture, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 45);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 136);
+            this.tableLayoutPanel3.TabIndex = 14;
+            // 
             // picPicture
             // 
             this.picPicture.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -241,24 +243,6 @@
             this.lblTrackName.Name = "lblTrackName";
             this.lblTrackName.Size = new System.Drawing.Size(333, 68);
             this.lblTrackName.TabIndex = 11;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.Controls.Add(this.lblArtist, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblTrackName, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.picPicture, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 45);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 136);
-            this.tableLayoutPanel3.TabIndex = 14;
             // 
             // SoundTrack
             // 
@@ -282,8 +266,8 @@
             this.flowLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPicture)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +277,6 @@
 
         private System.Windows.Forms.TrackBar trkVolume;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.CheckBox chkLoop;
         private System.Windows.Forms.CheckBox chkCue;
         private System.Windows.Forms.CheckBox chkPlay;
         private System.Windows.Forms.Button btnStop;

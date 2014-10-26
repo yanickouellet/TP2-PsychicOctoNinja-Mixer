@@ -50,13 +50,17 @@ namespace DJ.Core.Controllers
 
         public  virtual void Cue()
         {
-            Track.Pause();
+            if(Track != null)
+                Track.Pause();
         }
 
         public virtual void Stop()
         {
-            Track.Stop();
-            GeneratePositionChange();
+            if (Track != null)
+            {
+                Track.Stop();
+                GeneratePositionChange();
+            }
         }
 
         public void SetVolume(int volume)
@@ -75,8 +79,11 @@ namespace DJ.Core.Controllers
 
         public void SetFilter(int filterIndex, float value)
         {
-            EqFilterEntry filter = Track.Equalizer.SampleFilters[filterIndex];
-            filter.SetGain(value);
+            if (Track != null)
+            {
+                EqFilterEntry filter = Track.Equalizer.SampleFilters[filterIndex];
+                filter.SetGain(value);
+            }
         }
 
         public TimeSpan Length

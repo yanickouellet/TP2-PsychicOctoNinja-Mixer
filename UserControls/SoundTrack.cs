@@ -144,12 +144,6 @@ namespace DJ.UserControls
                 chkCue.ForeColor = Color.Black;
             }
         }
-
-        private void chkLoop_CheckedChanged(object sender, System.EventArgs e)
-        {
-            Controller.Loop = chkLoop.Checked;
-            ChangeCheckboxStyle(chkLoop);
-        }
         #endregion
 
         #region ControllerEvents

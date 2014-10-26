@@ -69,6 +69,7 @@ namespace DJ.Winforms
             this.Explorer = new System.Windows.Forms.TabPage();
             this.tabEqualizer = new System.Windows.Forms.TabPage();
             this._equalizer = new DJ.UserControls.Equalizer();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,6 +88,7 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer.SuspendLayout();
             this.Explorer.SuspendLayout();
             this.tabEqualizer.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,7 +99,7 @@ namespace DJ.Winforms
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(989, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(997, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,9 +165,9 @@ namespace DJ.Winforms
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 472);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 530);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(989, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(997, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -182,8 +184,8 @@ namespace DJ.Winforms
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this._playlist);
-            this.splitContainer1.Size = new System.Drawing.Size(969, 199);
-            this.splitContainer1.SplitterDistance = 252;
+            this.splitContainer1.Size = new System.Drawing.Size(977, 257);
+            this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.TabIndex = 18;
             // 
             // _fileExplorer
@@ -191,7 +193,7 @@ namespace DJ.Winforms
             this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
             this._fileExplorer.Location = new System.Drawing.Point(0, 0);
             this._fileExplorer.Name = "_fileExplorer";
-            this._fileExplorer.Size = new System.Drawing.Size(252, 199);
+            this._fileExplorer.Size = new System.Drawing.Size(254, 257);
             this._fileExplorer.TabIndex = 0;
             // 
             // _playlist
@@ -200,7 +202,7 @@ namespace DJ.Winforms
             this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this._playlist.Location = new System.Drawing.Point(0, 0);
             this._playlist.Name = "_playlist";
-            this._playlist.Size = new System.Drawing.Size(713, 199);
+            this._playlist.Size = new System.Drawing.Size(719, 257);
             this._playlist.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -215,7 +217,7 @@ namespace DJ.Winforms
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(989, 448);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(997, 506);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
             // tableLayoutPanel2
@@ -232,7 +234,7 @@ namespace DJ.Winforms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(983, 202);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(991, 202);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
             // panel1
@@ -241,7 +243,7 @@ namespace DJ.Winforms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(371, 196);
+            this.panel1.Size = new System.Drawing.Size(374, 196);
             this.panel1.TabIndex = 0;
             // 
             // panel10
@@ -250,7 +252,7 @@ namespace DJ.Winforms
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(371, 196);
+            this.panel10.Size = new System.Drawing.Size(374, 196);
             this.panel10.TabIndex = 8;
             // 
             // _mainTrack
@@ -259,20 +261,21 @@ namespace DJ.Winforms
             this._mainTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._mainTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._mainTrack.Controller = null;
-            this._mainTrack.Location = new System.Drawing.Point(3, 3);
+            this._mainTrack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainTrack.Location = new System.Drawing.Point(0, 0);
             this._mainTrack.Name = "_mainTrack";
-            this._mainTrack.Size = new System.Drawing.Size(364, 175);
+            this._mainTrack.Size = new System.Drawing.Size(374, 196);
             this._mainTrack.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel12);
+            this.panel2.Controls.Add(this.tableLayoutPanel5);
             this.panel2.Controls.Add(this.trkMasterVol);
             this.panel2.Controls.Add(this.lblMaster);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(380, 3);
+            this.panel2.Location = new System.Drawing.Point(383, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(222, 196);
+            this.panel2.Size = new System.Drawing.Size(224, 196);
             this.panel2.TabIndex = 1;
             // 
             // panel12
@@ -286,10 +289,9 @@ namespace DJ.Winforms
             this.panel12.Controls.Add(this.cboTransitions);
             this.panel12.Controls.Add(this.lblPlaylist);
             this.panel12.Controls.Add(this.btnNext);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(0, 60);
+            this.panel12.Location = new System.Drawing.Point(1, 3);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(222, 136);
+            this.panel12.Size = new System.Drawing.Size(222, 130);
             this.panel12.TabIndex = 2;
             // 
             // chkShuffle
@@ -396,7 +398,7 @@ namespace DJ.Winforms
             this.trkMasterVol.Location = new System.Drawing.Point(0, 15);
             this.trkMasterVol.Maximum = 100;
             this.trkMasterVol.Name = "trkMasterVol";
-            this.trkMasterVol.Size = new System.Drawing.Size(222, 45);
+            this.trkMasterVol.Size = new System.Drawing.Size(224, 45);
             this.trkMasterVol.TabIndex = 0;
             this.trkMasterVol.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trkMasterVol.ValueChanged += new System.EventHandler(this.trkMasterVol_ValueChanged);
@@ -406,7 +408,7 @@ namespace DJ.Winforms
             this.lblMaster.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblMaster.Location = new System.Drawing.Point(0, 0);
             this.lblMaster.Name = "lblMaster";
-            this.lblMaster.Size = new System.Drawing.Size(222, 15);
+            this.lblMaster.Size = new System.Drawing.Size(224, 15);
             this.lblMaster.TabIndex = 1;
             this.lblMaster.Text = "Master";
             this.lblMaster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -415,9 +417,9 @@ namespace DJ.Winforms
             // 
             this.panel3.Controls.Add(this.panel11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(608, 3);
+            this.panel3.Location = new System.Drawing.Point(613, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(372, 196);
+            this.panel3.Size = new System.Drawing.Size(375, 196);
             this.panel3.TabIndex = 2;
             // 
             // panel11
@@ -426,7 +428,7 @@ namespace DJ.Winforms
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(372, 196);
+            this.panel11.Size = new System.Drawing.Size(375, 196);
             this.panel11.TabIndex = 12;
             // 
             // _secondTrack
@@ -435,9 +437,10 @@ namespace DJ.Winforms
             this._secondTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._secondTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._secondTrack.Controller = null;
-            this._secondTrack.Location = new System.Drawing.Point(0, -3);
+            this._secondTrack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._secondTrack.Location = new System.Drawing.Point(0, 0);
             this._secondTrack.Name = "_secondTrack";
-            this._secondTrack.Size = new System.Drawing.Size(371, 181);
+            this._secondTrack.Size = new System.Drawing.Size(375, 196);
             this._secondTrack.TabIndex = 0;
             // 
             // tabFileExplorerEqualizer
@@ -449,7 +452,7 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer.Location = new System.Drawing.Point(3, 211);
             this.tabFileExplorerEqualizer.Name = "tabFileExplorerEqualizer";
             this.tabFileExplorerEqualizer.SelectedIndex = 0;
-            this.tabFileExplorerEqualizer.Size = new System.Drawing.Size(983, 234);
+            this.tabFileExplorerEqualizer.Size = new System.Drawing.Size(991, 292);
             this.tabFileExplorerEqualizer.TabIndex = 20;
             // 
             // Explorer
@@ -458,7 +461,7 @@ namespace DJ.Winforms
             this.Explorer.Location = new System.Drawing.Point(4, 25);
             this.Explorer.Name = "Explorer";
             this.Explorer.Padding = new System.Windows.Forms.Padding(3);
-            this.Explorer.Size = new System.Drawing.Size(975, 205);
+            this.Explorer.Size = new System.Drawing.Size(983, 263);
             this.Explorer.TabIndex = 0;
             this.Explorer.Text = "Explorer";
             this.Explorer.UseVisualStyleBackColor = true;
@@ -484,19 +487,35 @@ namespace DJ.Winforms
             this._equalizer.Size = new System.Drawing.Size(969, 199);
             this._equalizer.TabIndex = 0;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.panel12, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 60);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(224, 136);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
             // FrmApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(989, 494);
+            this.ClientSize = new System.Drawing.Size(997, 552);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(963, 533);
+            this.MinimumSize = new System.Drawing.Size(1013, 591);
             this.Name = "FrmApp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PsychicOctoMixer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApp_FormClosing);
             this.Load += new System.EventHandler(this.FrmApp_Load);
@@ -521,6 +540,7 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer.ResumeLayout(false);
             this.Explorer.ResumeLayout(false);
             this.tabEqualizer.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,6 +588,7 @@ namespace DJ.Winforms
         private System.Windows.Forms.ComboBox cboTransitions;
         private System.Windows.Forms.CheckBox chkLoop;
         private System.Windows.Forms.CheckBox chkShuffle;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }
 

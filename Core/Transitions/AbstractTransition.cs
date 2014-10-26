@@ -6,6 +6,7 @@ namespace DJ.Core.Transitions
 {
     public abstract class AbstractTransition
     {
+        private bool _inPause;
         protected int StepNumber { get; set; }
         protected int ActuelSetp { get; set; }
         protected int TargetVolume { get; set; }
@@ -23,6 +24,7 @@ namespace DJ.Core.Transitions
             StepNumber = 0;
             ActuelSetp = 0;
             TargetVolume = 0;
+            _inPause = false;
             Finished = false;
         }
 
@@ -43,24 +45,33 @@ namespace DJ.Core.Transitions
 
         public virtual void Pause()
         {
+            _inPause = true;
             TrackToPlay.Pause();
             TrackToStop.Pause();
         }
 
         public virtual void ContinueToPlay()
         {
+            _inPause = false;
             TrackToPlay.Play();
             TrackToStop.Play();
         }
 
         public virtual void DoStep()
         {
+            if (_inPause)
+                return;
             ActuelSetp++;
             InternalDoStep();
             if (ActuelSetp == StepNumber)
             {
                 TransitionFinished();
             }
+        }
+
+        public virtual void CancelTransition()
+        {
+            TrackToPlay.Dispose();
         }
 
         protected virtual void TransitionFinished()

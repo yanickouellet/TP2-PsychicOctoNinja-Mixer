@@ -40,7 +40,7 @@ namespace DJ.Core.Controllers
             _finished = false;
         }
 
-        public void Play()
+        public virtual void Play()
         {
             if (Track != null)
             {
@@ -48,12 +48,12 @@ namespace DJ.Core.Controllers
             }
         }
 
-        public void Cue()
+        public  virtual void Cue()
         {
             Track.Pause();
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             Track.Stop();
             GeneratePositionChange();
@@ -68,7 +68,7 @@ namespace DJ.Core.Controllers
             }
         }
 
-        public void SetTime(int time)
+        public virtual void SetTime(int time)
         {
             Track.PositionPercentage = time;
         }

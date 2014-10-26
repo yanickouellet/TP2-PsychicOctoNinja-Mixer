@@ -26,16 +26,38 @@ namespace DJ.Core.Controllers
             StartTransition(Context.Playlist.NextItem);
         }
 
+        public override void Play()
+        {
+            base.Play();
+            if(_transition != null)
+                _transition.ContinueToPlay();
+        }
+
+        public override void Cue()
+        {
+            base.Cue();
+            if(_transition != null)
+                _transition.Pause();
+        }
+
+        public override void SetTime(int time)
+        {
+            base.SetTime(time);
+            if(_transition != null)
+                CancelTransition();
+        }
+
+        public override void Stop()
+        {
+            base.Stop();
+            if(_transition != null)
+                CancelTransition();
+        }
+
         protected override AudioMaterial Track
         {
             set { Context.MainTrack = value; }
             get { return Context.MainTrack; }
-        }
-
-        protected override void TrackFinshed()
-        {
-            base.TrackFinshed();
-            //Next();
         }
 
         private void StartTransition(MusicItem item)
@@ -48,6 +70,13 @@ namespace DJ.Core.Controllers
             }
             _transition = new LinearTransition(nextTrack, Context.MainTrack);
             _transition.StartTransition((int)Context.MainTrack.TimeRemaining.TotalSeconds);
+        }
+
+        private void CancelTransition()
+        {
+            _transition.CancelTransition();
+            _transition = null;
+            _transitionStarted = false;
         }
 
         private void TickHandler(object sender, ElapsedEventArgs elapsedEventArgs)

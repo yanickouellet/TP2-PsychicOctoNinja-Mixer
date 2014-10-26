@@ -61,6 +61,7 @@
     <Compile Include="FileExplorer.Designer.cs">
       <DependentUpon>FileExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHelper.cs" />
     <Compile Include="Playlist.cs">
       <SubType>UserControl</SubType>
     </Compile>

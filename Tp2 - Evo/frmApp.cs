@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DJ.Core.Controllers;
 using DJ.Core.Controllers.Interfaces;
+using DJ.UserControls;
 
 namespace DJ.Winforms
 {
@@ -53,5 +55,40 @@ namespace DJ.Winforms
 		{
 			trkMasterVol.Value--;
 		}
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            _mainController.PlayNext();
+        }
+
+        private void chkLoop_CheckedChanged(object sender, EventArgs e)
+        {
+            _mainController.RepeatPlaylist = chkLoop.Checked;
+            ChangeCheckboxStyle(chkLoop);
+        }
+
+        private void chkShuffle_CheckedChanged(object sender, EventArgs e)
+        {
+            _mainController.Random = chkShuffle.Checked;
+            ChangeCheckboxStyle(chkShuffle);
+        }
+
+        #region Style change for checkboxes
+        public void ChangeCheckboxStyle(CheckBox control)
+        {
+            if (control.Checked)
+            {
+                control.BackColor = Color.MediumBlue;
+                control.BackgroundImage = FormHelper.ChangeColor((Bitmap)control.BackgroundImage, "click");
+            }
+            else
+            {
+                control.BackColor = SystemColors.AppWorkspace;
+
+                control.BackgroundImage = FormHelper.ChangeColor((Bitmap)control.BackgroundImage, "unclick");
+            }
+
+        }
+        #endregion
     }
 }

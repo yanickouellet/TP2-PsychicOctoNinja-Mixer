@@ -51,7 +51,12 @@ namespace DJ.Winforms
             this._mainTrack = new DJ.UserControls.SoundTrack();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.chkShuffle = new System.Windows.Forms.CheckBox();
+<<<<<<< HEAD
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblTransitions = new System.Windows.Forms.Label();
+            this.lblPlaylist = new System.Windows.Forms.Label();
+            this.btnShuffle = new System.Windows.Forms.Button();
+=======
             this.chkLoop = new System.Windows.Forms.CheckBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -59,6 +64,7 @@ namespace DJ.Winforms
             this.nudTransitionsTime = new System.Windows.Forms.NumericUpDown();
             this.cboTransitions = new System.Windows.Forms.ComboBox();
             this.lblPlaylist = new System.Windows.Forms.Label();
+>>>>>>> playlist_buttons
             this.btnNext = new System.Windows.Forms.Button();
             this.trkMasterVol = new System.Windows.Forms.TrackBar();
             this.lblMaster = new System.Windows.Forms.Label();
@@ -68,7 +74,21 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer = new System.Windows.Forms.TabControl();
             this.Explorer = new System.Windows.Forms.TabPage();
             this.tabEqualizer = new System.Windows.Forms.TabPage();
+<<<<<<< HEAD
+            this._mainTrack = new DJ.UserControls.SoundTrack();
+            this._secondTrack = new DJ.UserControls.SoundTrack();
+            this._fileExplorer = new DJ.UserControls.FileExplorer();
+            this._playlist = new DJ.UserControls.Playlist();
             this._equalizer = new DJ.UserControls.Equalizer();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.cboTransitions = new System.Windows.Forms.ComboBox();
+            this.nudTransitionsTime = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTime = new System.Windows.Forms.Label();
+=======
+            this._equalizer = new DJ.UserControls.Equalizer();
+            this.chkShuffle = new System.Windows.Forms.CheckBox();
+>>>>>>> playlist_buttons
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,6 +107,12 @@ namespace DJ.Winforms
             this.tabFileExplorerEqualizer.SuspendLayout();
             this.Explorer.SuspendLayout();
             this.tabEqualizer.SuspendLayout();
+<<<<<<< HEAD
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTransitionsTime)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+=======
+>>>>>>> playlist_buttons
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -113,13 +139,13 @@ namespace DJ.Winforms
             // ouvrirUnMp3ToolStripMenuItem
             // 
             this.ouvrirUnMp3ToolStripMenuItem.Name = "ouvrirUnMp3ToolStripMenuItem";
-            this.ouvrirUnMp3ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.ouvrirUnMp3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ouvrirUnMp3ToolStripMenuItem.Text = "&Enregistrer";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(130, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "&Ouvrir";
             // 
             // mnuVolume
@@ -158,7 +184,7 @@ namespace DJ.Winforms
             // àProposToolStripMenuItem
             // 
             this.àProposToolStripMenuItem.Name = "àProposToolStripMenuItem";
-            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.àProposToolStripMenuItem.Text = "&À propos";
             // 
             // statusStrip1
@@ -191,7 +217,7 @@ namespace DJ.Winforms
             this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
             this._fileExplorer.Location = new System.Drawing.Point(0, 0);
             this._fileExplorer.Name = "_fileExplorer";
-            this._fileExplorer.Size = new System.Drawing.Size(252, 199);
+            this._fileExplorer.Size = new System.Drawing.Size(252, 197);
             this._fileExplorer.TabIndex = 0;
             // 
             // _playlist
@@ -200,7 +226,7 @@ namespace DJ.Winforms
             this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this._playlist.Location = new System.Drawing.Point(0, 0);
             this._playlist.Name = "_playlist";
-            this._playlist.Size = new System.Drawing.Size(713, 199);
+            this._playlist.Size = new System.Drawing.Size(713, 197);
             this._playlist.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -277,6 +303,12 @@ namespace DJ.Winforms
             // 
             // panel12
             // 
+<<<<<<< HEAD
+            this.panel12.Controls.Add(this.tableLayoutPanel4);
+            this.panel12.Controls.Add(this.lblPlaylist);
+            this.panel12.Controls.Add(this.tableLayoutPanel3);
+            this.panel12.Controls.Add(this.lblTransitions);
+=======
             this.panel12.Controls.Add(this.chkShuffle);
             this.panel12.Controls.Add(this.chkLoop);
             this.panel12.Controls.Add(this.lblTime);
@@ -286,26 +318,20 @@ namespace DJ.Winforms
             this.panel12.Controls.Add(this.cboTransitions);
             this.panel12.Controls.Add(this.lblPlaylist);
             this.panel12.Controls.Add(this.btnNext);
+>>>>>>> playlist_buttons
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(0, 60);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(222, 136);
             this.panel12.TabIndex = 2;
             // 
-            // chkShuffle
+<<<<<<< HEAD
+            // lblType
             // 
-            this.chkShuffle.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkShuffle.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chkShuffle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkShuffle.BackgroundImage")));
-            this.chkShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.chkShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chkShuffle.Location = new System.Drawing.Point(89, 101);
-            this.chkShuffle.Name = "chkShuffle";
-            this.chkShuffle.Size = new System.Drawing.Size(45, 32);
-            this.chkShuffle.TabIndex = 10;
-            this.chkShuffle.UseVisualStyleBackColor = false;
-            this.chkShuffle.CheckedChanged += new System.EventHandler(this.chkShuffle_CheckedChanged);
-            // 
+            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(68, 6);
+=======
             // chkLoop
             // 
             this.chkLoop.Appearance = System.Windows.Forms.Appearance.Button;
@@ -335,10 +361,48 @@ namespace DJ.Winforms
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(43, 27);
+>>>>>>> playlist_buttons
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(33, 15);
             this.lblType.TabIndex = 6;
             this.lblType.Text = "Type";
+<<<<<<< HEAD
+            this.lblType.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblTransitions
+            // 
+            this.lblTransitions.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTransitions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransitions.Location = new System.Drawing.Point(0, 0);
+            this.lblTransitions.Name = "lblTransitions";
+            this.lblTransitions.Size = new System.Drawing.Size(222, 18);
+            this.lblTransitions.TabIndex = 5;
+            this.lblTransitions.Text = "Transitions";
+            this.lblTransitions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPlaylist
+            // 
+            this.lblPlaylist.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPlaylist.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlaylist.Location = new System.Drawing.Point(0, 80);
+            this.lblPlaylist.Name = "lblPlaylist";
+            this.lblPlaylist.Size = new System.Drawing.Size(222, 18);
+            this.lblPlaylist.TabIndex = 2;
+            this.lblPlaylist.Text = "Playlist";
+            this.lblPlaylist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnShuffle
+            // 
+            this.btnShuffle.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnShuffle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShuffle.BackgroundImage")));
+            this.btnShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShuffle.Location = new System.Drawing.Point(114, 3);
+            this.btnShuffle.Name = "btnShuffle";
+            this.btnShuffle.Size = new System.Drawing.Size(46, 29);
+            this.btnShuffle.TabIndex = 0;
+            this.btnShuffle.UseVisualStyleBackColor = false;
+=======
             // 
             // lblTransitions
             // 
@@ -376,6 +440,7 @@ namespace DJ.Winforms
             this.lblPlaylist.Size = new System.Drawing.Size(54, 18);
             this.lblPlaylist.TabIndex = 2;
             this.lblPlaylist.Text = "Playlist";
+>>>>>>> playlist_buttons
             // 
             // btnNext
             // 
@@ -383,12 +448,20 @@ namespace DJ.Winforms
             this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
             this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNext.Location = new System.Drawing.Point(24, 99);
+<<<<<<< HEAD
+            this.btnNext.Location = new System.Drawing.Point(62, 3);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(46, 29);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.UseVisualStyleBackColor = false;
+=======
+            this.btnNext.Location = new System.Drawing.Point(31, 100);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(52, 33);
             this.btnNext.TabIndex = 1;
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+>>>>>>> playlist_buttons
             // 
             // trkMasterVol
             // 
@@ -474,6 +547,50 @@ namespace DJ.Winforms
             this.tabEqualizer.TabIndex = 1;
             this.tabEqualizer.Text = "Equalizer";
             // 
+<<<<<<< HEAD
+            // _mainTrack
+            // 
+            this._mainTrack.AllowDrop = true;
+            this._mainTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._mainTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._mainTrack.Controller = null;
+            this._mainTrack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainTrack.Location = new System.Drawing.Point(0, 0);
+            this._mainTrack.Name = "_mainTrack";
+            this._mainTrack.Size = new System.Drawing.Size(371, 196);
+            this._mainTrack.TabIndex = 0;
+            // 
+            // _secondTrack
+            // 
+            this._secondTrack.AllowDrop = true;
+            this._secondTrack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._secondTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._secondTrack.Controller = null;
+            this._secondTrack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._secondTrack.Location = new System.Drawing.Point(0, 0);
+            this._secondTrack.Name = "_secondTrack";
+            this._secondTrack.Size = new System.Drawing.Size(372, 196);
+            this._secondTrack.TabIndex = 0;
+            // 
+            // _fileExplorer
+            // 
+            this._fileExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._fileExplorer.Location = new System.Drawing.Point(0, 0);
+            this._fileExplorer.Name = "_fileExplorer";
+            this._fileExplorer.Size = new System.Drawing.Size(252, 199);
+            this._fileExplorer.TabIndex = 0;
+            // 
+            // _playlist
+            // 
+            this._playlist.Controller = null;
+            this._playlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._playlist.Location = new System.Drawing.Point(0, 0);
+            this._playlist.Name = "_playlist";
+            this._playlist.Size = new System.Drawing.Size(713, 199);
+            this._playlist.TabIndex = 0;
+            // 
+=======
+>>>>>>> playlist_buttons
             // _equalizer
             // 
             this._equalizer.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -483,6 +600,89 @@ namespace DJ.Winforms
             this._equalizer.Name = "_equalizer";
             this._equalizer.Size = new System.Drawing.Size(969, 199);
             this._equalizer.TabIndex = 0;
+            // 
+<<<<<<< HEAD
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel3.Controls.Add(this.nudTransitionsTime, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.cboTransitions, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblTime, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblType, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 18);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(222, 62);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // cboTransitions
+            // 
+            this.cboTransitions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTransitions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTransitions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTransitions.FormattingEnabled = true;
+            this.cboTransitions.Location = new System.Drawing.Point(3, 33);
+            this.cboTransitions.Name = "cboTransitions";
+            this.cboTransitions.Size = new System.Drawing.Size(115, 21);
+            this.cboTransitions.TabIndex = 3;
+            // 
+            // nudTransitionsTime
+            // 
+            this.nudTransitionsTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudTransitionsTime.Location = new System.Drawing.Point(124, 34);
+            this.nudTransitionsTime.Name = "nudTransitionsTime";
+            this.nudTransitionsTime.Size = new System.Drawing.Size(93, 20);
+            this.nudTransitionsTime.TabIndex = 4;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.btnNext, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnShuffle, 2, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 101);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(222, 35);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(130, 2);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(84, 15);
+            this.lblTime.TabIndex = 7;
+            this.lblTime.Text = "Duration (sec)";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+=======
+            // chkShuffle
+            // 
+            this.chkShuffle.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkShuffle.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chkShuffle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkShuffle.BackgroundImage")));
+            this.chkShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chkShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkShuffle.Location = new System.Drawing.Point(89, 101);
+            this.chkShuffle.Name = "chkShuffle";
+            this.chkShuffle.Size = new System.Drawing.Size(45, 32);
+            this.chkShuffle.TabIndex = 10;
+            this.chkShuffle.UseVisualStyleBackColor = false;
+            this.chkShuffle.CheckedChanged += new System.EventHandler(this.chkShuffle_CheckedChanged);
+>>>>>>> playlist_buttons
             // 
             // FrmApp
             // 
@@ -513,14 +713,23 @@ namespace DJ.Winforms
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel12.ResumeLayout(false);
+<<<<<<< HEAD
+=======
             this.panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTransitionsTime)).EndInit();
+>>>>>>> playlist_buttons
             ((System.ComponentModel.ISupportInitialize)(this.trkMasterVol)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.tabFileExplorerEqualizer.ResumeLayout(false);
             this.Explorer.ResumeLayout(false);
             this.tabEqualizer.ResumeLayout(false);
+<<<<<<< HEAD
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudTransitionsTime)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+=======
+>>>>>>> playlist_buttons
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,17 +766,25 @@ namespace DJ.Winforms
 		private System.Windows.Forms.ToolStripMenuItem mnuVolume;
 		private System.Windows.Forms.ToolStripMenuItem mnuVolumeAugmenter;
         private System.Windows.Forms.ToolStripMenuItem mnuVolumeDiminuer;
+<<<<<<< HEAD
+        private System.Windows.Forms.Button btnShuffle;
+=======
         private System.Windows.Forms.Label lblTime;
+>>>>>>> playlist_buttons
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblTransitions;
         private System.Windows.Forms.Label lblPlaylist;
         private System.Windows.Forms.Button btnNext;
+<<<<<<< HEAD
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.NumericUpDown nudTransitionsTime;
         private System.Windows.Forms.ComboBox cboTransitions;
+        private System.Windows.Forms.Label lblTime;
+=======
         private System.Windows.Forms.CheckBox chkLoop;
         private System.Windows.Forms.CheckBox chkShuffle;
+>>>>>>> playlist_buttons
     }
 }
 

@@ -126,8 +126,9 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkShuffle.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
+<<<<<<< HEAD
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAAd0SU1FB94KGA0gGlvD/qUAAAGPSURBVEhL7dbNKwVRHMbxwQZJkigrWzZYWLAh
+        DAAACwwBP0AiyAAAAAd0SU1FB94KGA0gGlvD/qUAAAGPSURBVEhL7dbNKwVRHMbxwQZJkigrWzZYWLAh
         KUJItmTr77BB+TOk7CTlJVJsiLK3woYU5S3vfJ+5czR37uHeMWZY3Kc+3Zk7pzkzvznnzDj55BMhBR7F
         /CaWebSlNpPNCu7R5O7FmE70eNpxgHecoh9KWtlbsQM1tNnHLCqhBJ9ZBU5wjVvPDV6gjuUZY0hLN+5g
         Gn1nDv504BW2tkFnaMZn+mBraPOGESjlOII5doVlLGIB6sgc20QD0lKNXgx8YRA6oU5wiEIo2zAnvkQL
@@ -135,6 +136,16 @@
         NCofoE4fkTFF4kgVNK/Nc9XdFqMWSiylLoJ/FIsuRNmC7c6zDq5s02kIa/B3Og5Fd/WEc2iehppOYRYQ
         mYLKWopV7z+5wBJyXkDCLJkz8GcYtnY2GUtmLi8JdWieVXAQ1eMYoV8Sv5XQr8W4Yj4EGt29BPMnnz4q
         qSlrIuXN5z/FcT4AY7m4AfsO+MEAAAAASUVORK5CYII=
+=======
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeChgNIBpbw/6lAAABj0lEQVRIS+3WzSsFURzG
+        8cEGSZIoK1s2WFiwISlCSLZk6++wQfkzpOwk5SVSbIiyt8KGFOUt73yfuXM0d+7h3jFmWNynPt2ZO6c5
+        M78558w4+eQTIQUexfwmlnm0pTaTzQru0eTuxZhO9HjacYB3nKIfSlrZW7EDNbTZxywqoQSfWQVOcI1b
+        zw1eoI7lGWNISzfuYBp9Zw7+dOAVtrZBZ2jGZ/pga2jzhhEo5TiCOXaFZSxiAerIHNtEA9JSjV4MfGEQ
+        OqFOcIhCKNswJ75EC0o8yjp0TBehx/Hj7KIrtemMwnQqEwhmA7rTMncvQmq83zpo8Kjs6nQSSnDQ6eJM
+        dSJHJ5qG6XQPkcqYazQqH6BOH5ExReJIFTSvzXPV3RajFkospS6CfxSLLkTZgu3Osw6ubNNpCGvwdzoO
+        RXf1hHNonoaaTmEWEJmCylqKVe8/ucAScl5AwiyZM/BnGLZ2NhlLZi4vCXVonlVwENXjGKFfEr+V0K/F
+        uGI+BBrdvQTzJ58+KqkpayLlzec/xXE+AGO5uAH7DvjBAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="chkLoop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -149,6 +160,7 @@
         iThWqkgwHBKntHsBjloT3osHx5M5K8/DR8Gd4Hm8a2LcNjYb+4Bbk9uzJu5Zb0Eu6BNGegidRs7OhU6I
         jsgrX1f0WvRcdiN6Msa9ns2DSqH3owdsJbrOEDxHnScLI8CDJxIc4Xr8A8msovgBeh00Spk5tJoAAAAA
         SUVORK5CYII=
+>>>>>>> playlist_buttons
 </value>
   </data>
   <data name="btnNext.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

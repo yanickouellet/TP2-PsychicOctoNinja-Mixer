@@ -7,6 +7,23 @@ namespace DJ.Core.Controllers
     {
         public MainTrackController(AppContext context) : base(context)
         {
+            context.MainTrackController = this;
+        }
+
+        public void Next()
+        {
+            var next = Context.Playlist.NextItem;
+            if (next != null)
+            {
+                LoadTrack(next);
+                Track.Play();
+            }
+            else
+            {
+                if(Track != null)
+                    Track.Dispose();
+                Track = null;
+            }
         }
 
         protected override AudioMaterial Track
@@ -18,17 +35,7 @@ namespace DJ.Core.Controllers
         protected override void TrackFinshed()
         {
             base.TrackFinshed();
-
-            var next = Context.Playlist.NextItem;
-            if (next != null)
-            {
-                LoadTrack(next);
-                Track.Play();
-            }
-            else
-            {
-                Track = null;
-            }
+            Next();
         }
     }
 }

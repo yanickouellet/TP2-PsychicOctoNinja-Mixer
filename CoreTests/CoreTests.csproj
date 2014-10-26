@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Audio\PlaylistTests.cs" />
+    <Compile Include="Audio\AudioMaterialTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

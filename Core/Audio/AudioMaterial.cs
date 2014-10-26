@@ -86,8 +86,15 @@ namespace DJ.Core.Audio
             get { return Math.Min((int)Math.Round(Position.TotalSeconds/Lenght.TotalSeconds*PercentageConst), PercentageConst);  }
             set
             {
-                var valueInSecond = (int)((float) value/ PercentageConst * Lenght.TotalSeconds);
-                _sound.WaveSource.SetPosition(new TimeSpan(0, 0, valueInSecond));
+                if (value == PercentageConst)
+                {
+                    _sound.WaveSource.SetPosition(Lenght);
+                }
+                else
+                {
+                    var valueInSecond = (int)((float)value / PercentageConst * Lenght.TotalSeconds);
+                    _sound.WaveSource.SetPosition(new TimeSpan(0, 0, valueInSecond));
+                }
             }
         }
 

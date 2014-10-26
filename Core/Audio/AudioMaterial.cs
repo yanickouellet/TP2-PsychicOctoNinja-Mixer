@@ -13,18 +13,17 @@ namespace DJ.Core.Audio
         private const int PercentageConst = 1000;
         private IWaveSource _source;
         private ISoundOut _sound;
-        private MusicItem _item;
 		private int _masterVolume;
 		private int _volume;
 
-
+        public MusicItem Item { get; set; }
         public Equalizer Equalizer { get; set; }
 
         public AudioMaterial(MusicItem item)
         {
             Equalizer equalizer;
-            _item = item;
-            _source = CodecFactory.Instance.GetCodec(_item.AudioFile.Name)
+            Item = item;
+            _source = CodecFactory.Instance.GetCodec(Item.AudioFile.Name)
                    .AppendSource(Equalizer.Create10BandEqualizer, out equalizer)
                    .ToWaveSource(32);
             Equalizer = equalizer;
@@ -95,6 +94,11 @@ namespace DJ.Core.Audio
         public TimeSpan Lenght
         {
             get { return _sound.WaveSource.GetLength(); }
+        }
+
+        public TimeSpan TimeRemaining
+        {
+            get { return Lenght - Position; }
         }
 
         public bool Finshed

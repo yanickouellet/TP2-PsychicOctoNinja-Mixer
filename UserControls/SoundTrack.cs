@@ -22,9 +22,9 @@ namespace DJ.UserControls
                 _controller = value;
                 if (_controller == null)
                     return;
-                Controller.RaiseTrackChangedEvent += Controller_RaiseTrackChangedEvent;
-                Controller.RaiseVolumeChangedEvent += ControllerOnRaiseVolumeChangedEvent;
-                Controller.RaisePositionChangedEvent += ControllerOnRaisePositionChangedEvent;
+                Controller.TrackChangedEvent += ControllerTrackChangedEvent;
+                Controller.VolumeChangedEvent += ControllerOnVolumeChangedEvent;
+                Controller.PositionChangedEvent += ControllerOnPositionChangedEvent;
             }
         }
 
@@ -154,11 +154,11 @@ namespace DJ.UserControls
 
         #region ControllerEvents
 
-        private void ControllerOnRaisePositionChangedEvent(object sender, PositionChangedEventArgs e)
+        private void ControllerOnPositionChangedEvent(object sender, PositionChangedEventArgs e)
         {
             if (trkPosition.InvokeRequired)
             {
-                trkPosition.Invoke(new Action<object, PositionChangedEventArgs>(ControllerOnRaisePositionChangedEvent), sender, e);
+                trkPosition.Invoke(new Action<object, PositionChangedEventArgs>(ControllerOnPositionChangedEvent), sender, e);
                 return;
             }
             if (!_trkPositionDragging)
@@ -166,11 +166,11 @@ namespace DJ.UserControls
             lblPosition.Text = e.Time.ToString(TimeFormat);
         }
 
-        private void Controller_RaiseTrackChangedEvent(object sender, TrackChangedEventArgs e)
+        private void ControllerTrackChangedEvent(object sender, TrackChangedEventArgs e)
         {
             if (lblTrackName.InvokeRequired)
             {
-                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(Controller_RaiseTrackChangedEvent), sender, e);
+                lblTrackName.Invoke(new Action<object, TrackChangedEventArgs>(ControllerTrackChangedEvent), sender, e);
                 return;
             }
             picPicture.Image = null;
@@ -181,7 +181,7 @@ namespace DJ.UserControls
             var ms = new MemoryStream(e.Track.AudioFile.Tag.Pictures[0].Data.Data);
             picPicture.Image = Image.FromStream(ms);
         }
-        private void ControllerOnRaiseVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
+        private void ControllerOnVolumeChangedEvent(object sender, VolumeChangedEventArgs e)
         {
             trkVolume.Value = e.Level;
         }

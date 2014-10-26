@@ -18,8 +18,8 @@ namespace DJ.Core.Controllers.Interfaces
 
         TimeSpan Length { get; }
         
-        event EventHandler<PositionChangedEventArgs> RaisePositionChangedEvent;
-        event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
+        event EventHandler<PositionChangedEventArgs> PositionChangedEvent;
+        event EventHandler<TrackChangedEventArgs> TrackChangedEvent;
+        event EventHandler<VolumeChangedEventArgs> VolumeChangedEvent;
     }
 }

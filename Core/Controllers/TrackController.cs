@@ -32,7 +32,7 @@ namespace DJ.Core.Controllers
             }
             Track = new AudioMaterial(item);
 
-            OnRaiseEvent(new TrackChangedEventArgs(item), RaiseTrackChangedEvent);
+            OnRaiseEvent(new TrackChangedEventArgs(item), TrackChangedEvent);
             GeneratePositionChange();
 
             Track.MasterVolume = Context.MasterVolume;
@@ -64,7 +64,7 @@ namespace DJ.Core.Controllers
             if (Track != null)
             {
                 Track.Volume = volume;
-                OnRaiseEvent(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);  
+                OnRaiseEvent(new VolumeChangedEventArgs(volume), VolumeChangedEvent);  
             }
         }
 
@@ -89,13 +89,18 @@ namespace DJ.Core.Controllers
             }
         }
 
-        public event EventHandler<PositionChangedEventArgs> RaisePositionChangedEvent;
-        public event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
+        public event EventHandler<PositionChangedEventArgs> PositionChangedEvent;
+        public event EventHandler<TrackChangedEventArgs> TrackChangedEvent;
+        public event EventHandler<VolumeChangedEventArgs> VolumeChangedEvent;
 
         protected virtual void TrackFinshed()
         {
             Debug.WriteLine("Track finished.");
+        }
+
+        protected void RaiseTrackChangedEvent(TrackChangedEventArgs e)
+        {
+            OnRaiseEvent(e, TrackChangedEvent);
         }
 
         private void CheckIfTrackFinshed()
@@ -123,7 +128,7 @@ namespace DJ.Core.Controllers
 
         private void GeneratePositionChange()
         {
-            OnRaiseEvent(new PositionChangedEventArgs(Track.Position, Track.PositionPercentage), RaisePositionChangedEvent);
+            OnRaiseEvent(new PositionChangedEventArgs(Track.Position, Track.PositionPercentage), PositionChangedEvent);
             _lastPosition = Track.Position;
         }
 

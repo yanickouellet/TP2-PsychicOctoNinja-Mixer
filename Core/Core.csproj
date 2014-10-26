@@ -71,6 +71,8 @@
     <Compile Include="Events\TrackChangedEventArgs.cs" />
     <Compile Include="Events\VolumeChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transitions\AbstractTransition.cs" />
+    <Compile Include="Transitions\LinearTransition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

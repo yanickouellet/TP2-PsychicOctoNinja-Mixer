@@ -54,7 +54,6 @@
     <Compile Include="Audio\MusicItem.cs" />
     <Compile Include="Audio\Playlist.cs" />
     <Compile Include="Context\AppContext.cs" />
-    <Compile Include="Context\IContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Interfaces\IMainController.cs" />
     <Compile Include="Controllers\Interfaces\IPlaylistController.cs" />

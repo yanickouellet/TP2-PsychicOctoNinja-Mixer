@@ -4,8 +4,9 @@ using DJ.Core.Controllers;
 
 namespace DJ.Core.Context
 {
-    public class AppContext : IContext
+    public class AppContext
     {
+        public int TransitionDuration { get; set; }
         public AudioMaterial MainTrack { get; set; }
         public AudioMaterial SecondaryTrack { get; set; }
         public Playlist Playlist { get; set; }
@@ -19,6 +20,7 @@ namespace DJ.Core.Context
             Playlist = new Playlist();
             _timer = new Timer(500);
             _timer.Start();
+            TransitionDuration = 0;
         }
 
         public int MasterVolume

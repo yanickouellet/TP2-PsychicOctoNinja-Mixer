@@ -64,6 +64,7 @@
     <Compile Include="Audio\AudioMaterialTests.cs" />
     <Compile Include="Helpers\FileHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transitions\LinearTransitionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

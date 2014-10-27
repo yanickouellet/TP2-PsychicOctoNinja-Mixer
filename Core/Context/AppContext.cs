@@ -4,7 +4,7 @@ using DJ.Core.Controllers;
 
 namespace DJ.Core.Context
 {
-    public class AppContext : IContext
+    public class AppContext
     {
         public AudioMaterial MainTrack { get; set; }
         public AudioMaterial SecondaryTrack { get; set; }

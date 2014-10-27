@@ -5,14 +5,14 @@ namespace DJ.Core.Controllers
 {
     public class BaseController
     {
-        private readonly IContext _context;
+        private readonly AppContext _context;
 
-        protected IContext Context 
+        protected AppContext Context 
         {
             get { return _context; }
         }
 
-        public BaseController(IContext context)
+        public BaseController(AppContext context)
         {
             _context = context;
         }

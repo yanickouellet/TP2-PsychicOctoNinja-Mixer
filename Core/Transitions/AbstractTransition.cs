@@ -30,7 +30,7 @@ namespace DJ.Core.Transitions
 
         public virtual void StartTransition(int duration)
         {
-            if(duration > TrackToPlay.Lenght.TotalSeconds)
+            if(TrackToPlay != null && duration > TrackToPlay.Lenght.TotalSeconds)
                 throw new ArgumentException("Duration is too long for the track length", "duration");
 
             StepNumber = 2*duration;

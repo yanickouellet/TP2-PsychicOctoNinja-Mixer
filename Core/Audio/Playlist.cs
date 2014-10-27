@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using DJ.Core.Helpers;
 
 namespace DJ.Core.Audio
 {
@@ -24,17 +25,9 @@ namespace DJ.Core.Audio
 
         public void AddItem(FileInfo file, int position)
         {
-            var audioFile = TagLib.File.Create(file.FullName);
-            var tag = audioFile.GetTag(TagLib.TagTypes.Id3v2, true) ?? audioFile.GetTag(TagLib.TagTypes.Apple, true);
+            var musicItem = FileHelper.CreateMusicItem(file);
+            if (file == null) return;
 
-            if (tag == null) return;
-            var length = String.Concat(
-                audioFile.Properties.Duration.Minutes, ":",
-                audioFile.Properties.Duration.Seconds,
-                audioFile.Properties.Duration.Seconds.ToString().Length == 1 ? "0" : ""
-                );
-
-            var musicItem = new MusicItem(tag.Title.Trim(), length, tag.FirstPerformer, tag.Album, tag.FirstGenre, audioFile);
             if (position == -1)
                 Add(musicItem);
             else

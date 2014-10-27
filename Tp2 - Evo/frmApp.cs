@@ -37,6 +37,8 @@ namespace DJ.Winforms
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
+            cboTransitions.SelectedIndex = 0;
+            _mainController.TransitionDuration = (int)nudTransitionsTime.Value;
             _playlist.AllowDrop = true;
 			trkMasterVol.Value = trkMasterVol.Maximum / 2;
         }
@@ -71,6 +73,11 @@ namespace DJ.Winforms
         {
             _mainController.Random = chkShuffle.Checked;
             ChangeCheckboxStyle(chkShuffle);
+        }
+
+        private void nudTransitionsTime_ValueChanged(object sender, EventArgs e)
+        {
+            _mainController.TransitionDuration = (int)nudTransitionsTime.Value;
         }
 
         #region Style change for checkboxes

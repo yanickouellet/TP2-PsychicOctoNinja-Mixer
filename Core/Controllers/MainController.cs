@@ -62,6 +62,12 @@ namespace DJ.Core.Controllers
             set { Context.Playlist.Random = value; }
         }
 
+        public int TransitionDuration
+        {
+            get { return Context.TransitionDuration; }
+            set { Context.TransitionDuration = value; }
+        }
+
 		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }
 }

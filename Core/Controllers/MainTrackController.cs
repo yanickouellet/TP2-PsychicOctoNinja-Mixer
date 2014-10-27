@@ -11,18 +11,17 @@ namespace DJ.Core.Controllers
     {
         private AbstractTransition _transition;
         private bool _transitionStarted = false;
-        private int _transitionDuration;
         public MainTrackController(AppContext context) : base(context)
         {
             context.MainTrackController = this;
             _transition = null;
             _transitionStarted = false;
-            _transitionDuration = 10;
             Context.AddEventOnTick(TickHandler);
         }
 
         public void Next()
         {
+            _transitionStarted = true;
             StartTransition(Context.Playlist.NextItem);
         }
 
@@ -69,7 +68,7 @@ namespace DJ.Core.Controllers
                 nextTrack.MasterVolume = Context.MasterVolume;
             }
             _transition = new LinearTransition(nextTrack, Context.MainTrack);
-            _transition.StartTransition((int)Context.MainTrack.TimeRemaining.TotalSeconds);
+            _transition.StartTransition((int)Math.Min(Context.TransitionDuration, Context.MainTrack.TimeRemaining.TotalSeconds));
         }
 
         private void CancelTransition()
@@ -92,9 +91,8 @@ namespace DJ.Core.Controllers
                     _transitionStarted = false;
                 }
             }
-            else if (!_transitionStarted && Context.MainTrack != null && Context.MainTrack.TimeRemaining.TotalSeconds <= _transitionDuration)
+            else if (!_transitionStarted && Context.MainTrack != null && Context.MainTrack.TimeRemaining.TotalSeconds <= Context.TransitionDuration)
             {
-                _transitionStarted = true;
                 Next();
             }
         }

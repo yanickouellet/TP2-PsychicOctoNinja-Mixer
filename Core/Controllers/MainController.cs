@@ -1,15 +1,17 @@
 ﻿using DJ.Core.Context;
 using DJ.Core.Controllers.Interfaces;
+using DJ.Core.Events;
+using System;
 
 namespace DJ.Core.Controllers
 {
-    public class MainController : IMainController
+    public class MainController : BaseController, IMainController
     {
         private readonly AppContext _appContext;
 
-        public MainController()
+        public MainController(): base(new AppContext())
         {
-            _appContext = new AppContext();
+			_appContext = Context as AppContext;
         }
 
         public ITrackController CreateMainTrackController()
@@ -22,6 +24,11 @@ namespace DJ.Core.Controllers
             return new SecondaryTrackController(_appContext);
         }
 
+        public IPlaylistController CreatePlaylistController()
+        {
+            return new PlaylistController(_appContext);
+        }
+
         public void Dispose()
         {
             if(_appContext.MainTrack != null)
@@ -29,5 +36,38 @@ namespace DJ.Core.Controllers
             if(_appContext.SecondaryTrack != null)
                 _appContext.SecondaryTrack.Dispose();
         }
+
+		public void ChangeMasterVolume(int volume)
+		{
+			_appContext.MasterVolume = volume;
+			OnRaiseEvent<VolumeChangedEventArgs>(new VolumeChangedEventArgs(volume), RaiseVolumeChangedEvent);
+		}
+
+        public void PlayNext()
+        {
+            if(Context.Playlist.Ended)
+                Context.Playlist.Reset();
+            Context.MainTrackController.Next();
+        }
+
+        public bool RepeatPlaylist
+        {
+            get { return Context.Playlist.Repeat; }
+            set { Context.Playlist.Repeat = value; }
+        }
+
+        public bool Random
+        {
+            get { return Context.Playlist.Random; }
+            set { Context.Playlist.Random = value; }
+        }
+
+        public int TransitionDuration
+        {
+            get { return Context.TransitionDuration; }
+            set { Context.TransitionDuration = value; }
+        }
+
+		public event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent;
     }
 }

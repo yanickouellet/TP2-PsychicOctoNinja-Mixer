@@ -1,5 +1,7 @@
 ﻿using System;
+using DJ.Core.Audio;
 using DJ.Core.Events;
+
 
 namespace DJ.Core.Controllers.Interfaces
 {
@@ -10,10 +12,14 @@ namespace DJ.Core.Controllers.Interfaces
         void Stop();
         void SetVolume(int volume);
         void SetTime(int time);
+        void SetFilter(int filterIndex, float value);
         bool Loop { set; }
-        void LoadTrack(string filename);
+        void LoadTrack(MusicItem filename);
 
-        event EventHandler<TrackChangedEventArgs> RaiseTrackChangedEvent;
-        event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
+        TimeSpan Length { get; }
+        
+        event EventHandler<PositionChangedEventArgs> PositionChangedEvent;
+        event EventHandler<TrackChangedEventArgs> TrackChangedEvent;
+        event EventHandler<VolumeChangedEventArgs> VolumeChangedEvent;
     }
 }

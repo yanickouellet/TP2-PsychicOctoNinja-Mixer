@@ -33,11 +33,19 @@
             // 
             // trvExplorer
             // 
+            this.trvExplorer.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.trvExplorer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.trvExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvExplorer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.trvExplorer.HideSelection = false;
+            this.trvExplorer.HotTracking = true;
+            this.trvExplorer.LineColor = System.Drawing.Color.Silver;
             this.trvExplorer.Location = new System.Drawing.Point(0, 0);
             this.trvExplorer.Name = "trvExplorer";
             this.trvExplorer.Size = new System.Drawing.Size(353, 355);
             this.trvExplorer.TabIndex = 1;
+            this.trvExplorer.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvExplorer_BeforeExpand);
+            this.trvExplorer.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvExplorer_ItemDrag);
             // 
             // FileExplorer
             // 

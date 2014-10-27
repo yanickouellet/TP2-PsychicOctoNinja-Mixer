@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DJ.Core.Events;
 
 namespace DJ.Core.Controllers.Interfaces
 {
@@ -12,6 +9,15 @@ namespace DJ.Core.Controllers.Interfaces
 
         ITrackController CreateSecondTrackController();
 
+        IPlaylistController CreatePlaylistController();
         void Dispose();
+
+		void ChangeMasterVolume(int volume);
+        void PlayNext();
+
+        bool RepeatPlaylist { get; set; }
+        bool Random { get; set; }
+        int TransitionDuration { get; set; }
+		event EventHandler<VolumeChangedEventArgs> RaiseVolumeChangedEvent; 
     }
 }
